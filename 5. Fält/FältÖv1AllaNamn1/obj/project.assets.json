@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Lånedator\\.nuget\\packages\\": {}
+    "C:\\Users\\Kasper\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv1AllaNamn1\\FältÖv1AllaNamn1.csproj",
+      "projectUniqueName": "D:\\Code\\Programmering 1\\5. Fält\\FältÖv1AllaNamn1\\FältÖv1AllaNamn1.csproj",
       "projectName": "FältÖv1AllaNamn1",
-      "projectPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv1AllaNamn1\\FältÖv1AllaNamn1.csproj",
-      "packagesPath": "C:\\Users\\Lånedator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv1AllaNamn1\\obj\\",
+      "projectPath": "D:\\Code\\Programmering 1\\5. Fält\\FältÖv1AllaNamn1\\FältÖv1AllaNamn1.csproj",
+      "packagesPath": "C:\\Users\\Kasper\\.nuget\\packages\\",
+      "outputPath": "D:\\Code\\Programmering 1\\5. Fält\\FältÖv1AllaNamn1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lånedator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kasper\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

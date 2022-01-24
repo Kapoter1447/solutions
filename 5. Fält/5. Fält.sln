@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FältÖv1AllaNamn", "FältÖv1AllaNamn\FältÖv1AllaNamn.csproj", "{0C8F4033-7C55-4340-99C7-687DB29FFE2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FältÖv1AllaNamn1", "FältÖv1AllaNamn1\FältÖv1AllaNamn1.csproj", "{875887A1-8CE7-42D6-B779-12985853928A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FältÖv1AllaNamn1", "FältÖv1AllaNamn1\FältÖv1AllaNamn1.csproj", "{875887A1-8CE7-42D6-B779-12985853928A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FältÖv3Väderstationen", "FältÖv3Väderstationen\FältÖv3Väderstationen.csproj", "{5DE4C124-E0CA-415C-881D-5BF5230EC51A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{875887A1-8CE7-42D6-B779-12985853928A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{875887A1-8CE7-42D6-B779-12985853928A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{875887A1-8CE7-42D6-B779-12985853928A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE4C124-E0CA-415C-881D-5BF5230EC51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE4C124-E0CA-415C-881D-5BF5230EC51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE4C124-E0CA-415C-881D-5BF5230EC51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE4C124-E0CA-415C-881D-5BF5230EC51A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
