@@ -1,0 +1,7 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\bin\Debug\inmatning.exe.config
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\bin\Debug\inmatning.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\bin\Debug\inmatning.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\obj\Debug\inmatning.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\obj\Debug\inmatning.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\obj\Debug\inmatning.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\inmatning\obj\Debug\inmatning.pdb

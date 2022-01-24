@@ -1,0 +1,10 @@
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\bin\Debug\WindowsFormsApp2.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WFÖvning3.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WFÖvning3.csproj.GenerateResource.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WFÖvning3.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WindowsFormsApp2.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning3\obj\Debug\WindowsFormsApp2.pdb

@@ -1,0 +1,6 @@
+C:\Users\Lånedator\source\repos\1. Grunder\hej\obj\Debug\hej.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\1. Grunder\hej\bin\Debug\hej.exe.config
+C:\Users\Lånedator\source\repos\1. Grunder\hej\bin\Debug\hej.exe
+C:\Users\Lånedator\source\repos\1. Grunder\hej\bin\Debug\hej.pdb
+C:\Users\Lånedator\source\repos\1. Grunder\hej\obj\Debug\hej.exe
+C:\Users\Lånedator\source\repos\1. Grunder\hej\obj\Debug\hej.pdb

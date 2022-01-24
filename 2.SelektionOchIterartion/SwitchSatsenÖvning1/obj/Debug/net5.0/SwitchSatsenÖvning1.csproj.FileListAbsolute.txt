@@ -1,0 +1,15 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\SwitchSatsenÖvning1.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\SwitchSatsenÖvning1.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\SwitchSatsenÖvning1.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\SwitchSatsenÖvning1.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\SwitchSatsenÖvning1.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\ref\SwitchSatsenÖvning1.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\bin\Debug\net5.0\SwitchSatsenÖvning1.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\ref\SwitchSatsenÖvning1.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\SwitchSatsenÖvning1\obj\Debug\net5.0\SwitchSatsenÖvning1.genruntimeconfig.cache

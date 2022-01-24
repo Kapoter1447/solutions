@@ -1,0 +1,6 @@
+C:\Users\Lånedator\source\repos\1. Grunder\Variabler\bin\Debug\Variabler.exe.config
+C:\Users\Lånedator\source\repos\1. Grunder\Variabler\bin\Debug\Variabler.exe
+C:\Users\Lånedator\source\repos\1. Grunder\Variabler\bin\Debug\Variabler.pdb
+C:\Users\Lånedator\source\repos\1. Grunder\Variabler\obj\Debug\matte.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\1. Grunder\Variabler\obj\Debug\Variabler.exe
+C:\Users\Lånedator\source\repos\1. Grunder\Variabler\obj\Debug\Variabler.pdb

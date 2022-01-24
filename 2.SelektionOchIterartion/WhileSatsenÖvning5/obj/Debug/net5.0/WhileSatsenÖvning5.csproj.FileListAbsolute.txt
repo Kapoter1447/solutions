@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\WhileSatsenÖvning5.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\WhileSatsenÖvning5.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\WhileSatsenÖvning5.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\WhileSatsenÖvning5.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\WhileSatsenÖvning5.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\ref\WhileSatsenÖvning5.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\bin\Debug\net5.0\WhileSatsenÖvning5.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\ref\WhileSatsenÖvning5.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.genruntimeconfig.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning5\obj\Debug\net5.0\WhileSatsenÖvning5.csproj.AssemblyReference.cache

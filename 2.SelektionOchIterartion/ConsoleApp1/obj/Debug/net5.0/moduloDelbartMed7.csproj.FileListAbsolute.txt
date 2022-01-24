@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\moduloDelbartMed7.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\moduloDelbartMed7.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\moduloDelbartMed7.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\moduloDelbartMed7.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\moduloDelbartMed7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\ref\moduloDelbartMed7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\bin\Debug\net5.0\moduloDelbartMed7.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\ref\moduloDelbartMed7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp1\obj\Debug\net5.0\moduloDelbartMed7.genruntimeconfig.cache

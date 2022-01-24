@@ -1,0 +1,15 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\delbart3och7.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\delbart3och7.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\delbart3och7.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\delbart3och7.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\delbart3och7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\ref\delbart3och7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\bin\Debug\net5.0\delbart3och7.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\ref\delbart3och7.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\delbart3och7\obj\Debug\net5.0\delbart3och7.genruntimeconfig.cache

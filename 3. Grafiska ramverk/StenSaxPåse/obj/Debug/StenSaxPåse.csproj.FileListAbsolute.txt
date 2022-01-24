@@ -1,0 +1,10 @@
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\bin\Debug\StenSaxPåse.exe.config
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\bin\Debug\StenSaxPåse.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\bin\Debug\StenSaxPåse.pdb
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.Form1.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.Properties.Resources.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.csproj.GenerateResource.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\StenSaxPåse\obj\Debug\StenSaxPåse.pdb

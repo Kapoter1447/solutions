@@ -1,0 +1,10 @@
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.Form1.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.Properties.Resources.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.csproj.GenerateResource.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\bin\Debug\Tidtagarur.exe.config
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\bin\Debug\Tidtagarur.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\bin\Debug\Tidtagarur.pdb
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\Tidtagarur\obj\Debug\Tidtagarur.pdb

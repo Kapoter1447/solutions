@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\retc.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\retc.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\retc.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\retc.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\retc.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\ref\retc.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\retc.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\ref\retc.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.genruntimeconfig.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\retc.csproj.AssemblyReference.cache

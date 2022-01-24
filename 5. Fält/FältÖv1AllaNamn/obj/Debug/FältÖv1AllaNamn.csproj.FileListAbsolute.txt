@@ -1,0 +1,10 @@
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\bin\Debug\FältÖv1AllaNamn.exe.config
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\bin\Debug\FältÖv1AllaNamn.exe
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\bin\Debug\FältÖv1AllaNamn.pdb
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.Form1.resources
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.Properties.Resources.resources
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.csproj.GenerateResource.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.exe
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn\obj\Debug\FältÖv1AllaNamn.pdb

@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ovning3.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ovning3.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ovning3.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ovning3.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ovning3.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ref\ovning3.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ovning3.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ref\ovning3.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.genruntimeconfig.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ovning3.csproj.AssemblyReference.cache

@@ -1,0 +1,10 @@
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\bin\Debug\WFÖvning1.exe.config
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\bin\Debug\WFÖvning1.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\bin\Debug\WFÖvning1.pdb
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.Form1.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.Properties.Resources.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.csproj.GenerateResource.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\WFÖvning1\obj\Debug\WFÖvning1.pdb

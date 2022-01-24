@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\WhileSatsenÖvning6.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\WhileSatsenÖvning6.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\WhileSatsenÖvning6.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\WhileSatsenÖvning6.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\WhileSatsenÖvning6.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\ref\WhileSatsenÖvning6.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\bin\Debug\net5.0\WhileSatsenÖvning6.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\ref\WhileSatsenÖvning6.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.genruntimeconfig.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ConsoleApp2\obj\Debug\net5.0\WhileSatsenÖvning6.csproj.AssemblyReference.cache

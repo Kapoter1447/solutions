@@ -1,0 +1,15 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\HackerSimulatorWorldDomination.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\HackerSimulatorWorldDomination.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\HackerSimulatorWorldDomination.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\HackerSimulatorWorldDomination.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\HackerSimulatorWorldDomination.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\ref\HackerSimulatorWorldDomination.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\bin\Debug\net5.0\HackerSimulatorWorldDomination.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\ref\HackerSimulatorWorldDomination.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\retc\obj\Debug\net5.0\HackerSimulatorWorldDomination.genruntimeconfig.cache

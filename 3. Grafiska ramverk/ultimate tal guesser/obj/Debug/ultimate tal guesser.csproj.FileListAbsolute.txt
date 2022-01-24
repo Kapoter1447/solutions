@@ -1,0 +1,10 @@
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\bin\Debug\ultimate tal guesser.exe.config
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\bin\Debug\ultimate tal guesser.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\bin\Debug\ultimate tal guesser.pdb
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate_tal_guesser.Form1.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate_tal_guesser.Properties.Resources.resources
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate tal guesser.csproj.GenerateResource.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate tal guesser.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate tal guesser.exe
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate tal guesser.pdb
+C:\Users\Lånedator\source\repos\3. Grafiska ramverk\ultimate tal guesser\obj\Debug\ultimate tal guesser.csproj.AssemblyReference.cache

@@ -1,0 +1,15 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\WhileSatsenÖvning2.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\WhileSatsenÖvning2.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\WhileSatsenÖvning2.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\WhileSatsenÖvning2.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\WhileSatsenÖvning2.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\ref\WhileSatsenÖvning2.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\bin\Debug\net5.0\WhileSatsenÖvning2.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\ref\WhileSatsenÖvning2.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning2\obj\Debug\net5.0\WhileSatsenÖvning2.genruntimeconfig.cache

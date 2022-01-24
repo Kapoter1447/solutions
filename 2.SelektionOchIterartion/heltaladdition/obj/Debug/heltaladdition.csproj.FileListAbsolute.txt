@@ -1,0 +1,7 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\obj\Debug\heltaladdition.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\bin\Debug\heltaladdition.exe.config
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\bin\Debug\heltaladdition.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\bin\Debug\heltaladdition.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\obj\Debug\heltaladdition.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\obj\Debug\heltaladdition.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\heltaladdition\obj\Debug\heltaladdition.csproj.AssemblyReference.cache

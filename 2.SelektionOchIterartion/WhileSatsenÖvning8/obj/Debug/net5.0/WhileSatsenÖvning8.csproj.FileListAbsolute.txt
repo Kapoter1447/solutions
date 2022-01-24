@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\WhileSatsenÖvning8.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\WhileSatsenÖvning8.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\WhileSatsenÖvning8.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\WhileSatsenÖvning8.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\WhileSatsenÖvning8.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\ref\WhileSatsenÖvning8.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\bin\Debug\net5.0\WhileSatsenÖvning8.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\ref\WhileSatsenÖvning8.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\WhileSatsenÖvning8\obj\Debug\net5.0\WhileSatsenÖvning8.genruntimeconfig.cache

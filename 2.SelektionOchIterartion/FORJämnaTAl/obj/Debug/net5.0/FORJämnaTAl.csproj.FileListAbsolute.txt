@@ -1,0 +1,15 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\FORJämnaTAl.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\FORJämnaTAl.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\FORJämnaTAl.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\FORJämnaTAl.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\FORJämnaTAl.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\ref\FORJämnaTAl.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\bin\Debug\net5.0\FORJämnaTAl.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\ref\FORJämnaTAl.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\FORJämnaTAl\obj\Debug\net5.0\FORJämnaTAl.genruntimeconfig.cache

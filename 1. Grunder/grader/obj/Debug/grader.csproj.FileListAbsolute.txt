@@ -1,0 +1,6 @@
+C:\Users\Lånedator\source\repos\1. Grunder\grader\bin\Debug\grader.exe.config
+C:\Users\Lånedator\source\repos\1. Grunder\grader\bin\Debug\grader.exe
+C:\Users\Lånedator\source\repos\1. Grunder\grader\bin\Debug\grader.pdb
+C:\Users\Lånedator\source\repos\1. Grunder\grader\obj\Debug\grader.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\1. Grunder\grader\obj\Debug\grader.exe
+C:\Users\Lånedator\source\repos\1. Grunder\grader\obj\Debug\grader.pdb

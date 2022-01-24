@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\vilketTalStorst.exe
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\vilketTalStorst.deps.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\vilketTalStorst.runtimeconfig.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\vilketTalStorst.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\vilketTalStorst.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\ref\vilketTalStorst.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\bin\Debug\net5.0\vilketTalStorst.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\ref\vilketTalStorst.dll
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.pdb
+C:\Users\Lånedator\source\repos\2.SelektionOchIterartion\ovning3\obj\Debug\net5.0\vilketTalStorst.genruntimeconfig.cache

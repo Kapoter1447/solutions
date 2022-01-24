@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "WhileSatsenÖvning5/1.0.0": {
+        "runtime": {
+          "WhileSatsenÖvning5.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WhileSatsenÖvning5/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

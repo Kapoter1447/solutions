@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\FältÖv1AllaNamn1.exe
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\FältÖv1AllaNamn1.deps.json
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\FältÖv1AllaNamn1.runtimeconfig.json
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\FältÖv1AllaNamn1.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\FältÖv1AllaNamn1.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\ref\FältÖv1AllaNamn1.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\bin\Debug\net5.0\FältÖv1AllaNamn1.pdb
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\ref\FältÖv1AllaNamn1.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.pdb
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv1AllaNamn1\obj\Debug\net5.0\FältÖv1AllaNamn1.genruntimeconfig.cache

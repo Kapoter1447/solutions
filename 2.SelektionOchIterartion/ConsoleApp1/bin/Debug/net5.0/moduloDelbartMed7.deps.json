@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "moduloDelbartMed7/1.0.0": {
+        "runtime": {
+          "moduloDelbartMed7.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "moduloDelbartMed7/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
