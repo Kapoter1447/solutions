@@ -17,28 +17,27 @@ namespace FältÖv1AllaNamn1
             {
                 Console.WriteLine(i + ": " + namn[i]);
             }
+           
             string inmat = "";
             int intmat = 0;
 
-            while (true)
+            bool isInt = false;
+
+
+
+            while (isInt = false)
             {
-                if ((inmat == "q") || (inmat == "Q"))
+                if (!int.TryParse(inmat, out intmat))
                 {
-                    goto End;
+                    Console.WriteLine("Quit");
+                    isInt = true;
                 }
-
-                intmat = int.Parse(Console.ReadLine());
-                Console.WriteLine(namn[intmat]);
-
+                else
+                {
+                    intmat = int.Parse(Console.ReadLine());
+                    Console.WriteLine(namn[intmat]);
+                }
             }
-
-            End:
-            Console.WriteLine("\n Skriv index");
-
-
-
-
-
         }
     }
 }

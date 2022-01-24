@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\5. Fält",
+    "\\5. Fält\\FältÖv1AllaNamn1"
   ],
-  "SelectedNode": "\\5. Fält.sln",
+  "SelectedNode": "\\5. Fält\\FältÖv1AllaNamn1\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
