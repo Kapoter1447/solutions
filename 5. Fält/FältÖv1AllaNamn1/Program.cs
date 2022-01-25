@@ -25,8 +25,9 @@ namespace FältÖv1AllaNamn1
 
 
 
-            while (isInt = false)
+            while (!isInt)
             {
+                inmat = Console.ReadLine();
                 if (!int.TryParse(inmat, out intmat))
                 {
                     Console.WriteLine("Quit");
@@ -34,10 +35,13 @@ namespace FältÖv1AllaNamn1
                 }
                 else
                 {
-                    intmat = int.Parse(Console.ReadLine());
+                    intmat = int.Parse(inmat);
                     Console.WriteLine(namn[intmat]);
+                    Console.WriteLine("");
                 }
             }
+
+            Console.WriteLine("loop exit");
         }
     }
 }
