@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Kasper\\.nuget\\packages\\": {}
+    "C:\\Users\\Lånedator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\Programmering 1\\5. Fält\\FältÖv3Väderstationen\\FältÖv3Väderstationen.csproj",
+      "projectUniqueName": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv3Väderstationen\\FältÖv3Väderstationen.csproj",
       "projectName": "FältÖv3Väderstationen",
-      "projectPath": "D:\\Code\\Programmering 1\\5. Fält\\FältÖv3Väderstationen\\FältÖv3Väderstationen.csproj",
-      "packagesPath": "C:\\Users\\Kasper\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\Programmering 1\\5. Fält\\FältÖv3Väderstationen\\obj\\",
+      "projectPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv3Väderstationen\\FältÖv3Väderstationen.csproj",
+      "packagesPath": "C:\\Users\\Lånedator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv3Väderstationen\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kasper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lånedator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,16 @@
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\NewFältÖv5_2DFält.exe
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\NewFältÖv5_2DFält.deps.json
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\NewFältÖv5_2DFält.runtimeconfig.json
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\NewFältÖv5_2DFält.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\NewFältÖv5_2DFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\ref\NewFältÖv5_2DFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\bin\Debug\net5.0\NewFältÖv5_2DFält.pdb
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.csproj.AssemblyReference.cache
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\ref\NewFältÖv5_2DFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.pdb
+C:\Users\Lånedator\source\repos\5. Fält\NewFältÖv5_2DFält\obj\Debug\net5.0\NewFältÖv5_2DFält.genruntimeconfig.cache

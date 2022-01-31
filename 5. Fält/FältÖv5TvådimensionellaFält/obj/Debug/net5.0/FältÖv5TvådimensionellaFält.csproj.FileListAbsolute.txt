@@ -1,0 +1,15 @@
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\FältÖv5TvådimensionellaFält.exe
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\FältÖv5TvådimensionellaFält.deps.json
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\FältÖv5TvådimensionellaFält.runtimeconfig.json
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\FältÖv5TvådimensionellaFält.runtimeconfig.dev.json
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\FältÖv5TvådimensionellaFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\ref\FältÖv5TvådimensionellaFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\bin\Debug\net5.0\FältÖv5TvådimensionellaFält.pdb
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.AssemblyInfoInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.AssemblyInfo.cs
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.csproj.CoreCompileInputs.cache
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\ref\FältÖv5TvådimensionellaFält.dll
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.pdb
+C:\Users\Lånedator\source\repos\5. Fält\FältÖv5TvådimensionellaFält\obj\Debug\net5.0\FältÖv5TvådimensionellaFält.genruntimeconfig.cache
