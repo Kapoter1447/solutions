@@ -1,0 +1,15 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\bin\Debug\net6.0\SKÖv1.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\bin\Debug\net6.0\SKÖv1.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\bin\Debug\net6.0\SKÖv1.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\bin\Debug\net6.0\SKÖv1.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\bin\Debug\net6.0\ref\SKÖv1.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\bin\Debug\net6.0\SKÖv1.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\ref\SKÖv1.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\SKÖv1\SKÖv1\obj\Debug\net6.0\SKÖv1.genruntimeconfig.cache
