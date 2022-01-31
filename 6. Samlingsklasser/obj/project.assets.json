@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\SKÖv1\\SKÖv1\\SKÖv1.csproj",
-      "projectName": "SKÖv1",
-      "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\SKÖv1\\SKÖv1\\SKÖv1.csproj",
+      "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\6. Samlingsklasser\\6. Samlingsklasser.csproj",
+      "projectName": "6. Samlingsklasser",
+      "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\6. Samlingsklasser\\6. Samlingsklasser.csproj",
       "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\SKÖv1\\SKÖv1\\obj\\",
+      "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\6. Samlingsklasser\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",
