@@ -15,8 +15,6 @@ namespace NewFältÖv5_2DFält
 
             Random rnd = new Random();
 
-            // Se nedan för förklaring för varför =3
-
             int rndX = rnd.Next(0, xSize);
             int rndY = rnd.Next(0, ySize);
 
@@ -52,12 +50,13 @@ namespace NewFältÖv5_2DFält
 
                 Console.Write("Y: ");
                 y = int.Parse(Console.ReadLine());
+
+
                 
                 // Ogissade = 0
                 // Gissade fel = 1
                 // Gissade rätt = 2
                 // Ställen som är rätt = 3
-                // Nära rätt
 
                 //kolla ifall rätt såfall gör en sak. om fel gör en annan
                 if (!(board[x,y] == 3))
@@ -84,11 +83,6 @@ namespace NewFältÖv5_2DFält
                             if (board[i2,i] == board[x,y] && board[x, y] == 3)
                             {
                                 Console.Write("X ");
-                                board[x, y] = 2;
-                            }
-                            else if (board[i2,i] == 2)
-                            {
-                                Console.Write("x ");
                             }
                             else if (board[i2, i] == 1)
                             {

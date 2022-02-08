@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Lånedator\\.nuget\\packages\\": {}
+    "C:\\Users\\Kasper Larsson\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv5TvådimensionellaFält\\FältÖv5TvådimensionellaFält.csproj",
+      "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\FältÖv5TvådimensionellaFält\\FältÖv5TvådimensionellaFält.csproj",
       "projectName": "FältÖv5TvådimensionellaFält",
-      "projectPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv5TvådimensionellaFält\\FältÖv5TvådimensionellaFält.csproj",
-      "packagesPath": "C:\\Users\\Lånedator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\FältÖv5TvådimensionellaFält\\obj\\",
+      "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\FältÖv5TvådimensionellaFält\\FältÖv5TvådimensionellaFält.csproj",
+      "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\FältÖv5TvådimensionellaFält\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lånedator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj": {}
+    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj": {
+    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj",
+        "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj",
         "projectName": "NewFältÖv5_2DFält",
-        "projectPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj",
-        "packagesPath": "C:\\Users\\Lånedator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lånedator\\source\\repos\\5. Fält\\NewFältÖv5_2DFält\\obj\\",
+        "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\NewFältÖv5_2DFält\\NewFältÖv5_2DFält.csproj",
+        "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\5. Fält\\NewFältÖv5_2DFält\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lånedator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

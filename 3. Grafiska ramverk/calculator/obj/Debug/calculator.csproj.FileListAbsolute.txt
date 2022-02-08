@@ -8,3 +8,14 @@ C:\Users\Lånedator\source\repos\3. Grafiska ramverk\calculator\obj\Debug\calcul
 C:\Users\Lånedator\source\repos\3. Grafiska ramverk\calculator\obj\Debug\calculator.csproj.CoreCompileInputs.cache
 C:\Users\Lånedator\source\repos\3. Grafiska ramverk\calculator\obj\Debug\calculator.exe
 C:\Users\Lånedator\source\repos\3. Grafiska ramverk\calculator\obj\Debug\calculator.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\bin\Debug\calculator.exe.config
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\bin\Debug\calculator.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\bin\Debug\calculator.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.csproj.SuggestedBindingRedirects.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.Form1.resources
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.Properties.Resources.resources
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.csproj.GenerateResource.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\3. Grafiska ramverk\calculator\obj\Debug\calculator.pdb
