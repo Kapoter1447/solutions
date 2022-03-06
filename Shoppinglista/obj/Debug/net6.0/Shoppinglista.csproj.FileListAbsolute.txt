@@ -1,0 +1,15 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\bin\Debug\net6.0\Shoppinglista.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\bin\Debug\net6.0\Shoppinglista.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\bin\Debug\net6.0\Shoppinglista.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\bin\Debug\net6.0\Shoppinglista.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\bin\Debug\net6.0\ref\Shoppinglista.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\bin\Debug\net6.0\Shoppinglista.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\ref\Shoppinglista.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\Shoppinglista\obj\Debug\net6.0\Shoppinglista.genruntimeconfig.cache

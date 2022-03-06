@@ -5,7 +5,17 @@
       "ProjectGuid": "6a49d80d-fa19-4b5d-81a1-974d53f45e04",
       "DisplayName": "6. Samlingsklasser",
       "ColorIndex": 0
+    },
+    "60901196-86b8-4957-b516-b06843d1a604": {
+      "ProjectGuid": "60901196-86b8-4957-b516-b06843d1a604",
+      "DisplayName": "Shoppinglista",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
