@@ -1,0 +1,15 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\bin\Debug\net6.0\MetodÖv1Hälsning.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\bin\Debug\net6.0\MetodÖv1Hälsning.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\bin\Debug\net6.0\MetodÖv1Hälsning.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\bin\Debug\net6.0\MetodÖv1Hälsning.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\bin\Debug\net6.0\ref\MetodÖv1Hälsning.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\bin\Debug\net6.0\MetodÖv1Hälsning.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\ref\MetodÖv1Hälsning.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv1Hälsning\obj\Debug\net6.0\MetodÖv1Hälsning.genruntimeconfig.cache

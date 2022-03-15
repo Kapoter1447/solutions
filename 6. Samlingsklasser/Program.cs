@@ -129,7 +129,7 @@ while (inmat != "4")
 
 void väljInmatSpråk()
 {
-    Console.WriteLine("Bestäm språk för inmat: ");
+    Console.WriteLine("Skriv in språk för inmat: ");
     writeBlue(språkValue);
     Console.Write(" / ");
     writeBlue(språkKey);
@@ -300,7 +300,7 @@ void seGlosor()
         writeBlue("2. ");
         Console.WriteLine("Radera glosor");
         writeBlue("3. ");
-        Console.WriteLine("Avsluta");
+        Console.WriteLine("Gå tillbaka");
         Console.WriteLine("------------------");
 
         inmat = Console.ReadLine();
@@ -338,6 +338,8 @@ void nyaGlosor()
     Console.WriteLine(" för att avsluta");
     writeRed("Ifall samma glosa skrivs in flera gånger skrivs den över\n");
 
+    glosaK = "";
+    glosaV = "";
 
     while (glosaV != "1")
     {
@@ -355,12 +357,14 @@ void nyaGlosor()
             writeGreen(språkValue + ": ");
             glosaV = Console.ReadLine();
 
-            // Tar bort för att skriva över
-            glosor.Remove(glosaK);
-            glosor.Add(glosaK, glosaV);
+            if (glosaV != "1")
+            {
+                // Tar bort för att skriva över
+                glosor.Remove(glosaK);
+                glosor.Add(glosaK, glosaV);
 
-            writeGreen("Glosa tillagd\n");
-
+                writeGreen("Glosa tillagd\n");
+            }
 
         }
     }
@@ -401,7 +405,7 @@ void blanda()
     foreach (string temp in sortera)
     {
         string[] blandadeGlosor = temp.Split('¤');
-        nuvarandeGlosor.Add(blandadeGlosor[1], blandadeGlosor[2]);
+        nuvarandeGlosor.Add(blandadeGlosor[1], blandadeGlosor[2]); 
     }
 
 }

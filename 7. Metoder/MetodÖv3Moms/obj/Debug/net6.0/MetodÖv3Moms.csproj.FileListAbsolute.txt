@@ -1,0 +1,15 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\bin\Debug\net6.0\MetodÖv3Moms.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\bin\Debug\net6.0\MetodÖv3Moms.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\bin\Debug\net6.0\MetodÖv3Moms.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\bin\Debug\net6.0\MetodÖv3Moms.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\bin\Debug\net6.0\ref\MetodÖv3Moms.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\bin\Debug\net6.0\MetodÖv3Moms.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\ref\MetodÖv3Moms.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv3Moms\obj\Debug\net6.0\MetodÖv3Moms.genruntimeconfig.cache

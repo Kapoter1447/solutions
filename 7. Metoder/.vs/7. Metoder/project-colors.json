@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a2cbf94b-54e5-4e91-8f2c-7cce9acac6c9": {
+      "ProjectGuid": "a2cbf94b-54e5-4e91-8f2c-7cce9acac6c9",
+      "DisplayName": "MetodÖv1Hälsning",
+      "ColorIndex": 0
+    },
+    "9471467a-1b84-404b-8141-81679123caed": {
+      "ProjectGuid": "9471467a-1b84-404b-8141-81679123caed",
+      "DisplayName": "MetodÖv2Addition",
+      "ColorIndex": 1
+    },
+    "ca9aed80-2669-4ee8-b581-f6a9f5a5a305": {
+      "ProjectGuid": "ca9aed80-2669-4ee8-b581-f6a9f5a5a305",
+      "DisplayName": "MetodÖv3Moms",
+      "ColorIndex": 2
+    },
+    "2413cb13-6b26-47a6-b79e-a71fb3f20d57": {
+      "ProjectGuid": "2413cb13-6b26-47a6-b79e-a71fb3f20d57",
+      "DisplayName": "Roleplay",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

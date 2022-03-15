@@ -1,0 +1,15 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\bin\Debug\net6.0\MetodÖv2Addition.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\bin\Debug\net6.0\MetodÖv2Addition.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\bin\Debug\net6.0\MetodÖv2Addition.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\bin\Debug\net6.0\MetodÖv2Addition.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\bin\Debug\net6.0\ref\MetodÖv2Addition.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\bin\Debug\net6.0\MetodÖv2Addition.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\ref\MetodÖv2Addition.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\MetodÖv2Addition\obj\Debug\net6.0\MetodÖv2Addition.genruntimeconfig.cache

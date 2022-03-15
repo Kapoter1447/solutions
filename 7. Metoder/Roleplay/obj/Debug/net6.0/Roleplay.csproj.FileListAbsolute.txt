@@ -1,0 +1,15 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\bin\Debug\net6.0\Roleplay.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\bin\Debug\net6.0\Roleplay.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\bin\Debug\net6.0\Roleplay.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\bin\Debug\net6.0\Roleplay.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\bin\Debug\net6.0\ref\Roleplay.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\bin\Debug\net6.0\Roleplay.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\ref\Roleplay.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay\obj\Debug\net6.0\Roleplay.genruntimeconfig.cache

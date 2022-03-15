@@ -1,0 +1,5 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\6. Samlingsklasser\bin\Release\net6.0\publish\6. Samlingsklasser.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\6. Samlingsklasser\bin\Release\net6.0\publish\6. Samlingsklasser.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\6. Samlingsklasser\bin\Release\net6.0\publish\6. Samlingsklasser.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\6. Samlingsklasser\bin\Release\net6.0\publish\6. Samlingsklasser.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\6. Samlingsklasser\bin\Release\net6.0\publish\6. Samlingsklasser.pdb
