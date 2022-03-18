@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetodÖv1Hälsning", "MetodÖv1Hälsning\MetodÖv1Hälsning.csproj", "{A2CBF94B-54E5-4E91-8F2C-7CCE9ACAC6C9}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetodÖv2Addition", "Metod�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetodÖv3Moms", "MetodÖv3Moms\MetodÖv3Moms.csproj", "{CA9AED80-2669-4EE8-B581-F6A9F5A5A305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roleplay", "Roleplay\Roleplay.csproj", "{2413CB13-6B26-47A6-B79E-A71FB3F20D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roleplay", "Roleplay\Roleplay.csproj", "{2413CB13-6B26-47A6-B79E-A71FB3F20D57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roleplay 2019 version", "Roleplay 2019 version\Roleplay 2019 version.csproj", "{0E5499B2-2AC7-48D5-AE87-A18CF5AD4920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2413CB13-6B26-47A6-B79E-A71FB3F20D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2413CB13-6B26-47A6-B79E-A71FB3F20D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2413CB13-6B26-47A6-B79E-A71FB3F20D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E5499B2-2AC7-48D5-AE87-A18CF5AD4920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E5499B2-2AC7-48D5-AE87-A18CF5AD4920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E5499B2-2AC7-48D5-AE87-A18CF5AD4920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E5499B2-2AC7-48D5-AE87-A18CF5AD4920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

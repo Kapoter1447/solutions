@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Roleplay 2019 version/1.0.0": {
+        "runtime": {
+          "Roleplay 2019 version.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Roleplay 2019 version/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

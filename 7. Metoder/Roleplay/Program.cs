@@ -1,81 +1,12 @@
-﻿string inmat = "";
-int delay = 100;
-
-#region Stickman
-Console.WriteLine("   ==");
-Thread.Sleep(delay);
-Console.WriteLine("  ====");
-Thread.Sleep(delay);
-Console.WriteLine(" ======");
-Thread.Sleep(delay);
-Console.WriteLine(" ----- ");
-Thread.Sleep(delay);
-Console.WriteLine("|  .. |");
-Thread.Sleep(delay);
-Console.WriteLine("|  -  |");
-Thread.Sleep(delay);
-Console.WriteLine(" _____ ");
-Thread.Sleep(delay);
-Console.WriteLine("  |||  ");
-Thread.Sleep(delay);
-Console.WriteLine(" ||||| ");
-Thread.Sleep(delay);
-Console.WriteLine("¤--|--#-->==========>   ");
-Thread.Sleep(delay);
-Console.WriteLine(" ||||| ");
-Thread.Sleep(delay);
-Console.WriteLine(" |||||");
-Thread.Sleep(delay);
-Console.WriteLine("   |   ");
-Thread.Sleep(delay);
-Console.WriteLine(" -- --  ");
-Thread.Sleep(delay);
-Console.WriteLine(" |    | ");
-Thread.Sleep(delay);
-Console.WriteLine(" |    | ");
-Thread.Sleep(delay);
-Console.WriteLine("=|    |=");
-Console.WriteLine("             ||----------------------------\\");
-Console.WriteLine("=============||===============================|");
-Console.WriteLine("             ||----------------------------/");
-Console.WriteLine("DOD SIMULATOR!!!!");
-Thread.Sleep(2000);
-Console.Clear();
-#endregion
-
-while (inmat != "3")
+﻿static void Main(string[] args)
 {
-    MenyPrint("Spela äventyret \"Bob är kidnappad\"", "Tärnings simulator", "Avsluta");
-
-    inmat = Console.ReadLine();
-
-    switch (inmat)
-    {
-        case "1":
-            break;
-
-        case "2":
-            TärningSimulator();
-            break;
-
-        case "3":
-            break;
-
-        case "4":
-            break;
-
-        default:
-            WriteRed("Fel vid inmat. Försök igen.");
-            Console.Clear();
-            break;
-    }
 
 
-    inmat = Console.ReadLine();
 
-    Console.WriteLine(KastaTärning(inmat)); 
-        
 }
+
+string inmat = "";
+int delay = 100;
 
 void TärningSimulator()
 {
@@ -164,4 +95,5 @@ static void WriteBlue(string textBlue)
     Console.ForegroundColor = ConsoleColor.White;
 
 }
+
 #endregion

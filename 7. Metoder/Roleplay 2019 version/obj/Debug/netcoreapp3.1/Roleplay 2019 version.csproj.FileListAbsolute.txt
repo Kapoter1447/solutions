@@ -1,0 +1,14 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.runtimeconfig.dev.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.genruntimeconfig.cache
