@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using System.Threading;
 
 
+// Vill skriva ut stats i coola listor
+// Metod för att rita saker med writeAt eller setCursor
+// List med vapen. Där varje index är ett vapen och sen gör något sätt att tolak listan på. Blir lätt att lägga till vapen.
+
 namespace Roleplay_2019_version
 {
     class Program
     {
+
+        static Dictionary<string, string> stats = new Dictionary<string, string>() {
+
+            {"spelare","kp 10; va yxa; cl 90;"},
+            {"mattant","kp 6; va morotssoppa; cl 10"},
+            {"rektorn","kp 200; va en helvetes penna; cl 100"}
+
+        };
+
+        Dictionary<string, string> vapen = new Dictionary<string, string>();
+
         static void Main(string[] args)
         {
             string inmat = "";
-            
 
             #region Stickman
            
@@ -19,13 +33,13 @@ namespace Roleplay_2019_version
             while (inmat != "3")
             {
                 Console.Clear();
-                MenyPrint("Spela äventyret \"Bob är kidnappad\"", "Tärnings simulator", "Regler och Teori", "Avsluta");
+                MenyPrint("Spela äventyret \"Mattanterna har kidnappat rektorn! fanciction\"", "Tärnings simulator", "Regler och Teori", "Avsluta");
                 inmat = Console.ReadLine();
 
                 switch (inmat)
                 {
                     case "1":
-                        // Metod för äventyr
+                        Äventyr();
                         break;
 
                     case "2":
@@ -48,6 +62,140 @@ namespace Roleplay_2019_version
                         break;
                 }
             }
+        }
+
+        static void Äventyr()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Å nej bla bla bla har hänt! Helvete! \nAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah en mattant");
+            Slåss("mattant");
+            // kasta hårda och torra falaflar. förgifta med morotsoppa.
+
+            MenyPrint("Använd din döda farfarsfars stridsyxa", "Använd m9 beretta 9x19mm 380m/s akimbo pistol", "gitta away", "Checka stats");
+
+            Console.ReadLine();
+
+        }
+
+        static void Slåss(string fiendeTyp)
+        {
+            Initiativ(fiendeTyp);
+
+            // ta in fiende stats: skada på vapen, helningsförmåga, ev rustning, kp
+            // ta in avstånd
+
+
+            // Ifall fiende börjar:
+            // Slumpa en attack
+            // Kolla om den lyckas (cl)
+            // ifall lyckas ta skada
+
+            // extract vapen från spelardata med samma namn som fiendetyp elelr spelaren
+
+
+
+            Random rnd = new Random();
+            // slumpa om den ska kolla efter fiendetyp eller spelare
+
+            // Plockar fram vapnen ur statslistan för aktuell fiende
+            SökStringMellanSökordetOchSemikolonIDictionary(fiendeTyp, "va");
+
+            //   https://stackoverflow.com/questions/17252615/get-string-between-two-strings-in-a-string
+            //   https://docs.microsoft.com/en-us/dotnet/api/system.string.indexof?view=net-6.0
+
+
+
+        }
+
+        static void SökStringMellanSökordetOchSemikolonIDictionary(string sökKey, string sökOrd)
+        {
+            // I foreachloopen byts "stats" ut för att bestämma vilken dictionary man vill söka.
+
+            foreach (KeyValuePair<string, string> föremål in stats)
+            {
+                Console.WriteLine("skrivs det här ens?!");
+                if (sökKey == föremål.Key)
+                {
+                    int start = föremål.Value.IndexOf(sökOrd) + sökOrd.Length;
+                    int stop = föremål.Value.IndexOf(";", start);
+
+                    //String 
+
+                    Console.WriteLine(start + " index");
+                    Console.WriteLine(stop);
+                    Console.ReadLine();
+
+
+                }
+            }
+        }
+
+
+        static void Initiativ(string fiendeTyp)
+        {
+            int fiendeVärde = 0;
+            int spelarVärde = 0;
+
+            Random rnd = new Random();
+            int randomInitiativ;
+
+            Console.Write(fiendeTyp + " har en ");
+            randomInitiativ = rnd.Next(0, 2);
+            switch (randomInitiativ)
+            {
+                case 0:
+                    fiendeVärde = KastaTärning("1t10", "defensiv");
+                    WriteBlue("|defensiv|");
+                    break;
+
+                case 1:
+                    fiendeVärde = KastaTärning("1t10", "offensiv");
+                    WriteRed("|offensiv|");
+                    break;
+
+                case 2:
+                    fiendeVärde = KastaTärning("1t10", "neutral");
+                    WriteGreen("|neutral|");
+                    break;
+
+                default:
+                    break;
+            }
+            Console.WriteLine(" position!");
+
+            MenyPrint("Defensiv", "Offensiv", "Neutral");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    spelarVärde = KastaTärning("1t10", "defensiv");
+                    WriteBlue("|defensiv|");
+                    break;
+
+                case "2":
+                    spelarVärde = KastaTärning("1t10", "offensiv");
+                    WriteRed("|offensiv|");
+                    break;
+
+                case "3":
+                    spelarVärde = KastaTärning("1t10", "neutral");
+                    WriteGreen("|neutral|");
+                    break;
+
+                default:
+                    Console.WriteLine("du skrev något kefft försök igen");
+                    break;
+            }
+
+            Console.WriteLine(spelarVärde + " / " + fiendeVärde);
+
+            Console.ReadLine();
+
+            // skriv intiativ position
+            // låt spelare välja
+            // slå tärningar
+            // jämför och låt den med högst börja  
         }
 
         static void Streckgubbe()
@@ -115,7 +263,7 @@ namespace Roleplay_2019_version
                 switch (inmat)
                 {
                     case "1":
-                        WriteGreen("|::|  = " + KastaTärning("1t100").ToString() + "\n");
+                        WriteGreen("|::| = " + KastaTärning("1t100").ToString() + "\n");
                         Console.Write("Klicka ");
                         WriteBlue("Enter");
                         Console.WriteLine(" för att gå vidare");
@@ -123,7 +271,7 @@ namespace Roleplay_2019_version
                         break;
 
                     case "2":
-                        WriteGreen("|::|  = " + KastaTärning("1t10").ToString() + "\n");
+                        WriteGreen("|::| = " + KastaTärning("1t10").ToString() + "\n");
                         Console.Write("Klicka ");
                         WriteBlue("Enter");
                         Console.WriteLine(" för att gå vidare");
@@ -131,7 +279,7 @@ namespace Roleplay_2019_version
                         break;
 
                     case "3":
-                        WriteGreen("|::|  = " + KastaTärning("1t20").ToString() + "\n");
+                        WriteGreen("|::| = " + KastaTärning("1t20").ToString() + "\n");
                         Console.Write("Klicka ");
                         WriteBlue("Enter");
                         Console.WriteLine(" för att gå vidare");
@@ -139,7 +287,7 @@ namespace Roleplay_2019_version
                         break;
 
                     case "4":
-                        WriteGreen("|::|  = " + KastaTärning("1t6").ToString() + "\n");
+                        WriteGreen("|::| = " + KastaTärning("1t6").ToString() + "\n");
                         Console.Write("Klicka ");
                         WriteBlue("Enter");
                         Console.WriteLine(" för att gå vidare");
@@ -151,7 +299,7 @@ namespace Roleplay_2019_version
                         break;
 
                     default:
-                        WriteGreen("|::|  = " + KastaTärning(inmat).ToString() + "\n");
+                        WriteGreen("|::| = " + KastaTärning(inmat).ToString() + "\n");
                         Console.Write("Klicka ");
                         WriteBlue("Enter");
                         Console.WriteLine(" för att gå vidare");
@@ -280,6 +428,39 @@ namespace Roleplay_2019_version
             for (int i = 0; i < int.Parse(dataSplit[0]); i++)
             {
                 värde = värde + random.Next(0, int.Parse(dataSplit[1]));
+            }
+
+            return värde;
+        }
+
+        static int KastaTärning(string tärningsData, string initiativ)
+        {
+            string[] dataSplit = tärningsData.Split('t');
+            Random random = new Random();
+            int värde = 0;
+
+            for (int i = 0; i < int.Parse(dataSplit[0]); i++)
+            {
+                värde = värde + random.Next(0, int.Parse(dataSplit[1]));
+            }
+
+
+            switch (initiativ)
+            {
+                case "defensiv":
+                    värde = värde - 3;
+                    break;
+
+                case "offensiv":
+                    värde = värde + 3;
+                    break;
+
+                case "neutral":
+                    värde = värde - 3;
+                    break;
+
+                default:
+                    break;
             }
 
             return värde;

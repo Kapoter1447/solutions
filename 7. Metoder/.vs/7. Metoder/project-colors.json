@@ -20,7 +20,12 @@
       "ProjectGuid": "2413cb13-6b26-47a6-b79e-a71fb3f20d57",
       "DisplayName": "Roleplay",
       "ColorIndex": 3
+    },
+    "0e5499b2-2ac7-48d5-ae87-a18cf5ad4920": {
+      "ProjectGuid": "0e5499b2-2ac7-48d5-ae87-a18cf5ad4920",
+      "DisplayName": "Roleplay 2019 version",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

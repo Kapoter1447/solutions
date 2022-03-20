@@ -12,3 +12,17 @@ C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 vers
 C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.dll
 C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.pdb
 C:\Users\Kasper Larsson\Documents\GitHub\solutions\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.genruntimeconfig.cache
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.exe
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.deps.json
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.runtimeconfig.json
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.runtimeconfig.dev.json
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.dll
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\bin\Debug\netcoreapp3.1\Roleplay 2019 version.pdb
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.csproj.AssemblyReference.cache
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.AssemblyInfoInputs.cache
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.AssemblyInfo.cs
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.csproj.CoreCompileInputs.cache
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.dll
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.pdb
+D:\Code\Programmering 1\7. Metoder\Roleplay 2019 version\obj\Debug\netcoreapp3.1\Roleplay 2019 version.genruntimeconfig.cache
