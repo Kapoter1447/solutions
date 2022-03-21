@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Kasper\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Kasper Larsson\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\Programmering 1\\7. Metoder\\MetodÖv2Addition\\MetodÖv2Addition.csproj",
+      "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv2Addition\\MetodÖv2Addition.csproj",
       "projectName": "MetodÖv2Addition",
-      "projectPath": "D:\\Code\\Programmering 1\\7. Metoder\\MetodÖv2Addition\\MetodÖv2Addition.csproj",
-      "packagesPath": "C:\\Users\\Kasper\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\Programmering 1\\7. Metoder\\MetodÖv2Addition\\obj\\",
+      "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv2Addition\\MetodÖv2Addition.csproj",
+      "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv2Addition\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Kasper\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -65,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

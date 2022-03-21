@@ -14,9 +14,9 @@ namespace Roleplay_2019_version
 
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
-            {"spelare","kp 10; va yxa; cl 90;"},
-            {"mattant","kp 6; va morotssoppa; cl 10"},
-            {"rektorn","kp 200; va en helvetes penna; cl 100"}
+            {"spelare","kp10; vayxa; cl90;"},
+            {"mattant","kp6; vamorotssoppa; cl10; valarge spoon; vatralalalala;"},
+            {"rektorn","kp200; vaen helvetes penna; cl100"}
 
         };
 
@@ -94,43 +94,84 @@ namespace Roleplay_2019_version
             // extract vapen från spelardata med samma namn som fiendetyp elelr spelaren
 
 
-
-            Random rnd = new Random();
             // slumpa om den ska kolla efter fiendetyp eller spelare
+            Random rnd = new Random();
+
+            switch (rnd.Next(0,1))
+            {
+                case 0:
+                    Console.WriteLine("Fiende attackerar");
+                    FiendeAttack(fiendeTyp);
+                  break;
+
+                case 1:
+
+
+                    break;
+
+                default:
+                    break;
+            }
 
             // Plockar fram vapnen ur statslistan för aktuell fiende
-            SökStringMellanSökordetOchSemikolonIDictionary(fiendeTyp, "va");
 
-            //   https://stackoverflow.com/questions/17252615/get-string-between-two-strings-in-a-string
-            //   https://docs.microsoft.com/en-us/dotnet/api/system.string.indexof?view=net-6.0
+
+        }
+
+
+        static void FiendeAttack(string fiendetyp)
+        {
+            string vapenPaket = SökStringIDictionary(fiendetyp, "va", ";");
+            string[] vapen = vapenPaket.Split('¤');
 
 
 
         }
 
-        static void SökStringMellanSökordetOchSemikolonIDictionary(string sökKey, string sökOrd)
+        static void SpelarAttack()
+        {
+            Random rnd = new Random();
+
+            string vapenPaket = SökStringIDictionary("spelare", "va", ";");
+            string[] vapen = vapenPaket.Split('¤');
+
+            MenyPrint(vapen);
+        }
+
+        static string SökStringIDictionary(string sökKey, string sökOrd, string stopOrd)
         {
             // I foreachloopen byts "stats" ut för att bestämma vilken dictionary man vill söka.
 
+            int sökPlats;
+            int start = 0;
+            int stop = 0;
+
+            string returString = "";
+
             foreach (KeyValuePair<string, string> föremål in stats)
             {
-                Console.WriteLine("skrivs det här ens?!");
                 if (sökKey == föremål.Key)
                 {
-                    int start = föremål.Value.IndexOf(sökOrd) + sökOrd.Length;
-                    int stop = föremål.Value.IndexOf(";", start);
+                    sökPlats = 0;
+                    while (true)
+                    {
+                        start = föremål.Value.IndexOf(sökOrd, sökPlats);
+                        // IndexOf returnerar -1 ifall inte hittar något, isåfall break;
+                        if (start == -1)
+                            break;
+                        else
+                            start = start + sökOrd.Length;
 
-                    //String 
+                        stop = föremål.Value.IndexOf(stopOrd, start);
+                        sökPlats = stop;
 
-                    Console.WriteLine(start + " index");
-                    Console.WriteLine(stop);
-                    Console.ReadLine();
-
-
+                        string resultat = föremål.Value.Substring(start, stop - start);
+                        returString = returString + resultat + "¤";
+                    }
                 }
             }
+            return returString;
         }
-
 
         static void Initiativ(string fiendeTyp)
         {
@@ -415,6 +456,19 @@ namespace Roleplay_2019_version
                 Console.WriteLine(val);
                 i++;
                 Thread.Sleep(200);
+            }
+            Console.WriteLine("--->============>");
+        }
+
+        static void MenyPrint(string[] val)
+        {
+            Console.WriteLine("--->============>");
+            for (int i = 1; i < val.Length; i++)
+            {
+                WriteBlue("|" + i.ToString() + "| ");
+                Console.WriteLine(val[(i-1)]);
+                Thread.Sleep(200);
+
             }
             Console.WriteLine("--->============>");
         }

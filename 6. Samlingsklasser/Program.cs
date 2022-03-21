@@ -152,7 +152,7 @@ void förhör2(string valtSpråk)
 {
     blanda();
 
-    foreach (KeyValuePair<string, string> glosa in nuvarandeGlosor)
+    eä-foreach (KeyValuePair<string, string> glosa in nuvarandeGlosor)
     {
         // value är engelska och key är svenska som default
 
