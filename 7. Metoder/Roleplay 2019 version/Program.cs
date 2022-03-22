@@ -15,12 +15,16 @@ namespace Roleplay_2019_version
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
             {"spelare","kp10; vayxa; cl90;"},
-            {"mattant","kp6; vamorotssoppa; cl10; valarge spoon; vatralalalala;"},
+            {"mattant","kp6; vamorotssoppa; cl10; valarge spoon;"},
             {"rektorn","kp200; vaen helvetes penna; cl100"}
 
         };
 
-        Dictionary<string, string> vapen = new Dictionary<string, string>();
+        Dictionary<string, string> vapen = new Dictionary<string, string>()
+        {
+            {"large spoon", "da1t6" },
+            {"morotssoppa", "da2t6" },
+        };
 
         static void Main(string[] args)
         {
@@ -95,6 +99,12 @@ namespace Roleplay_2019_version
 
 
             // slumpa om den ska kolla efter fiendetyp eller spelare
+
+            if (true)
+            {
+
+            }
+
             Random rnd = new Random();
 
             switch (rnd.Next(0,1))
@@ -105,7 +115,7 @@ namespace Roleplay_2019_version
                   break;
 
                 case 1:
-
+                    SpelarAttack();
 
                     break;
 
@@ -123,7 +133,10 @@ namespace Roleplay_2019_version
         {
             string vapenPaket = SökStringIDictionary(fiendetyp, "va", ";");
             string[] vapen = vapenPaket.Split('¤');
-
+            string[] blandadeVapen = blanda(vapen);
+            string aktivtVapen = blandadeVapen[0];
+            
+            Console.WriteLine(aktivtVapen);
 
 
         }
@@ -137,6 +150,33 @@ namespace Roleplay_2019_version
 
             MenyPrint(vapen);
         }
+
+
+        static string[] blanda(string[] inputs)
+        {
+            List<string> sortera = new List<string>();
+            Random rnd = new Random();
+
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                sortera.Add(rnd.Next(0, 100) + "¤" + inputs[i]);
+            }
+
+            sortera.Sort();
+            string[] outputs = new string[inputs.Length];
+            int a = 0;
+
+            foreach (string item in sortera)
+            {
+                string[] split = item.Split('¤');
+
+                outputs[a] = split[1];
+                a++;
+            }
+
+            return outputs;
+        }
+
 
         static string SökStringIDictionary(string sökKey, string sökOrd, string stopOrd)
         {
