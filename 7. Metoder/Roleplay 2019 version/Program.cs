@@ -11,19 +11,36 @@ namespace Roleplay_2019_version
 {
     class Program
     {
+        // Beteckningar: kp = liv, va = vapen, cl = chans att lyckas i %, da = damage, be = beskrivning.
 
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
             {"spelare","kp10; vayxa; cl90;"},
-            {"mattant","kp6; vamorotssoppa; cl10; valarge spoon; vatralalalala;"},
-            {"rektorn","kp200; vaen helvetes penna; cl100"}
+            {"mattant","kp6; vamorotssoppa; cl1; vastor slev;"},
+            {"rektorn","kp200; vaen helvetes penna; cl100;"}
 
         };
 
-        Dictionary<string, string> vapen = new Dictionary<string, string>();
+        static Dictionary<string, string> attacker = new Dictionary<string, string>()
+        {
+            {"stor slev", "DA1t6; bebeskrivning till stor slev;" },
+            {"morotssoppa", "DA2t6; BEMattanten tar fram sin onda kittel och börjar brygga en stinkande orange vätska. Du ryggar av stanken av det giftigaste på jordens yta tillagas framför dig. Helt plötsligt tar mattanten en slev med morotsoppa och kastar mot dig!;" },
+        };
 
         static void Main(string[] args)
         {
+            while (true)
+            {
+                Console.WriteLine("Fiendeattack:");
+                FiendeAttack("mattant");
+                Console.WriteLine("Spelarattack:");
+                SpelarAttack();
+                Console.ReadLine();
+            }
+
+
+            Console.ReadLine();
+
             string inmat = "";
 
             #region Stickman
@@ -94,7 +111,8 @@ namespace Roleplay_2019_version
             // extract vapen från spelardata med samma namn som fiendetyp elelr spelaren
 
 
-            // slumpa om den ska kolla efter fiendetyp eller spelare
+            // vem som börjar bestäms av initatitv
+
             Random rnd = new Random();
 
             switch (rnd.Next(0,1))
@@ -105,7 +123,7 @@ namespace Roleplay_2019_version
                   break;
 
                 case 1:
-
+                    SpelarAttack();
 
                     break;
 
@@ -115,30 +133,99 @@ namespace Roleplay_2019_version
 
             // Plockar fram vapnen ur statslistan för aktuell fiende
 
-
         }
 
 
         static void FiendeAttack(string fiendetyp)
         {
-            string vapenPaket = SökStringIDictionary(fiendetyp, "va", ";");
+            // Letar upp alla attacker/vapen "fiendetyp" kan använda. Sedan blandas dessa och väljer en. Ifall inte returnerar något vapen, kör hand attack.
+            string vapenPaket = SökSubStringIDictionary(fiendetyp, "va", ";", stats);
             string[] vapen = vapenPaket.Split('¤');
+            string[] blandadeVapen = blanda(vapen);
+            string aktivtVapen = blandadeVapen[0];
+            
+          //  Console.WriteLine("Beskrivning: " + SökSubStringIDictionary(aktivtVapen, "BE", ";", attacker)); 
+         
+            // Kollar fiendens chans att lyckas och slår sedan en tärning för att kolla om den lyckas. 
+            if (KastaTärning("1t100")< int.Parse(SökSubStringIDictionary(fiendetyp, "cl", ";", stats)))
+            {
+                Console.WriteLine("Lyckas");
+                // Kolla skada. Hitta spelar kp och ta kp - skada. Ta sedan bort nuvarnade kp substräng och sen skapa en ny med nya kp:t.
+                int kp = int.Parse(SökSubStringIDictionary("spelare", "kp", ";", stats));
+                int skada = KastaTärning(SökSubStringIDictionary(aktivtVapen, "DA", ";", attacker));
+                kp = kp - skada;
 
+                string nyaStats = "";
 
+                foreach (KeyValuePair<string, string> item in stats)
+                {
+                    Console.WriteLine(item.Key + item.Value);
+                }
 
+                RaderaSubStringIDictionary("spelare", "kp", ";", stats);
+
+                foreach (KeyValuePair<string,string> karaktär in stats)
+                {
+                    if (karaktär.Key == "spelare")
+                    {
+                        nyaStats = karaktär.Value + "kp" + kp + ";";
+                    }
+                }
+
+                stats.Remove("spelare");
+                stats.Add("spelare", nyaStats);
+
+                foreach (KeyValuePair<string,string> item in stats)
+                {
+                    Console.WriteLine(item.Key + item.Value);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Misslyckas");
+            }
         }
+
 
         static void SpelarAttack()
         {
             Random rnd = new Random();
 
-            string vapenPaket = SökStringIDictionary("spelare", "va", ";");
+            string vapenPaket = SökSubStringIDictionary("spelare", "va", ";", stats);
+            Console.WriteLine(vapenPaket);
             string[] vapen = vapenPaket.Split('¤');
 
             MenyPrint(vapen);
         }
 
-        static string SökStringIDictionary(string sökKey, string sökOrd, string stopOrd)
+
+        static string[] blanda(string[] inputs)
+        {
+            List<string> sortera = new List<string>();
+            Random rnd = new Random();
+
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                sortera.Add(rnd.Next(0, 100) + "¤" + inputs[i]);
+            }
+
+            sortera.Sort();
+            string[] outputs = new string[inputs.Length];
+            int a = 0;
+
+            foreach (string item in sortera)
+            {
+                string[] split = item.Split('¤');
+
+                outputs[a] = split[1];
+                a++;
+            }
+
+            return outputs;
+        }
+
+        static string SökSubStringIDictionary(string sökNyckel, string startOrd, string stopOrd, Dictionary<string,string> dic)
         {
             // I foreachloopen byts "stats" ut för att bestämma vilken dictionary man vill söka.
 
@@ -148,19 +235,19 @@ namespace Roleplay_2019_version
 
             string returString = "";
 
-            foreach (KeyValuePair<string, string> föremål in stats)
+            foreach (KeyValuePair<string, string> föremål in dic)
             {
-                if (sökKey == föremål.Key)
+                if (sökNyckel == föremål.Key)
                 {
                     sökPlats = 0;
                     while (true)
                     {
-                        start = föremål.Value.IndexOf(sökOrd, sökPlats);
+                        start = föremål.Value.IndexOf(startOrd, sökPlats);
                         // IndexOf returnerar -1 ifall inte hittar något, isåfall break;
                         if (start == -1)
                             break;
                         else
-                            start = start + sökOrd.Length;
+                            start = start + startOrd.Length;
 
                         stop = föremål.Value.IndexOf(stopOrd, start);
                         sökPlats = stop;
@@ -170,7 +257,54 @@ namespace Roleplay_2019_version
                     }
                 }
             }
+            if (returString == "")
+            {
+                returString = "null";
+            }
+            else
+            {
+                // Tar bort sista ¤
+                returString = returString.Remove(returString.Length - 1);
+            }
+
             return returString;
+        }
+
+        static void RaderaSubStringIDictionary(string sökNyckel, string startOrd, string stopOrd, Dictionary<string, string> dic)
+        {
+            // I foreachloopen byts "stats" ut för att bestämma vilken dictionary man vill söka.
+
+            int sökPlats;
+            int start = 0;
+            int stop = 0;
+
+            string resultat = "";
+
+            foreach (KeyValuePair<string, string> föremål in dic)
+            {
+                if (sökNyckel == föremål.Key)
+                {
+                    sökPlats = 0;
+                    while (true)
+                    {
+                        start = föremål.Value.IndexOf(startOrd, sökPlats);
+                        // IndexOf returnerar -1 ifall inte hittar något, isåfall break;
+                        if (start == -1)
+                            break;
+                        else
+                            start = start + startOrd.Length;
+
+                        stop = föremål.Value.IndexOf(stopOrd, start);
+                        sökPlats = stop;
+
+                        // Start-2 för att ta bort identifierare t.ex "VA eller BE" och sedan +3 för att få bort.
+                        resultat = föremål.Value.Remove(start-2, stop - start+3);
+
+                    }
+                }
+            }
+            dic.Remove(sökNyckel);
+            dic.Add(sökNyckel, resultat);
         }
 
         static void Initiativ(string fiendeTyp)
