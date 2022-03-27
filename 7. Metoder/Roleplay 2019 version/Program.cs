@@ -15,7 +15,7 @@ namespace Roleplay_2019_version
 
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
-            {"spelare","kp10; vagitta away; vadin döda farfarsfars stridsyxa; vam9 beretta 9x19mm 380m/s akimbo pistol; cl50; "},
+            {"spelare","kp1; vagitta away; vadin döda farfarsfars stridsyxa; vam9 beretta 9x19mm 380m/s akimbo pistol; cl50; "},
             {"mattant","kp6; vamorotssoppa; cl30; vastor slev;"},
             {"rektorn","kp200; vaen helvetes penna; cl100;"}
 
@@ -70,8 +70,8 @@ namespace Roleplay_2019_version
                         break;
 
 
-                    case "easter egg":
-                        Streckgubbe();
+                    case "streckgubbe":
+                        Streckgubbe("glad");
                         break;
 
                     case "easter egg2":
@@ -97,7 +97,12 @@ namespace Roleplay_2019_version
             Console.Clear();
 
             Console.WriteLine("Å nej bla bla bla har hänt! Helvete! \nAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah en mattant");
-            Slåss("mattant");
+        
+            if (Slåss("mattant"))
+            {
+
+            }
+   
             // kasta hårda och torra falaflar. förgifta med morotsoppa.
 
            // MenyPrint("Använd din döda farfarsfars stridsyxa", "Använd m9 beretta 9x19mm 380m/s akimbo pistol", "gitta away", "Checka stats");
@@ -106,28 +111,72 @@ namespace Roleplay_2019_version
 
         }
 
-        static void Slåss(string fiendeTyp)
+        static bool Slåss(string fiendeTyp)
         {
             string[] aktörPositioner = Initiativ(fiendeTyp).Split("¤");
             string spelarInitiativ = aktörPositioner[2];
             string fiendeInitiativ = aktörPositioner[1];
             string startAktör = aktörPositioner[0];
 
+            int spelarKp = int.Parse(SSID("spelare", "kp", ";", stats));
+            int fiendeKp = int.Parse(SSID(fiendeTyp, "kp", ";", stats));
+
+            Console.WriteLine(spelarKp);
+            Console.WriteLine(fiendeKp);
+
+
             switch (startAktör)
             {
                 case "fiende":
-                    FiendeAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
-                    SpelarAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
-                  break;
+                    while (spelarKp > 0 && fiendeKp > 0)
+                    {
+                        if (fiendeKp > 0)
+                        {
+                            FiendeAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                            spelarKp = int.Parse(SSID("spelare", "kp", ";", stats));
+                        }
+                        if (spelarKp > 0)
+                        {
+                            SpelarAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                            fiendeKp = int.Parse(SSID(fiendeTyp, "kp", ";", stats));
+                        }
+                    }
+                    Console.Clear();
+                    break;
 
                 case "spelare":
-                    SpelarAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
-                    FiendeAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                    while (spelarKp > 0 && fiendeKp > 0)
+                    {
+                        if (spelarKp > 0)
+                        {
+                            SpelarAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                            fiendeKp = int.Parse(SSID(fiendeTyp, "kp", ";", stats));
+                        }
+                        if (fiendeKp > 0)
+                        {
+                            FiendeAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                            spelarKp = int.Parse(SSID("spelare", "kp", ";", stats));
+                        }
+                    }
+                    Console.Clear();
                     break;
 
                 default:
                     break;
             }
+
+            if (fiendeKp <= 0)
+            {
+                Streckgubbe("glad");
+                return true;
+            }
+            else
+            {
+                Streckgubbe("död");
+                return false;
+            }
+
+
         }
 
 
@@ -300,7 +349,7 @@ namespace Roleplay_2019_version
             string inmat = "";
 
             Console.Clear();
-            WriteGreen("SPELARE ATACKERAR\n");
+            WriteGreen("SPELARE ATTACKERAR\n");
 
             #region välja vapen
             string vapenPaket = SSID("spelare", "va", ";", stats);
@@ -389,11 +438,28 @@ namespace Roleplay_2019_version
 
             if (resultat < spelarCl)
             {
-                Console.WriteLine("lcykas");
+                Console.WriteLine("");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("\r                        ");
+                    Thread.Sleep(200);
+                    WriteGreen("\r" + resultat + " < " + spelarCl);
+                    Thread.Sleep(200);
+                }
+                WriteGreen("\nDu lyckas med attacken!\n");
+
             }
             else
             {
-                Console.WriteLine("misslycaks");
+                Console.WriteLine("");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("\r                        ");
+                    Thread.Sleep(200);
+                    WriteRed("\r" + resultat + " > " + spelarCl);
+                    Thread.Sleep(200);
+                }
+                WriteRed("\nDu misslyckas med attacken\n");
             }
 
                 #endregion
@@ -673,49 +739,86 @@ namespace Roleplay_2019_version
             return startAktör + "¤" + fiendeInitiativ + "¤" + spelarInitiativ;
         }
 
-        static void Streckgubbe()
+        static void Streckgubbe(string humör)
         {
             int delay = 100;
 
-            Console.WriteLine("   ==");
-            Thread.Sleep(delay);
-            Console.WriteLine("  ====");
-            Thread.Sleep(delay);
-            Console.WriteLine(" ======");
-            Thread.Sleep(delay);
-            Console.WriteLine(" ----- ");
-            Thread.Sleep(delay);
-            Console.WriteLine("|  .. |");
-            Thread.Sleep(delay);
-            Console.WriteLine("|  -  |");
-            Thread.Sleep(delay);
-            Console.WriteLine(" _____ ");
-            Thread.Sleep(delay);
-            Console.WriteLine("  |||  ");
-            Thread.Sleep(delay);
-            Console.WriteLine(" ||||| ");
-            Thread.Sleep(delay);
-            Console.WriteLine("¤--|--#-->==========>   ");
-            Thread.Sleep(delay);
-            Console.WriteLine(" ||||| ");
-            Thread.Sleep(delay);
-            Console.WriteLine(" |||||");
-            Thread.Sleep(delay);
-            Console.WriteLine("   |   ");
-            Thread.Sleep(delay);
-            Console.WriteLine(" -- --  ");
-            Thread.Sleep(delay);
-            Console.WriteLine(" |    | ");
-            Thread.Sleep(delay);
-            Console.WriteLine(" |    | ");
-            Thread.Sleep(delay);
-            Console.WriteLine("=|    |=");
-            Console.WriteLine("             ||----------------------------\\");
-            Console.WriteLine("=============||===============================|");
-            Console.WriteLine("             ||----------------------------/");
-            Console.WriteLine("DOD SIMULATOR!!!!");
-            Thread.Sleep(2000);
-            Console.Clear();
+            if (humör == "glad")
+            {
+                Console.WriteLine("   ==");
+                Thread.Sleep(delay);
+                Console.WriteLine("  ====");
+                Thread.Sleep(delay);
+                Console.WriteLine(" ======");
+                Thread.Sleep(delay);
+                Console.WriteLine(" ----- ");
+                Thread.Sleep(delay);
+                Console.WriteLine("|  .. |");
+                Thread.Sleep(delay);
+                Console.WriteLine("|  -  |");
+                Thread.Sleep(delay);
+                Console.WriteLine(" _____ ");
+                Thread.Sleep(delay);
+                Console.WriteLine("  |||  ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" ||||| ");
+                Thread.Sleep(delay);
+                Console.WriteLine("¤--|--#-->==========>   ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" ||||| ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" |||||");
+                Thread.Sleep(delay);
+                Console.WriteLine("   |   ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" -- --  ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" |    | ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" |    | ");
+                Thread.Sleep(delay);
+                Console.WriteLine("=|    |=");
+                Console.WriteLine("             ||----------------------------\\");
+                Console.WriteLine("=============||===============================|");
+                Console.WriteLine("             ||----------------------------/");
+                WriteGreen("Du är en vinnare!!!");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            else if (humör == "död")
+            {
+                Console.WriteLine(" ----- ");
+                Thread.Sleep(delay);
+                Console.WriteLine("| X X |");
+                Thread.Sleep(delay);
+                Console.WriteLine("| _-_ |");
+                Thread.Sleep(delay);
+                Console.WriteLine(" _____ ");
+                Thread.Sleep(delay);
+                Console.WriteLine("  |||  ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" ||||| ");
+                Thread.Sleep(delay);
+                Console.WriteLine("¤--|--¤  ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" ||||| ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" |||||");
+                Thread.Sleep(delay);
+                Console.WriteLine("   |   ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" -- --  ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" |    | ");
+                Thread.Sleep(delay);
+                Console.WriteLine(" |    | ");
+                Thread.Sleep(delay);
+                Console.WriteLine("=|    |=");
+                WriteRed("Du är död noob");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+
         }
 
         static void TärningSimulator()
