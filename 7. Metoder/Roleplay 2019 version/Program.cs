@@ -16,19 +16,22 @@ namespace Roleplay_2019_version
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
             {"spelare","kp10; vayxa; cl90;"},
-            {"mattant","kp6; vamorotssoppa; cl1; vastor slev;"},
+            {"mattant","kp6; vamorotssoppa; cl70; vastor slev;"},
             {"rektorn","kp200; vaen helvetes penna; cl100;"}
 
         };
 
         static Dictionary<string, string> attacker = new Dictionary<string, string>()
         {
-            {"stor slev", "DA1t6; bebeskrivning till stor slev;" },
+            {"rå styrka", "DA1t3; BEAttackerar med näven;"  },
+            {"stor slev", "DA1t6; BEbeskrivning till stor slev;" },
             {"morotssoppa", "DA2t6; BEMattanten tar fram sin onda kittel och börjar brygga en stinkande orange vätska. Du ryggar av stanken av det giftigaste på jordens yta tillagas framför dig. Helt plötsligt tar mattanten en slev med morotsoppa och kastar mot dig!;" },
         };
 
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+
             while (true)
             {
                 Console.WriteLine("Fiendeattack:");
@@ -118,7 +121,6 @@ namespace Roleplay_2019_version
             switch (rnd.Next(0,1))
             {
                 case 0:
-                    Console.WriteLine("Fiende attackerar");
                     FiendeAttack(fiendeTyp);
                   break;
 
@@ -138,67 +140,120 @@ namespace Roleplay_2019_version
 
         static void FiendeAttack(string fiendetyp)
         {
+            Console.Clear();
+
+            #region slumpa attack
             // Letar upp alla attacker/vapen "fiendetyp" kan använda. Sedan blandas dessa och väljer en. Ifall inte returnerar något vapen, kör hand attack.
-            string vapenPaket = SökSubStringIDictionary(fiendetyp, "va", ";", stats);
+            string vapenPaket = SSID(fiendetyp, "va", ";", stats);
             string[] vapen = vapenPaket.Split('¤');
             string[] blandadeVapen = blanda(vapen);
             string aktivtVapen = blandadeVapen[0];
-            
-          //  Console.WriteLine("Beskrivning: " + SökSubStringIDictionary(aktivtVapen, "BE", ";", attacker)); 
-         
-            // Kollar fiendens chans att lyckas och slår sedan en tärning för att kolla om den lyckas. 
-            if (KastaTärning("1t100")< int.Parse(SökSubStringIDictionary(fiendetyp, "cl", ";", stats)))
+            #endregion
+
+            // fan slumpmässigt om den hittar beskrivningen orkar inte
+            WriteRed(fiendetyp.ToUpper() + " ATTACKERAR! \n");
+            WriteGrey(SSID(aktivtVapen, "BE", ";", attacker) + "\n");
+
+            int cl = int.Parse(SSID(fiendetyp, "cl", ";", stats));
+
+            Console.Write("\n" + fiendetyp + " har ");
+            WriteBlue(cl + "% ");
+            Console.Write("att lyckas \n");
+
+            MenyPrint("'Enter' för att slå tärning (1t100)");
+            Console.ReadLine();
+            TärningAnimation();
+
+            int resultat = KastaTärning("1t100");
+            WriteGreen(" = " + resultat);
+
+            if (resultat < cl)
             {
-                Console.WriteLine("Lyckas");
+                Console.WriteLine("");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("\r                        ");
+                    Thread.Sleep(200);
+                    WriteRed("\r" + resultat + " < " + cl );
+                    Thread.Sleep(200);
+                }
+                WriteRed("\n" + fiendetyp + " lyckas med attacken.");
+             //   Console.WriteLine("\n\nEnter för att fortsätta...");
+                Console.ReadLine();
+               // Console.Clear();
+
                 // Kolla skada. Hitta spelar kp och ta kp - skada. Ta sedan bort nuvarnade kp substräng och sen skapa en ny med nya kp:t.
-                int kp = int.Parse(SökSubStringIDictionary("spelare", "kp", ";", stats));
-                int skada = KastaTärning(SökSubStringIDictionary(aktivtVapen, "DA", ";", attacker));
+                int kp = int.Parse(SSID("spelare", "kp", ";", stats));
+                string tärningSkada = SSID(aktivtVapen, "DA", ";", attacker);
+
+                Console.Write("\nDu har ");
+                WriteBlue(kp.ToString());
+                Console.Write(" kp.\n");
+
+                Console.Write(aktivtVapen + " gör ");
+                WriteBlue(tärningSkada);
+                Console.Write(" skada.\n");
+
+                MenyPrint("'Enter' för att slå tärning fär skada");
+                Console.ReadLine();
+                TärningAnimation();
+                
+                int skada = KastaTärning(tärningSkada);
+                int kpInnan = kp;
                 kp = kp - skada;
 
-                string nyaStats = "";
+                WriteRed(" = " + skada);
+                Console.WriteLine("");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("\r                        ");
+                    Thread.Sleep(200);
+                    WriteRed("\r" + kpInnan + "kp - " + skada + "skada = " + kp + "kp kvar" );
+                    Thread.Sleep(200);
+                }
 
+                Console.WriteLine();
+                Console.ReadLine();
+
+                #region för felsök
+                /*
                 foreach (KeyValuePair<string, string> item in stats)
                 {
                     Console.WriteLine(item.Key + item.Value);
                 }
+                */
+                #endregion
 
-                RaderaSubStringIDictionary("spelare", "kp", ";", stats);
-
-                foreach (KeyValuePair<string,string> karaktär in stats)
-                {
-                    if (karaktär.Key == "spelare")
-                    {
-                        nyaStats = karaktär.Value + "kp" + kp + ";";
-                    }
-                }
-
-                stats.Remove("spelare");
-                stats.Add("spelare", nyaStats);
-
-                foreach (KeyValuePair<string,string> item in stats)
-                {
-                    Console.WriteLine(item.Key + item.Value);
-                }
-
+                // Tar bort nuvarande kp...
+                RSID("spelare", "kp", ";", stats);
+                // ...och lägger till nya.
+                LSID("spelare", "kp" + kp + ";", stats);
             }
             else
             {
+                Console.WriteLine("");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("\r                        ");
+                    Thread.Sleep(200);
+                    WriteGreen("\r" + resultat + " > " + cl);
+                    Thread.Sleep(200);
+                }
+
                 Console.WriteLine("Misslyckas");
             }
         }
-
 
         static void SpelarAttack()
         {
             Random rnd = new Random();
 
-            string vapenPaket = SökSubStringIDictionary("spelare", "va", ";", stats);
+            string vapenPaket = SSID("spelare", "va", ";", stats);
             Console.WriteLine(vapenPaket);
             string[] vapen = vapenPaket.Split('¤');
 
             MenyPrint(vapen);
         }
-
 
         static string[] blanda(string[] inputs)
         {
@@ -225,9 +280,9 @@ namespace Roleplay_2019_version
             return outputs;
         }
 
-        static string SökSubStringIDictionary(string sökNyckel, string startOrd, string stopOrd, Dictionary<string,string> dic)
+        static string SSID(string sökNyckel, string startOrd, string stopOrd, Dictionary<string,string> dic)
         {
-            // I foreachloopen byts "stats" ut för att bestämma vilken dictionary man vill söka.
+            // Sök substring i dictionary
 
             int sökPlats;
             int start = 0;
@@ -270,9 +325,9 @@ namespace Roleplay_2019_version
             return returString;
         }
 
-        static void RaderaSubStringIDictionary(string sökNyckel, string startOrd, string stopOrd, Dictionary<string, string> dic)
+        static void RSID(string sökNyckel, string startOrd, string stopOrd, Dictionary<string, string> dic)
         {
-            // I foreachloopen byts "stats" ut för att bestämma vilken dictionary man vill söka.
+            // Radera substring i dictionary
 
             int sökPlats;
             int start = 0;
@@ -297,7 +352,7 @@ namespace Roleplay_2019_version
                         stop = föremål.Value.IndexOf(stopOrd, start);
                         sökPlats = stop;
 
-                        // Start-2 för att ta bort identifierare t.ex "VA eller BE" och sedan +3 för att få bort.
+                        // Start-2 för att ta bort identifierare t.ex "VA eller BE" och sedan +3 för att få bort ";".
                         resultat = föremål.Value.Remove(start-2, stop - start+3);
 
                     }
@@ -307,6 +362,78 @@ namespace Roleplay_2019_version
             dic.Add(sökNyckel, resultat);
         }
 
+        static void LSID(string nyckel, string attLäggaTill, Dictionary<string,string> dic)
+        {
+            // Lägg till substring i dictionary
+            string värde = "";
+
+            foreach (KeyValuePair<string,string> item in dic)
+            {
+                if (item.Key == nyckel)
+                {
+                    värde = item.Value + attLäggaTill;
+                }
+            }
+            dic.Remove(nyckel);
+            dic.Add(nyckel, värde);
+
+        }
+
+        static void TärningAnimation()
+        {
+
+            #region tärning animation
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write("::");
+            Console.ResetColor();
+            Thread.Sleep(500);
+            int temp = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                temp++;
+                Console.Write("\r");
+                
+
+                for (int a = 0; a < i; a++)
+                {
+                    Console.Write(" ");
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
+                switch (temp)
+                {
+                    case 1:
+                        Console.Write("/");
+                        break;
+
+                    case 2:
+                        Console.Write("-");
+                        break;
+
+                    case 3:
+                        Console.Write("\\");
+                        break;
+
+                    case 4:
+                        Console.Write("-");
+                        temp = 0;
+                        break;
+
+                    default:
+                        break;
+                }
+                Console.ResetColor();
+                Console.Write(" ");
+                Thread.Sleep(100);
+            }
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write("\r::");
+            Console.ResetColor();
+            #endregion
+        }
         static void Initiativ(string fiendeTyp)
         {
             int fiendeVärde = 0;
@@ -366,6 +493,8 @@ namespace Roleplay_2019_version
             Console.WriteLine(spelarVärde + " / " + fiendeVärde);
 
             Console.ReadLine();
+
+            // borde returnera namnet på den som ska börja
 
             // skriv intiativ position
             // låt spelare välja
@@ -486,6 +615,7 @@ namespace Roleplay_2019_version
             }
         }
 
+        #region meny
         static void MenyPrint(string val1, string val2, string val3, string val4, string val5)
         {
             List<string> menyVal = new List<string>()
@@ -579,7 +709,6 @@ namespace Roleplay_2019_version
             List<string> menyVal = new List<string>()
             {
                 {val1},
-
             };
             int i = 1;
 
@@ -606,7 +735,9 @@ namespace Roleplay_2019_version
             }
             Console.WriteLine("--->============>");
         }
+        #endregion
 
+        #region tärning
         static int KastaTärning(string tärningsData)
         {
             string[] dataSplit = tärningsData.Split('t');
@@ -653,6 +784,7 @@ namespace Roleplay_2019_version
 
             return värde;
         }
+        #endregion
 
         #region färger
         static void WriteRed(string textRöd)
@@ -673,6 +805,12 @@ namespace Roleplay_2019_version
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(textBlue);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+        static void WriteGrey(string textGrey)
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(textGrey);
             Console.ForegroundColor = ConsoleColor.White;
         }
         #endregion
