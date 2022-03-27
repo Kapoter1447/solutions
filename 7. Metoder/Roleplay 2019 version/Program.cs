@@ -15,8 +15,8 @@ namespace Roleplay_2019_version
 
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
-            {"spelare","kp10; vayxa; cl90;"},
-            {"mattant","kp6; vamorotssoppa; cl70; vastor slev;"},
+            {"spelare","kp10; vagitta away; vadin döda farfarsfars stridsyxa; vam9 beretta 9x19mm 380m/s akimbo pistol; cl50; "},
+            {"mattant","kp6; vamorotssoppa; cl30; vastor slev;"},
             {"rektorn","kp200; vaen helvetes penna; cl100;"}
 
         };
@@ -26,33 +26,26 @@ namespace Roleplay_2019_version
             {"rå styrka", "DA1t3; BEAttackerar med näven;"  },
             {"stor slev", "DA1t6; BEbeskrivning till stor slev;" },
             {"morotssoppa", "DA2t6; BEMattanten tar fram sin onda kittel och börjar brygga en stinkande orange vätska. Du ryggar av stanken av det giftigaste på jordens yta tillagas framför dig. Helt plötsligt tar mattanten en slev med morotsoppa och kastar mot dig!;" },
+            {"m9 beretta 9x19mm 380m/s akimbo pistol", "DA4t6; BEKapoowww!! Pang pang!;"},
+            {"din döda farfarsfars stridsyxa", "DA1t2; BEDu tar fram din döda farfarsfars stridsyxa. Genom åren har den blivit sliten och det enda som återstår är skaftet. Den är i princip värdelös, men du attackerar ändå.; "}
         };
+
+
 
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
 
-            while (true)
-            {
-                Console.WriteLine("Fiendeattack:");
-                FiendeAttack("mattant");
-                Console.WriteLine("Spelarattack:");
-                SpelarAttack();
-                Console.ReadLine();
-            }
-
-
-            Console.ReadLine();
-
             string inmat = "";
-
-            #region Stickman
-           
-            #endregion
 
             while (inmat != "3")
             {
                 Console.Clear();
+                
+                TärningAnimation();
+                WriteGreen(" = Programmering och demoner\n");
+                Thread.Sleep(1000);
+                
                 MenyPrint("Spela äventyret \"Mattanterna har kidnappat rektorn! fanciction\"", "Tärnings simulator", "Regler och Teori", "Avsluta");
                 inmat = Console.ReadLine();
 
@@ -76,6 +69,21 @@ namespace Roleplay_2019_version
                         Thread.Sleep(1000);
                         break;
 
+
+                    case "easter egg":
+                        Streckgubbe();
+                        break;
+
+                    case "easter egg2":
+                        for (int i = 0; i < 10; i++)
+                        {
+                            Console.WriteLine();
+
+                            TärningAnimation();
+                        }
+
+                        break;
+
                     default:
                         WriteRed("Fel vid inmat. Försök igen.");
                         Console.Clear();
@@ -92,7 +100,7 @@ namespace Roleplay_2019_version
             Slåss("mattant");
             // kasta hårda och torra falaflar. förgifta med morotsoppa.
 
-            MenyPrint("Använd din döda farfarsfars stridsyxa", "Använd m9 beretta 9x19mm 380m/s akimbo pistol", "gitta away", "Checka stats");
+           // MenyPrint("Använd din döda farfarsfars stridsyxa", "Använd m9 beretta 9x19mm 380m/s akimbo pistol", "gitta away", "Checka stats");
 
             Console.ReadLine();
 
@@ -100,45 +108,30 @@ namespace Roleplay_2019_version
 
         static void Slåss(string fiendeTyp)
         {
-            Initiativ(fiendeTyp);
+            string[] aktörPositioner = Initiativ(fiendeTyp).Split("¤");
+            string spelarInitiativ = aktörPositioner[2];
+            string fiendeInitiativ = aktörPositioner[1];
+            string startAktör = aktörPositioner[0];
 
-            // ta in fiende stats: skada på vapen, helningsförmåga, ev rustning, kp
-            // ta in avstånd
-
-
-            // Ifall fiende börjar:
-            // Slumpa en attack
-            // Kolla om den lyckas (cl)
-            // ifall lyckas ta skada
-
-            // extract vapen från spelardata med samma namn som fiendetyp elelr spelaren
-
-
-            // vem som börjar bestäms av initatitv
-
-            Random rnd = new Random();
-
-            switch (rnd.Next(0,1))
+            switch (startAktör)
             {
-                case 0:
-                    FiendeAttack(fiendeTyp);
+                case "fiende":
+                    FiendeAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                    SpelarAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
                   break;
 
-                case 1:
-                    SpelarAttack();
-
+                case "spelare":
+                    SpelarAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
+                    FiendeAttack(fiendeTyp, spelarInitiativ, fiendeInitiativ);
                     break;
 
                 default:
                     break;
             }
-
-            // Plockar fram vapnen ur statslistan för aktuell fiende
-
         }
 
 
-        static void FiendeAttack(string fiendetyp)
+        static void FiendeAttack(string fiendetyp, string spelarInitiativ, string fiendeInitiativ)
         {
             Console.Clear();
 
@@ -150,16 +143,71 @@ namespace Roleplay_2019_version
             string aktivtVapen = blandadeVapen[0];
             #endregion
 
-            // fan slumpmässigt om den hittar beskrivningen orkar inte
             WriteRed(fiendetyp.ToUpper() + " ATTACKERAR! \n");
             WriteGrey(SSID(aktivtVapen, "BE", ";", attacker) + "\n");
 
-            int cl = int.Parse(SSID(fiendetyp, "cl", ";", stats));
+            Thread.Sleep(1000);
 
-            Console.Write("\n" + fiendetyp + " har ");
-            WriteBlue(cl + "% ");
-            Console.Write("att lyckas \n");
+            #region cl
+            int fiendeCl = int.Parse(SSID(fiendetyp, "cl", ";", stats));
 
+            Console.WriteLine("\n-----------------------------------");
+            Console.Write(fiendetyp + " cl: " );
+            WriteBlue(fiendeCl + "%\n");
+            Console.Write("Din position: ");
+            switch (spelarInitiativ)
+            {
+                case "defensiv":
+                    WriteBlue("|defensiv| -20%");
+                    WriteGrey(" (Höjer ditt försvar)");
+                    fiendeCl = fiendeCl - 20;
+                    break;
+
+                case "offensiv":
+                    WriteRed("|offensiv| +20%");
+                    WriteGrey(" (Sänker ditt försvar)");
+                    fiendeCl = fiendeCl + 20;
+                    break;
+
+                case "neutral":
+                    WriteGreen("|neutral| +0%");
+                    break;
+
+                default:
+                    break;
+            }
+            Console.Write("\n" + fiendetyp + "position: ");
+            switch (fiendeInitiativ)
+            {
+                case "defensiv":
+                    WriteBlue("|defensiv| -20%");
+                    WriteGrey(" (Försämrar fiendes attack)");
+                    fiendeCl = fiendeCl - 20;
+                    break;
+
+                case "offensiv":
+                    WriteRed("|offensiv| +20%");
+                    WriteGrey(" (Förbättrar fiendes attack)");
+                    fiendeCl = fiendeCl + 20;
+                    break;
+
+                case "neutral":
+                    WriteGreen("|neutral| +0%");
+                    break;
+
+                default:
+                    break;
+            }
+
+            Console.Write("\n\n = " + fiendetyp + " har ");
+            WriteBlue(fiendeCl + "% ");
+            Console.Write("att lyckas");
+            Console.WriteLine("\n-----------------------------------");
+
+            Thread.Sleep(1000);
+            #endregion
+
+            #region kollar ifall lyckas
             MenyPrint("'Enter' för att slå tärning (1t100)");
             Console.ReadLine();
             TärningAnimation();
@@ -167,20 +215,20 @@ namespace Roleplay_2019_version
             int resultat = KastaTärning("1t100");
             WriteGreen(" = " + resultat);
 
-            if (resultat < cl)
+            if (resultat < fiendeCl)
             {
+                #region lyckas
                 Console.WriteLine("");
                 for (int i = 0; i < 5; i++)
                 {
                     Console.Write("\r                        ");
                     Thread.Sleep(200);
-                    WriteRed("\r" + resultat + " < " + cl );
+                    WriteRed("\r" + resultat + " < " + fiendeCl );
                     Thread.Sleep(200);
                 }
-                WriteRed("\n" + fiendetyp + " lyckas med attacken.");
-             //   Console.WriteLine("\n\nEnter för att fortsätta...");
-                Console.ReadLine();
-               // Console.Clear();
+                WriteRed("\n" + fiendetyp + " lyckas med attacken.\n");
+
+                // ta med initativ
 
                 // Kolla skada. Hitta spelar kp och ta kp - skada. Ta sedan bort nuvarnade kp substräng och sen skapa en ny med nya kp:t.
                 int kp = int.Parse(SSID("spelare", "kp", ";", stats));
@@ -194,7 +242,7 @@ namespace Roleplay_2019_version
                 WriteBlue(tärningSkada);
                 Console.Write(" skada.\n");
 
-                MenyPrint("'Enter' för att slå tärning fär skada");
+                MenyPrint("'Enter' för att slå tärning för skada");
                 Console.ReadLine();
                 TärningAnimation();
                 
@@ -213,46 +261,144 @@ namespace Roleplay_2019_version
                 }
 
                 Console.WriteLine();
-                Console.ReadLine();
-
-                #region för felsök
-                /*
-                foreach (KeyValuePair<string, string> item in stats)
-                {
-                    Console.WriteLine(item.Key + item.Value);
-                }
-                */
-                #endregion
 
                 // Tar bort nuvarande kp...
                 RSID("spelare", "kp", ";", stats);
                 // ...och lägger till nya.
                 LSID("spelare", "kp" + kp + ";", stats);
+
+                #endregion
             }
             else
             {
+                #region misslyckas
                 Console.WriteLine("");
                 for (int i = 0; i < 5; i++)
                 {
                     Console.Write("\r                        ");
                     Thread.Sleep(200);
-                    WriteGreen("\r" + resultat + " > " + cl);
+                    WriteGreen("\r" + resultat + " > " + fiendeCl);
                     Thread.Sleep(200);
                 }
 
-                Console.WriteLine("Misslyckas");
+                WriteGreen("\n Du parerar attacken och " + fiendetyp + " misslyckas med attack!");
+                #endregion
             }
+            #endregion
+
+            Console.WriteLine("\n 'Enter' för att gå vidare");
+            Console.ReadLine();
+            Console.Clear();
         }
 
-        static void SpelarAttack()
+        static void SpelarAttack(string fiendetyp, string spelarInitiativ, string fiendeInitiativ)
         {
-            Random rnd = new Random();
+            // beskrivning
+            // cl
+            // slå tärningar
 
+            string inmat = "";
+
+            Console.Clear();
+            WriteGreen("SPELARE ATACKERAR\n");
+
+            #region välja vapen
             string vapenPaket = SSID("spelare", "va", ";", stats);
-            Console.WriteLine(vapenPaket);
             string[] vapen = vapenPaket.Split('¤');
-
+            string aktivtVapen = "";
             MenyPrint(vapen);
+
+            // Det är hårdkodat hur många vapen man kan välja här
+
+            inmat = Console.ReadLine();
+
+            while (aktivtVapen == "")
+            {
+                aktivtVapen = vapen[int.Parse(inmat)-1];
+            }
+
+            WriteGrey(SSID(aktivtVapen, "BE", ";", attacker)+"\n");
+            #endregion
+
+            #region cl
+            int spelarCl = int.Parse(SSID("spelare", "cl", ";", stats));
+
+            Console.WriteLine("\n-----------------------------------");
+            Console.Write("Spelare cl: ");
+            WriteBlue(spelarCl + "%\n");
+            Console.Write("Din position: ");
+            switch (spelarInitiativ)
+            {
+                case "defensiv":
+                    WriteBlue("|defensiv| -20%");
+                    WriteGrey(" (Sänker din chans att lyckas vid attack)");
+                    spelarCl = spelarCl - 20;
+                    break;
+
+                case "offensiv":
+                    WriteRed("|offensiv| +20%");
+                    WriteGrey(" (Höjer din chans att lyckas vid attack)");
+                    spelarCl = spelarCl + 20;
+                    break;
+
+                case "neutral":
+                    WriteGreen("|neutral| +0%");
+                    break;
+
+                default:
+                    break;
+            }
+            Console.Write("\n" + fiendetyp + "position: ");
+            switch (fiendeInitiativ)
+            {
+                case "defensiv":
+                    WriteBlue("|defensiv| -20%");
+                    WriteGrey(" (Förbättrar fiendes försvar)");
+                    spelarCl = spelarCl - 20;
+                    break;
+
+                case "offensiv":
+                    WriteRed("|offensiv| +20%");
+                    WriteGrey(" (Försämrar fiendes försvar)");
+                    spelarCl = spelarCl + 20;
+                    break;
+
+                case "neutral":
+                    WriteGreen("|neutral| +0%");
+                    break;
+
+                default:
+                    break;
+            }
+
+            Console.Write("\n\n = Du har ");
+            WriteBlue(spelarCl + "% ");
+            Console.Write("att lyckas");
+            Console.WriteLine("\n-----------------------------------");
+
+            Thread.Sleep(1000);
+            #endregion
+
+            #region kollar ifall lyckas
+            MenyPrint("'Enter' för att slå tärning (1t100)");
+            Console.ReadLine();
+            TärningAnimation();
+
+            int resultat = KastaTärning("1t100");
+            WriteGreen(" = " + resultat);
+
+            if (resultat < spelarCl)
+            {
+                Console.WriteLine("lcykas");
+            }
+            else
+            {
+                Console.WriteLine("misslycaks");
+            }
+
+                #endregion
+
+                Console.ReadLine();
         }
 
         static string[] blanda(string[] inputs)
@@ -385,7 +531,7 @@ namespace Roleplay_2019_version
             #region tärning animation
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.White;
-            Console.Write("::");
+            Console.Write("\r::");
             Console.ResetColor();
             Thread.Sleep(500);
             int temp = 0;
@@ -430,76 +576,101 @@ namespace Roleplay_2019_version
             }
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.White;
-            Console.Write("\r::");
+            Console.Write("\b\b\b::");
             Console.ResetColor();
             #endregion
         }
-        static void Initiativ(string fiendeTyp)
+
+        static string Initiativ(string fiendeTyp)
         {
             int fiendeVärde = 0;
             int spelarVärde = 0;
 
+            string spelarInitiativ = "";
+            string fiendeInitiativ = "";
+
+            string startAktör = "";
+
             Random rnd = new Random();
-            int randomInitiativ;
+            int slumpInitiativ;
 
             Console.Write(fiendeTyp + " har en ");
-            randomInitiativ = rnd.Next(0, 2);
-            switch (randomInitiativ)
+            slumpInitiativ = rnd.Next(0, 2);
+            switch (slumpInitiativ)
             {
                 case 0:
                     fiendeVärde = KastaTärning("1t10", "defensiv");
+                    fiendeInitiativ = "defensiv";
                     WriteBlue("|defensiv|");
                     break;
 
                 case 1:
                     fiendeVärde = KastaTärning("1t10", "offensiv");
+                    fiendeInitiativ = "offensiv";
                     WriteRed("|offensiv|");
                     break;
 
                 case 2:
                     fiendeVärde = KastaTärning("1t10", "neutral");
+                    fiendeInitiativ = "neutral";
                     WriteGreen("|neutral|");
                     break;
 
                 default:
                     break;
             }
-            Console.WriteLine(" position!");
+            Console.WriteLine(" position!\n");
 
-            MenyPrint("Defensiv", "Offensiv", "Neutral");
-
+            Console.Write("Välj position!");
+            WriteGrey(" (Högst värde på 1t10 börjar)\n");
+            MenyPrint("Defensiv -3", "Offensiv +3", "Neutral +0");
             switch (Console.ReadLine())
             {
                 case "1":
                     spelarVärde = KastaTärning("1t10", "defensiv");
-                    WriteBlue("|defensiv|");
+                    spelarInitiativ = "defensiv";
+                   // WriteBlue("|defensiv|");
                     break;
 
                 case "2":
                     spelarVärde = KastaTärning("1t10", "offensiv");
-                    WriteRed("|offensiv|");
+                    spelarInitiativ = "offensiv";
+                 //   WriteRed("|offensiv|");
                     break;
 
                 case "3":
                     spelarVärde = KastaTärning("1t10", "neutral");
-                    WriteGreen("|neutral|");
+                    spelarInitiativ = "neutral";
+                  //  WriteGreen("|neutral|");
                     break;
 
                 default:
                     Console.WriteLine("du skrev något kefft försök igen");
                     break;
             }
+            Console.WriteLine("spelare poäng");
+            TärningAnimation();
+            WriteGreen(" = " + spelarVärde + "\n\n");
 
-            Console.WriteLine(spelarVärde + " / " + fiendeVärde);
+            Console.WriteLine(fiendeTyp + " poäng");
+            TärningAnimation();
+            WriteGreen(" = " + fiendeVärde);
+
+            Console.WriteLine("\n");
+            if (spelarVärde < fiendeVärde)
+            {
+                WriteRed(fiendeTyp + " börjar attackera!");
+                startAktör = "fiende";
+            }
+            else if (spelarVärde > fiendeVärde || spelarVärde == fiendeVärde)
+            {
+                WriteGrey("Spelare börjar attackera!");
+                startAktör = "spelare";
+            }
 
             Console.ReadLine();
 
-            // borde returnera namnet på den som ska börja
-
-            // skriv intiativ position
-            // låt spelare välja
-            // slå tärningar
-            // jämför och låt den med högst börja  
+            return startAktör + "¤" + fiendeInitiativ + "¤" + spelarInitiativ;
         }
 
         static void Streckgubbe()
@@ -726,10 +897,10 @@ namespace Roleplay_2019_version
         static void MenyPrint(string[] val)
         {
             Console.WriteLine("--->============>");
-            for (int i = 1; i < val.Length; i++)
+            for (int i = 0; i < val.Length; i++)
             {
-                WriteBlue("|" + i.ToString() + "| ");
-                Console.WriteLine(val[(i-1)]);
+                WriteBlue("|" + (i+1).ToString() + "| ");
+                Console.WriteLine(val[i]);
                 Thread.Sleep(200);
 
             }
