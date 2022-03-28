@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\Roleplay 2019 version\\Roleplay 2019 version.csproj",
-      "projectName": "Roleplay 2019 version",
-      "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\Roleplay 2019 version\\Roleplay 2019 version.csproj",
+      "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
+      "projectName": "klassövning",
+      "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
       "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\Roleplay 2019 version\\obj\\",
+      "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",

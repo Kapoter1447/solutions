@@ -16,10 +16,12 @@ namespace Roleplay_2019_version
         static Dictionary<string, string> stats = new Dictionary<string, string>() {
 
             {"spelare","kp1; vagitta away; vadin döda farfarsfars stridsyxa; vam9 beretta 9x19mm 380m/s akimbo pistol; cl50; "},
-            {"mattant","kp6; vamorotssoppa; cl30; vastor slev;"},
+            {"mattant","kp6; vamorotssoppa; cl40; vastor slev;"},
             {"rektorn","kp200; vaen helvetes penna; cl100;"}
 
         };
+
+        static Dictionary<string, string> standardVärde = new Dictionary<string, string>();
 
         static Dictionary<string, string> attacker = new Dictionary<string, string>()
         {
@@ -31,9 +33,14 @@ namespace Roleplay_2019_version
         };
 
 
-
         static void Main(string[] args)
         {
+            // Sparar standardvärden:
+            foreach (KeyValuePair<string, string> item in stats)
+            {
+                standardVärde.Add(item.Key, item.Value);
+            }
+
             Console.CursorVisible = false;
 
             string inmat = "";
@@ -96,11 +103,27 @@ namespace Roleplay_2019_version
         {
             Console.Clear();
 
+            /*
+            // Laddar in standarvärden
+            stats.Clear();
+            foreach (KeyValuePair<string,string> item in standardVärde)
+            {
+
+            }
+            */
+
+
+            /*
+            RSID(fiendetyp, "kp", ";", stats);
+            LSID(fiendetyp, "kp" + fiendeKp + ";", stats);
+            */
+
+
             Console.WriteLine("Å nej bla bla bla har hänt! Helvete! \nAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah en mattant");
         
             if (Slåss("mattant"))
             {
-
+                Console.WriteLine("Äventyret fortsätter...");
             }
    
             // kasta hårda och torra falaflar. förgifta med morotsoppa.
@@ -176,7 +199,15 @@ namespace Roleplay_2019_version
                 return false;
             }
 
+            string vapenPaket = SSID(fiendeTyp, "va", ";", stats);
+            string[] vapen = vapenPaket.Split('¤');
+            string attLäggaTill;
 
+            for (int i = 0; i < vapen.Length; i++)
+            {
+                attLäggaTill = "va" + vapen[i] + ";";
+                LSID("spelare", attLäggaTill, stats);
+            }
         }
 
 
@@ -280,11 +311,11 @@ namespace Roleplay_2019_version
                 // ta med initativ
 
                 // Kolla skada. Hitta spelar kp och ta kp - skada. Ta sedan bort nuvarnade kp substräng och sen skapa en ny med nya kp:t.
-                int kp = int.Parse(SSID("spelare", "kp", ";", stats));
+                int spelarKp = int.Parse(SSID("spelare", "kp", ";", stats));
                 string tärningSkada = SSID(aktivtVapen, "DA", ";", attacker);
 
                 Console.Write("\nDu har ");
-                WriteBlue(kp.ToString());
+                WriteBlue(spelarKp.ToString());
                 Console.Write(" kp.\n");
 
                 Console.Write(aktivtVapen + " gör ");
@@ -296,8 +327,8 @@ namespace Roleplay_2019_version
                 TärningAnimation();
                 
                 int skada = KastaTärning(tärningSkada);
-                int kpInnan = kp;
-                kp = kp - skada;
+                int kpInnan = spelarKp;
+                spelarKp = spelarKp - skada;
 
                 WriteRed(" = " + skada);
                 Console.WriteLine("");
@@ -305,7 +336,7 @@ namespace Roleplay_2019_version
                 {
                     Console.Write("\r                        ");
                     Thread.Sleep(200);
-                    WriteRed("\r" + kpInnan + "kp - " + skada + "skada = " + kp + "kp kvar" );
+                    WriteRed("\r" + kpInnan + "kp - " + skada + "skada = " + spelarKp + "kp kvar" );
                     Thread.Sleep(200);
                 }
 
@@ -314,7 +345,7 @@ namespace Roleplay_2019_version
                 // Tar bort nuvarande kp...
                 RSID("spelare", "kp", ";", stats);
                 // ...och lägger till nya.
-                LSID("spelare", "kp" + kp + ";", stats);
+                LSID("spelare", "kp" + spelarKp + ";", stats);
 
                 #endregion
             }
@@ -448,9 +479,48 @@ namespace Roleplay_2019_version
                 }
                 WriteGreen("\nDu lyckas med attacken!\n");
 
+                int fiendeKp = int.Parse(SSID(fiendetyp, "kp", ";", stats));
+                string tärningSkada = SSID(aktivtVapen, "DA", ";", attacker);
+
+                Console.Write("\n" + fiendetyp + " har ");
+                WriteBlue(fiendeKp.ToString());
+                Console.Write(" kp.\n");
+
+                Console.Write(aktivtVapen + " gör ");
+                WriteBlue(tärningSkada);
+                Console.Write(" skada.\n");
+
+                MenyPrint("'Enter' för att slå tärning för skada");
+                Console.ReadLine();
+                TärningAnimation();
+
+                int skada = KastaTärning(tärningSkada);
+                int kpInnan = fiendeKp;
+                fiendeKp = fiendeKp - skada;
+
+                WriteRed(" = " + skada);
+                Console.WriteLine("");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("\r                        ");
+                    Thread.Sleep(200);
+                    WriteRed("\r" + kpInnan + "kp - " + skada + "skada = " + fiendeKp + "kp kvar");
+                    Thread.Sleep(200);
+                }
+
+                Console.WriteLine();
+
+
+                // Tar bort nuvarande kp...
+                RSID(fiendetyp, "kp", ";", stats);
+                // ...och lägger till nya.
+                LSID(fiendetyp, "kp" + fiendeKp + ";", stats);
+
+
             }
             else
             {
+                #region misslyckas
                 Console.WriteLine("");
                 for (int i = 0; i < 5; i++)
                 {
@@ -460,11 +530,14 @@ namespace Roleplay_2019_version
                     Thread.Sleep(200);
                 }
                 WriteRed("\nDu misslyckas med attacken\n");
+                #endregion
             }
 
-                #endregion
+            #endregion
 
-                Console.ReadLine();
+            Console.ReadLine(); Console.WriteLine("\n 'Enter' för att gå vidare");
+            Console.ReadLine();
+            Console.Clear();
         }
 
         static string[] blanda(string[] inputs)
@@ -1046,10 +1119,6 @@ namespace Roleplay_2019_version
 
                 case "offensiv":
                     värde = värde + 3;
-                    break;
-
-                case "neutral":
-                    värde = värde - 3;
                     break;
 
                 default:

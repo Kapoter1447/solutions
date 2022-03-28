@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv1Hälsning\\MetodÖv1Hälsning.csproj": {}
+    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv1Hälsning\\MetodÖv1Hälsning.csproj": {
+    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv1Hälsning\\MetodÖv1Hälsning.csproj",
-        "projectName": "MetodÖv1Hälsning",
-        "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv1Hälsning\\MetodÖv1Hälsning.csproj",
+        "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
+        "projectName": "klassövning",
+        "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
         "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\7. Metoder\\MetodÖv1Hälsning\\obj\\",
+        "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
