@@ -1,0 +1,14 @@
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\bin\Debug\netcoreapp3.1\klassövning.exe
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\bin\Debug\netcoreapp3.1\klassövning.deps.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\bin\Debug\netcoreapp3.1\klassövning.runtimeconfig.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\bin\Debug\netcoreapp3.1\klassövning.runtimeconfig.dev.json
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\bin\Debug\netcoreapp3.1\klassövning.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\bin\Debug\netcoreapp3.1\klassövning.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.csproj.AssemblyReference.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.AssemblyInfoInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.AssemblyInfo.cs
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.dll
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.pdb
+C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\klassövning\obj\Debug\netcoreapp3.1\klassövning.genruntimeconfig.cache

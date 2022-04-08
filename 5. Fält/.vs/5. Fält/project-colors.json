@@ -5,7 +5,12 @@
       "ProjectGuid": "c2a63e0c-1291-4763-86f9-4d86f20e85b2",
       "DisplayName": "NewFältÖv5_2DFält",
       "ColorIndex": 0
+    },
+    "c71c91a0-8175-4e24-9cd6-947f6d1e60a7": {
+      "ProjectGuid": "c71c91a0-8175-4e24-9cd6-947f6d1e60a7",
+      "DisplayName": "FältÖv5TvådimensionellaFält",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
