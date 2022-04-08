@@ -32,14 +32,17 @@ namespace CollisionGame
 
         public void Place(string[,] itemArray, int x, int y)
         {
-            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
-            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+            // Placerar ut varje x och y koordinat i 'itemarray' till världskoordinatsystemet.
 
-            for (int a = 0; a < itemArray.GetLength(0); a++)
+            for (int a = 0; a < itemArray.GetLength(1); a++)
             {
-                for (int b = 0; b < itemArray.GetLength(1); b++)
+                for (int b = 0; b < itemArray.GetLength(0); b++)
                 {
-                    world[xClamp+a,yClamp+b] = itemArray[b, a];
+                    // Clampar värdet så att programmet inte crashar när utanför world array.
+                    int xClamp = Math.Clamp(x+a, 0, world.GetLength(0) - 1);
+                    int yClamp = Math.Clamp(y+b, 0, world.GetLength(1) - 1);
+
+                    world[xClamp,yClamp] = itemArray[b, a];
                 }
             }
         }
@@ -69,10 +72,11 @@ namespace CollisionGame
                             Console.WriteLine(xSearch + "," + ySearch);
                             for (int b = 0; b < 3; b++)
                             {
-                                //int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
-                                //int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+                                // Clampar sökkordinaterna så att de inte hamnar utanför världskoordinaterna
+                                int xClamp = Math.Clamp(x + xSearch, 0, world.GetLength(0) - 1);
+                                int yClamp = Math.Clamp(y + ySearch, 0, world.GetLength(1) - 1);
 
-                                if (world[x + xSearch, y + ySearch] == object2)
+                                if (world[xClamp, yClamp] == object2)
                                 {
                                     Console.WriteLine("Collision!!");
                                     collision = true;

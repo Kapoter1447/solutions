@@ -31,23 +31,9 @@ namespace CollisionGame
                 {"/", " ", "\\", " "}
             };
 
-            string[,] groundArray = new string[15, 1]
+            string[,] groundArray = new string[1, 15]
             {
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
-                {"g"},
+                {"g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g"},
             };
 
             #endregion
@@ -83,7 +69,7 @@ namespace CollisionGame
                 calculation.Place(player.appearance, player.xPosition, player.yPosition);
 
                 // Place ground
-              //  calculation.Place(groundArray, 1, 1);
+                calculation.Place(groundArray, 1, 20);
 
 
                 
