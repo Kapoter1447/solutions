@@ -51,8 +51,6 @@ namespace CollisionGame
         {
             bool collision = false;
 
-
-
             // Söker igenom 'world' array
             for (int y = 0; y < world.GetLength(1); y++)
             {
@@ -69,7 +67,7 @@ namespace CollisionGame
                         for (int a = 0; a < 3; a++)
                         {
                             xSearch = -1;
-                            Console.WriteLine(xSearch + "," + ySearch);
+                           // Console.WriteLine(xSearch + "," + ySearch);
                             for (int b = 0; b < 3; b++)
                             {
                                 // Clampar sökkordinaterna så att de inte hamnar utanför världskoordinaterna
@@ -89,14 +87,72 @@ namespace CollisionGame
                 }
             }
 
-            if (collision)
+            return collision;
+
+        }
+
+        public bool CheckCollision(string object1, string object2, string direction)
+        {
+            // direction "up" would give modifier a(y) = -1 och b(x) = 0.
+            // (-1,-1)(0,-1)(1,-1)
+            // (-1,0) Object (1,0)   Object is placetd at (0,0)
+            // (-1,1) (0,1) (1,1)
+
+            bool collision = false;
+
+            int xSearch = 0;
+            int ySearch = 0;
+
+            switch (direction)
             {
-                return true;
+                case "up":
+                    xSearch = 0;
+                    ySearch = -1;
+                    break;
+
+                case "down":
+                    xSearch = 0;
+                    ySearch = 1;
+                    break;
+
+                case "left":
+                    xSearch = -1;
+                    ySearch = 0;
+                    break;
+
+                case "right":
+                    xSearch = 1;
+                    ySearch = 0;
+                    break;
+
+                default:
+                    break;
             }
-            else
+
+            // Söker igenom 'world' array
+            for (int y = 0; y < world.GetLength(1); y++)
             {
-                return false;
+                for (int x = 0; x < world.GetLength(0); x++)
+                {
+                    // Ifall hittar 'object1'. Utgår från ett lokalt koordinatsystem 3X3 runt...
+                    // ...kollisionsobjekt som utgår från x och y koordinat av objekt.
+                    // Tar först både x och y värde -1 vilket gör att övre vämntra hörnet kommer kollas.
+                    if (world[x, y] == object1)
+                    {
+                        // Clampar sökkordinaterna så att de inte hamnar utanför världskoordinaterna
+                        int xClamp = Math.Clamp(x + xSearch, 0, world.GetLength(0) - 1);
+                        int yClamp = Math.Clamp(y + ySearch, 0, world.GetLength(1) - 1);
+
+                        if (world[xClamp, yClamp] == object2)
+                        {
+                            Console.WriteLine("Collision!!");
+                            collision = true;
+                        }
+                    }
+                }
             }
+
+            return collision;
 
         }
 

@@ -31,174 +31,97 @@ namespace CollisionGame
                 {"/", " ", "\\", " "}
             };
 
-            string[,] groundArray = new string[1, 15]
+            string[,] groundArray = new string[1, 20]
             {
-                {"g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g"},
+                {"g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g"},
+
             };
 
             #endregion
-
-            #region animation
+            
             int i = 0;
-            bool animation = false;
-
             while (true)
             {
-                if (i%20 == 0)
-                {
-                    if (animation)
-                    {
-                        animation = false;
-                    }
-                    else
-                    {
-                        animation = true;
-                    }
-                }
-                if (animation)
-                {
-                    calculation.Place(temp, player.xPosition, player.yPosition);
-                }
-                else
-                {
-                    calculation.Place(temp2, player.xPosition, player.yPosition);
-                }
-                #endregion
+
+
+                //  calculation.Place(temp2, player.xPosition, player.yPosition);
+
 
                 // Place player
+                calculation.Place(temp, player.xPosition-1, player.yPosition-3);
                 calculation.Place(player.appearance, player.xPosition, player.yPosition);
+
 
                 // Place ground
                 calculation.Place(groundArray, 1, 20);
+                calculation.Place(groundArray, 10, 18);
 
 
-                
-                calculation.CheckCollision(player.appearance, ground.appearance);
-
-                // Print
-                calculation.Print();
+                #region movement
+                //  player.Move(2);
+                bool touchesGround = calculation.CheckCollision(player.appearance, ground.appearance, "down");
 
                 if (Console.KeyAvailable == true)
                 {
                     var keyPress = Console.ReadKey().Key;
+                    bool jump = false;
+                    int jumpHeight = 4;
+
+                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
 
                     switch (keyPress)
                     {
                         case ConsoleKey.W:
-                            player.Move("up", 1);
+                            if (touchesGround)
+                            {
+                                jump = true;
+                            }
                             break;
 
                         case ConsoleKey.A:
-                            player.Move("left", 1);
+                            player.Move("left", 2);
                             break;
 
                         case ConsoleKey.S:
-                            player.Move("down", 1);
+                            player.Move("down", 2);
                             break;
 
                         case ConsoleKey.D:
-                            player.Move("right", 1);
+                            player.Move("right", 2);
                             break;
 
                         default:
                             break;
                     }
+                    // Jump
+                    if (jump && i%4 == 0)
+                    {
+                        player.Move("up", 1);
+                        jumpHeight++;
+                    }
+
+                    
+
+
                 }
-                Console.WriteLine(player);
+
+                // Gravity
+                Console.WriteLine(touchesGround);
+
+                if (!touchesGround && i%20 == 0)
+                {
+                    player.Move("down", 1);
+                }
+                #endregion
+
+
+                // Print
+                calculation.Print();
                 i++;
             }
         }
     }
 
 
-    class Object
-    {
-        // Medlemsvariabler
-        private int xPos;
-        private int yPos;
-        private string appr;
-
-        // Konstruktor
-        public Object(string appearance, int xStart, int yStart)
-        {
-            xPos = xStart;
-            yPos = yStart;
-            appr = appearance;
-        }
-
-        public int xPosition
-        {
-            get
-            {
-                return xPos;
-            }
-            set
-            {
-                xPos = value;
-            }
-        }
-
-        public int yPosition
-        {
-            get
-            {
-                return yPos;
-            }
-            set
-            {
-                yPos = value;
-            }
-        }
-
-        public string appearance
-        {
-            get
-            {
-                return appr;
-            }
-
-
-        }
-
-        // Metoder
-        public override string ToString()
-        {
-            return appearance;
-        }
-
-        public void Move(string direction, int distance)
-        {
-            switch (direction)
-            {
-                case "up":
-                    yPos = yPos - distance;
-                    break;
-
-                case "down":
-                    yPos = yPos + distance;
-                    break;
-
-                case "left":
-                    xPos = xPos - distance;
-                    break;
-
-                case "right":
-                    xPos = xPos + distance;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        public void Collision()
-        {
-           
-        }
-
-
-        // skicka position till world där vi har en "draw"/"place" funktion som ritar ut 
-
-    }
 
 }
