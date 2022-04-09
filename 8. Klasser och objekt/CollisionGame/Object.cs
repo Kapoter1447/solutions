@@ -9,7 +9,9 @@ namespace CollisionGame
         // Medlemsvariabler
         private int xPos;
         private int yPos;
+
         private string appr;
+        private string[,] apprArray;
 
         // Konstruktor
         public Object(string appearance, int xStart, int yStart)
@@ -18,6 +20,14 @@ namespace CollisionGame
             yPos = yStart;
             appr = appearance;
         }
+
+        public Object(string[,] appearance, int xStart, int yStart)
+        {
+            xPos = xStart;
+            yPos = yStart;
+            apprArray = appearance;
+        }
+
 
         public int xPosition
         {
@@ -48,6 +58,13 @@ namespace CollisionGame
             get
             {
                 return appr;
+            }
+        }
+        public string[,] appearanceArray
+        {
+            get
+            {
+                return apprArray;
             }
         }
 
@@ -111,7 +128,6 @@ namespace CollisionGame
                     break;
             }
         }
-
 
         // skicka position till world där vi har en "draw"/"place" funktion som ritar ut 
 

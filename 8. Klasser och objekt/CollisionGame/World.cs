@@ -76,7 +76,6 @@ namespace CollisionGame
 
                                 if (world[xClamp, yClamp] == object2)
                                 {
-                                    Console.WriteLine("Collision!!");
                                     collision = true;
                                 }
                                 xSearch++;
@@ -145,7 +144,7 @@ namespace CollisionGame
 
                         if (world[xClamp, yClamp] == object2)
                         {
-                            Console.WriteLine("Collision!!");
+                           // Console.WriteLine("Collision!!");
                             collision = true;
                         }
                     }
@@ -158,6 +157,8 @@ namespace CollisionGame
 
         public void Print()
         {
+            string render = "";
+
             Console.SetCursorPosition(0, 0);
             // För att optimisera lägg till allt i chararray och sen skriv ut. 
             for (int y = 0; y < world.GetLength(1); y++)
@@ -167,17 +168,32 @@ namespace CollisionGame
                     // Ifall tom skriv ut mellanrum annars skriv ut vad som finns på den platsen
                     if (world[x,y] == null)
                     {
-                        Console.Write(" ");
+                        render = render + " ";
+                       // Console.Write(" ");
                     }
                     else
                     {
-                        Console.Write(world[x,y]);
+                        render = render + world[x, y];
+                        //Console.Write(world[x,y]);
                     }
                 }
-                Console.WriteLine();
+                render = render + "\n";
+                // Console.WriteLine();
             }
+            Console.WriteLine(render);
+            render = "";
 
             // Clears array
+            for (int y = 0; y < world.GetLength(1); y++)
+            {
+                for (int x = 0; x < world.GetLength(0); x++)
+                {
+                    world[x, y] = null;
+                }
+            }
+        }
+        public void Clear()
+        {
             for (int y = 0; y < world.GetLength(1); y++)
             {
                 for (int x = 0; x < world.GetLength(0); x++)

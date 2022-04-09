@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\Programmering 1\\8. Klasser och objekt\\klassövning\\klassövning.csproj": {}
+    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj": {}
   },
   "projects": {
-    "D:\\Code\\Programmering 1\\8. Klasser och objekt\\klassövning\\klassövning.csproj": {
+    "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Programmering 1\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
+        "projectUniqueName": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
         "projectName": "klassövning",
-        "projectPath": "D:\\Code\\Programmering 1\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
-        "packagesPath": "C:\\Users\\Kasper\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Programmering 1\\8. Klasser och objekt\\klassövning\\obj\\",
+        "projectPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\klassövning.csproj",
+        "packagesPath": "C:\\Users\\Kasper Larsson\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kasper Larsson\\Documents\\GitHub\\solutions\\8. Klasser och objekt\\klassövning\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kasper\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Kasper Larsson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
