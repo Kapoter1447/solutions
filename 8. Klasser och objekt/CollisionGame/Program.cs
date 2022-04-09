@@ -31,6 +31,15 @@ namespace CollisionGame
                 {"/", " ", "\\", " "}
             };
 
+            string[,] tamagotchi = new string[4, 4]
+{
+                {" ", "O", " ", " "},
+                {"\\", "|", "/", " "},
+                {" ", "|", " ", " ", },
+                {"/", " ", "\\", " "}
+};
+
+
             string[,] groundArray = new string[1, 20]
             {
                 {"g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g"},
@@ -64,7 +73,6 @@ namespace CollisionGame
                 if (Console.KeyAvailable == true)
                 {
                     var keyPress = Console.ReadKey().Key;
-                    bool jump = false;
                     int jumpHeight = 4;
 
                     // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
@@ -74,7 +82,8 @@ namespace CollisionGame
                         case ConsoleKey.W:
                             if (touchesGround)
                             {
-                                jump = true;
+                               player.Move("up", 5);
+
                             }
                             break;
 
@@ -93,22 +102,12 @@ namespace CollisionGame
                         default:
                             break;
                     }
-                    // Jump
-                    if (jump && i%4 == 0)
-                    {
-                        player.Move("up", 1);
-                        jumpHeight++;
-                    }
-
-                    
-
-
                 }
 
                 // Gravity
                 Console.WriteLine(touchesGround);
 
-                if (!touchesGround && i%20 == 0)
+                if (!touchesGround && i%15 == 0)
                 {
                     player.Move("down", 1);
                 }

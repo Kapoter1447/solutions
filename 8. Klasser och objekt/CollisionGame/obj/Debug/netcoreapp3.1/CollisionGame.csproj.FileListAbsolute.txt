@@ -12,3 +12,17 @@ C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\Collisi
 C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.dll
 C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.pdb
 C:\Users\Kasper Larsson\Documents\GitHub\solutions\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.genruntimeconfig.cache
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\bin\Debug\netcoreapp3.1\CollisionGame.exe
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\bin\Debug\netcoreapp3.1\CollisionGame.deps.json
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\bin\Debug\netcoreapp3.1\CollisionGame.runtimeconfig.json
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\bin\Debug\netcoreapp3.1\CollisionGame.runtimeconfig.dev.json
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\bin\Debug\netcoreapp3.1\CollisionGame.dll
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\bin\Debug\netcoreapp3.1\CollisionGame.pdb
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.csproj.AssemblyReference.cache
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.AssemblyInfoInputs.cache
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.AssemblyInfo.cs
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.csproj.CoreCompileInputs.cache
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.dll
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.pdb
+D:\Code\Programmering 1\8. Klasser och objekt\CollisionGame\obj\Debug\netcoreapp3.1\CollisionGame.genruntimeconfig.cache
