@@ -183,13 +183,11 @@ namespace CollisionGame
                 #endregion
 
                 // Print
-                // calculation.Print();
-                //MÅSTE TÖMMMA CALCULATION ARRAY FAST DEN INTE PRINTAS ANNARS BLIR DET FEL EFTERSOM SAKER STANNAS KVAR
-                // DOCK GÖR DETTA ATT ENEMY FÖRSVINNER NÄR JAG NUDDAR HONOM. 
-                // När nuddar försvinner marken under honom på något sätt
+                 calculation.Print();
+                // När nuddar försvinner marken under honom på något sätt --> skriver över "e". Gör så att han stannar ifall något är i närheten.
 
                 visual.Print();
-                calculation.Clear();
+                //calculation.Clear();
 
 
                 i++; 
