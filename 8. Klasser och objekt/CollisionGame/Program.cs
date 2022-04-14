@@ -49,7 +49,7 @@ namespace CollisionGame
                 {"g"},
             };
 
-            string hp = "tralalala";
+            int hp = 10;
 
             bool animationDelay = false;
 
@@ -106,7 +106,8 @@ namespace CollisionGame
                 }
 
                 // TEXT
-                visual.Place(hp, 1, 1);
+                string hpText = "HP: " + hp;
+                visual.PlaceText(hpText, 1, 1, "horizontal");
                 #endregion
 
                 #region enemy

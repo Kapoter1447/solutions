@@ -21,10 +21,43 @@ namespace CollisionGame
             return base.ToString();
         }
 
+        public void PlaceText(string item, int x, int y, string direction)
+        {
+            // World length -1 för att annars hamnar den utanför
+            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+            if (direction == "horizontal")
+            {
+                for (int i = 0; i < item.Length; i++)
+                {
+                    xClamp = Math.Clamp(xClamp + 1, 0, world.GetLength(0) - 1);
+
+                    world[xClamp, yClamp] = item[i].ToString();
+                }
+            }
+            else if (direction == "vertical")
+            {
+                for (int i = 0; i < item.Length; i++)
+                {
+                    yClamp = Math.Clamp(yClamp + 1, 0, world.GetLength(1) - 1);
+
+                    world[xClamp, yClamp] = item[i].ToString();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Fel 'direction' i text: " + item);
+            }
+            
+
+
+
+        }
+
         public void Place(string item, int x, int y)
         {
-            int xClamp = Math.Clamp(x, 0, world.GetLength(0)-1);
-            int yClamp = Math.Clamp(y, 0, world.GetLength(1)-1);
+            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
 
             // Ifall plats i array är upptagen, flytta föremål tillfälligt till höger.
             while (world[xClamp, yClamp] != null)
@@ -36,12 +69,10 @@ namespace CollisionGame
 
             world[xClamp, yClamp] = item;
         }
-
+        
         public void Place(string[,] itemArray, int x, int y)
         {
             // Placerar ut varje x och y koordinat i 'itemarray' till världskoordinatsystemet.
-
-            // OM DET REDAN FINNS NÅGOT PÅ PLATSEN... FLYTTA INTE (den här gången)?
 
             for (int a = 0; a < itemArray.GetLength(1); a++)
             {
@@ -59,6 +90,8 @@ namespace CollisionGame
                 }
             }
         }
+
+
 
         public bool CheckCollision(string object1, string object2)
         {
