@@ -13,6 +13,8 @@ namespace CollisionGame
         private string appr;
         private string[,] apprArray;
 
+        public int health = 1;
+
         // Konstruktor
         public Object(string appearance, int xStart, int yStart)
         {
@@ -60,6 +62,7 @@ namespace CollisionGame
                 return appr;
             }
         }
+
         public string[,] appearanceArray
         {
             get

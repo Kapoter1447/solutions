@@ -48,10 +48,6 @@ namespace CollisionGame
             {
                 Console.WriteLine("Fel 'direction' i text: " + item);
             }
-            
-
-
-
         }
 
         public void Place(string item, int x, int y)

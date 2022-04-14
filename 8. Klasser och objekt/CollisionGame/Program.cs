@@ -14,13 +14,15 @@ namespace CollisionGame
             World visual = new World(100, 10);
 
             Object player = new Object("p", 1, 1);
+            player.health = 10;
 
             Object enemy = new Object("e", 50, 1);
+            enemy.health = 5;
 
             Object ground = new Object("g", 1, 1);
 
             // Prakiskt om den kan ta en vanlig string och dela upp den i en array så slipper man det här:
-            string[,] playerFrame1 = new string[4, 4]
+            string[,] playerIdleFrame = new string[4, 4]
             {
                 {"", "O", "", ""},
                 {"/", "|", "\\", ""},
@@ -28,11 +30,11 @@ namespace CollisionGame
                 {"/", "", "\\", ""}
             };
 
-            string[,] playerFrame2 = new string[4, 4]
+            string[,] playerAttackFrame = new string[4, 4]
             {
-                {"", "O", "", ""},
-                {"", "|", "", ""},
-                {"/", "|", "\\", "", },
+                {"", "O", "", "+"},
+                {"/", "|", "/", ""},
+                {"", "|", "", "", },
                 {"/", "", "\\", ""}
             };
 
@@ -48,8 +50,6 @@ namespace CollisionGame
             {
                 {"g"},
             };
-
-            int hp = 10;
 
             bool animationDelay = false;
 
@@ -74,29 +74,11 @@ namespace CollisionGame
                 // FIENDE
                 calculation.Place(enemy.appearance, enemy.xPosition, enemy.yPosition);
                 visual.Place(enemyFrame1, enemy.xPosition-1, enemy.yPosition-3);
+                visual.Place(enemy.health.ToString(), enemy.xPosition+4, enemy.yPosition-5);
 
                 // SPELARE
                 calculation.Place(player.appearance, player.xPosition, player.yPosition);
-                if (i%200 == 0)
-                {
-                    if (animationDelay)
-                    {
-
-                        animationDelay = false;
-                    }
-                    else
-                    {
-                        animationDelay = true;
-                    }
-                }
-                if (animationDelay)
-                {
-                    visual.Place(playerFrame1, player.xPosition - 1, player.yPosition - 3);
-                }
-                else
-                {
-                    visual.Place(playerFrame2, player.xPosition - 1, player.yPosition - 3);
-                }
+                visual.Place(playerIdleFrame, player.xPosition - 1, player.yPosition - 3);
 
                 // MARK
                 for (int a = 0; a < 100; a++)
@@ -106,7 +88,7 @@ namespace CollisionGame
                 }
 
                 // TEXT
-                string hpText = "HP: " + hp;
+                string hpText = "HP: " + player.health;
                 visual.PlaceText(hpText, 1, 1, "horizontal");
                 #endregion
 
@@ -128,24 +110,21 @@ namespace CollisionGame
                     {
                         // Stanna
                     }
-                    else if (distance < 0)
+                    else if (distance > 0)
                     {
                         enemy.Move("left", 1);
                     }
-                    else if (distance > 0)
+                    else if (distance < 0)
                     {
-                        enemy.Move("right", 1);
+                        enemy.Move("left", 2);
                     }
                 }
 
                 // TAKE DAMAGE
-                if (calculation.CheckCollision(player.appearance, enemy.appearance, "up"))
+                if (calculation.CheckCollision(enemy.appearance, player.appearance, "up"))
                 {
-                    Console.WriteLine("Blir hoppad på");
-                    // Ifall blir nuggat av något ovanifrån, flytta ner under marken.
-                    enemy.Move("down", 3);
+                    enemy.Move("right", 40);
                 }
-
 
                 #endregion
 
@@ -180,25 +159,45 @@ namespace CollisionGame
                             player.Move("right", 2);
                             break;
 
+
+                        case ConsoleKey.Spacebar:
+                            playerAttack(player);
+                            break;
+
                         default:
                             break;
                     }
                 }
 
-                // Gravity
+                // GRAVITY
                 if (!pTouchesGround && renderReduce)
                 {
                     player.Move("down", 1);
                 }
+
+                // DAMAGE
+                bool touchesEnemyLeft = calculation.CheckCollision(player.appearance, enemy.appearance, "right");
+
+                if (touchesEnemyLeft && renderReduce)
+                {
+                    player.health = player.health - 1;
+                }
+
+
                 #endregion
 
                 // PRINT
-                // calculation.Print();
+                //calculation.Print();
                 visual.Print();
                 calculation.Clear();
 
                 i++; 
             }
+        }
+
+        static void playerAttack(Object player)
+        {
+            
         }
 
         static void battle()
