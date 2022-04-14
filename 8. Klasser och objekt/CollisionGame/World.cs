@@ -26,13 +26,22 @@ namespace CollisionGame
             int xClamp = Math.Clamp(x, 0, world.GetLength(0)-1);
             int yClamp = Math.Clamp(y, 0, world.GetLength(1)-1);
 
+            // Ifall plats i array är upptagen, flytta föremål tillfälligt till höger.
+            while (world[xClamp, yClamp] != null)
+            {
+                xClamp++;
+            }
+            // Clampar igen för att undvika att värdet hamnar utanför array
+            xClamp = Math.Clamp(xClamp, 0, world.GetLength(0) - 1);
+
             world[xClamp, yClamp] = item;
-            // Gör så att man inte kan sätta utanför världen
         }
 
         public void Place(string[,] itemArray, int x, int y)
         {
             // Placerar ut varje x och y koordinat i 'itemarray' till världskoordinatsystemet.
+
+            // OM DET REDAN FINNS NÅGOT PÅ PLATSEN... FLYTTA INTE (den här gången)?
 
             for (int a = 0; a < itemArray.GetLength(1); a++)
             {
@@ -144,7 +153,6 @@ namespace CollisionGame
 
                         if (world[xClamp, yClamp] == object2)
                         {
-                           // Console.WriteLine("Collision!!");
                             collision = true;
                         }
                     }
@@ -174,7 +182,7 @@ namespace CollisionGame
                     else
                     {
                         render = render + world[x, y];
-                        //Console.Write(world[x,y]);
+                        //Console.Write(aworld[x,y]);
                     }
                 }
                 render = render + "\n";

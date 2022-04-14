@@ -36,23 +36,20 @@ namespace CollisionGame
                 {"/", " ", "\\", " "}
             };
 
-            string[,] enemyFrame1 = new string[4, 4]
+            string[,] enemyFrame1 = new string[4, 12]
             {
-                {" ", "¤", " ", " "},
-                {"/", "|", "\\", " "},
-                {" ", "|", " ", " ", },
-                {"/", " ", "\\", " "}
+                {" ", " ", " ", "_","D", "D", "_", "_", " ", " "," "," ",},
+                {" ", " ", "/", "O","O", " ", " ", " ", " ", "\\","_","_",},
+                {"o", "_", "_", "_","_", "_", "_", "_", "/", " "," "," ",},
+                {" ", "I", " ", "I"," ", "I", " ", "I", " ", " "," "," ",}
             };
 
-            string[,] groundArray = new string[1, 20]
-            {
-                {"g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g", "g"},
-
-            };
             string[,] groundArray1 = new string[1, 1]
             {
                 {"g"},
             };
+
+            string hp = "tralalala";
 
             bool animationDelay = false;
 
@@ -74,9 +71,11 @@ namespace CollisionGame
                 }
 
                 #region place
+                // FIENDE
                 calculation.Place(enemy.appearance, enemy.xPosition, enemy.yPosition);
                 visual.Place(enemyFrame1, enemy.xPosition-1, enemy.yPosition-3);
 
+                // SPELARE
                 calculation.Place(player.appearance, player.xPosition, player.yPosition);
                 if (i%200 == 0)
                 {
@@ -99,46 +98,57 @@ namespace CollisionGame
                     visual.Place(playerFrame2, player.xPosition - 1, player.yPosition - 3);
                 }
 
-
-
+                // MARK
                 for (int a = 0; a < 100; a++)
                 {
                     calculation.Place(groundArray1, a, 10);
                     visual.Place("=", a, 10);
-
                 }
+
+                // TEXT
+                visual.Place(hp, 1, 1);
                 #endregion
 
                 #region enemy
-
-                // Gravity
+                // GRAVITY
                 bool eTouchesGround = calculation.CheckCollision(enemy.appearance, ground.appearance, "down");
-                Console.WriteLine(enemy.xPosition + "--" + enemy.yPosition);
-                Console.WriteLine(eTouchesGround);
-
                 if (!eTouchesGround && renderReduce)
                 {
                     enemy.Move("down", 1);
                 }
 
-                // Chase
-                bool playerIsRight = player.xPosition < enemy.xPosition;
-                if (playerIsRight && renderReduce)
+                // CHASE
+                // Ifall negativ är enemy till höger, positiv är till vänster
+                int distance = player.xPosition - enemy.xPosition;
+
+                if (renderReduce)
                 {
-                    Console.WriteLine("right");
-                    enemy.Move("left", 1);
+                    if (calculation.CheckCollision(player.appearance, enemy.appearance))
+                    {
+                        // Stanna
+                    }
+                    else if (distance < 0)
+                    {
+                        enemy.Move("left", 1);
+                    }
+                    else if (distance > 0)
+                    {
+                        enemy.Move("right", 1);
+                    }
                 }
-                else if (renderReduce)
+
+                // TAKE DAMAGE
+                if (calculation.CheckCollision(player.appearance, enemy.appearance, "up"))
                 {
-                    Console.WriteLine("left");
-                    enemy.Move("right", 1);
+                    Console.WriteLine("Blir hoppad på");
+                    // Ifall blir nuggat av något ovanifrån, flytta ner under marken.
+                    enemy.Move("down", 3);
                 }
+
 
                 #endregion
 
                 #region player
-
-
                 // Movement
                 bool pTouchesGround = calculation.CheckCollision(player.appearance, ground.appearance, "down");
 
@@ -160,11 +170,11 @@ namespace CollisionGame
                         case ConsoleKey.A:
                             player.Move("left", 2);
                             break;
-
+                            /*
                         case ConsoleKey.S:
                             player.Move("down", 1);
                             break;
-
+                            */
                         case ConsoleKey.D:
                             player.Move("right", 2);
                             break;
@@ -175,20 +185,16 @@ namespace CollisionGame
                 }
 
                 // Gravity
-                Console.WriteLine("temp:" + pTouchesGround + "--" + renderReduce);
                 if (!pTouchesGround && renderReduce)
                 {
                     player.Move("down", 1);
                 }
                 #endregion
 
-                // Print
-                 calculation.Print();
-                // När nuddar försvinner marken under honom på något sätt --> skriver över "e". Gör så att han stannar ifall något är i närheten.
-
+                // PRINT
+                // calculation.Print();
                 visual.Print();
-                //calculation.Clear();
-
+                calculation.Clear();
 
                 i++; 
             }
