@@ -51,7 +51,11 @@ namespace CollisionGame
                     int xClamp = Math.Clamp(x+a, 0, world.GetLength(0) - 1);
                     int yClamp = Math.Clamp(y+b, 0, world.GetLength(1) - 1);
 
-                    world[xClamp,yClamp] = itemArray[b, a];
+                    // Ifall tecken är tomt så ska det inte bli massa mellanrum där som täcker annat
+                    if (itemArray[b, a] != "")
+                    {
+                        world[xClamp, yClamp] = itemArray[b, a];
+                    }
                 }
             }
         }
