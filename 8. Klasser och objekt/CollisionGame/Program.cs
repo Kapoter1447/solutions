@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace CollisionGame
@@ -17,7 +18,9 @@ namespace CollisionGame
             player.health = 10;
 
             // Göra lista sen så att man kan spawna hur som helst utan att bry sig om längden
-            Object[] enemies = new Object[10];
+            //Object[] enemies = new Object[10];
+
+            List<Object> enemies = new List<Object>();
 
             Object enemy = new Object("e", 50, 1);
             enemy.health = 5;
@@ -78,7 +81,7 @@ namespace CollisionGame
                 #region place
                 // FIENDE
                 // SPAWN
-                for (int e = 0; e < enemies.Length; e++)
+                for (int e = 0; e < enemies.Count; e++)
                 {
                     enemies[e] = new Object("e", 100, 1);
                 }
@@ -90,7 +93,7 @@ namespace CollisionGame
                 visual.Place(enemy.health.ToString(), enemy.xPosition+4, enemy.yPosition-5);
                 
 
-                for (int e = 0; e < enemies.Length; e++)
+                for (int e = 0; e < enemies.Count; e++)
                 {
                     Console.WriteLine(enemies[e].appearance);
                     calculation.Place(enemies[e].appearance, enemies[e].xPosition, enemies[e].yPosition);
@@ -117,13 +120,6 @@ namespace CollisionGame
                 #endregion
 
                 #region enemy
-                // SPAWN
-                for (int e = 0; e < 10; e++)
-                {
-                    enemies[e] = new Object("e", 70, 1);
-                }
-                // sen en loop för att placea alla enemies
-
                 // GRAVITY
                 bool eTouchesGround = calculation.CheckCollision(enemy.appearance, ground.appearance, "down");
                 if (!eTouchesGround && renderReduce)
@@ -234,7 +230,7 @@ namespace CollisionGame
 
         }
 
-        static void battle()
+        static void battle(int enemies)
         {
 
         }
