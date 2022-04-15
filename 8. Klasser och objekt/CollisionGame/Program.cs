@@ -65,6 +65,8 @@ namespace CollisionGame
 
             #endregion
 
+            battle(3);
+
             while (true)
             {
                 #region renderReduce
@@ -230,9 +232,58 @@ namespace CollisionGame
 
         }
 
-        static void battle(int enemies)
+        static void battle(int enemieCount)
         {
+            World calculation = new World(100,10);
+            World visual = new World(100, 10);
 
+            List<Object> enemies = new List<Object>();
+
+            bool renderReduce = false;
+            int renderSpeed = 50;
+
+            int placedEnemies = 0;
+            int i = 0;
+
+            while (true)
+            {
+                #region renderReduce
+                if (i % renderSpeed == 0)
+                {
+                    renderReduce = true;
+                }
+                else
+                {
+                    renderReduce = false;
+                }
+                #endregion
+
+                #region place
+                // FIENDE
+                if (renderReduce && placedEnemies<enemieCount)
+                {
+                    enemies.Add(new Object("e", 90, 1)); // Skapar en ny fiende
+
+                    placedEnemies++;
+                }
+
+                for (int a = 0; a < enemies.Count; a++)
+                {
+                    int eXPos = enemies[a].xPosition;
+                    int eYPos = enemies[a].yPosition;
+                    calculation.Place(enemies[a].appearance, eXPos, eYPos);
+                }
+
+
+                #endregion
+
+
+                calculation.Print();
+                
+                i++;
+            }
+            Console.WriteLine("\nIt's over...");
+            Console.ReadLine();
         }
 
 
