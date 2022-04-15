@@ -16,6 +16,7 @@ namespace CollisionGame
             Object player = new Object("p", 1, 1);
             player.health = 10;
 
+            // Göra lista sen så att man kan spawna hur som helst utan att bry sig om längden
             Object[] enemies = new Object[10];
 
             Object enemy = new Object("e", 50, 1);
@@ -77,9 +78,9 @@ namespace CollisionGame
                 #region place
                 // FIENDE
                 // SPAWN
-                for (int e = 0; e < 1; e++)
+                for (int e = 0; e < enemies.Length; e++)
                 {
-                    enemies[e] = new Object("e", 70, 1);
+                    enemies[e] = new Object("e", 100, 1);
                 }
                 // sen en loop för att placea alla enemies
 
@@ -87,13 +88,17 @@ namespace CollisionGame
                 calculation.Place(enemy.appearance, enemy.xPosition, enemy.yPosition);
                 visual.Place(enemyFrame1, enemy.xPosition-1, enemy.yPosition-3);
                 visual.Place(enemy.health.ToString(), enemy.xPosition+4, enemy.yPosition-5);
+                
 
-                /*
                 for (int e = 0; e < enemies.Length; e++)
                 {
                     Console.WriteLine(enemies[e].appearance);
+                    calculation.Place(enemies[e].appearance, enemies[e].xPosition, enemies[e].yPosition);
                 }
-                */
+                // På något sätt ge en bokstav i calculation 
+                // Sätta ut fiender on command
+
+                spawnEnemy();
 
                 // SPELARE
                 calculation.Place(player.appearance, player.xPosition, player.yPosition);
@@ -127,8 +132,7 @@ namespace CollisionGame
                 }
 
                 // CHASE
-                // Ifall negativ är enemy till höger, positiv är till vänster
-                int distance = player.xPosition - enemy.xPosition;
+                int distance = player.xPosition - enemy.xPosition; // Ifall negativ är enemy till höger, positiv är till vänster
 
                 if (renderReduce)
                 {
@@ -174,7 +178,7 @@ namespace CollisionGame
                             break;
 
                         case ConsoleKey.A:
-                            player.Move("left", 2);
+                            player.Move("left", 1);
                             break;
                             /*
                         case ConsoleKey.S:
@@ -182,7 +186,7 @@ namespace CollisionGame
                             break;
                             */
                         case ConsoleKey.D:
-                            player.Move("right", 2);
+                            player.Move("right", 1);
                             break;
 
                         case ConsoleKey.Spacebar:
@@ -212,7 +216,7 @@ namespace CollisionGame
                 #endregion
 
                 // PRINT
-                //calculation.Print();
+                calculation.Print();
                 visual.Print();
                 calculation.Clear();
 
@@ -223,6 +227,11 @@ namespace CollisionGame
         static void playerAttack(Object player)
         {
             
+        }
+
+        static void spawnEnemy()
+        {
+
         }
 
         static void battle()

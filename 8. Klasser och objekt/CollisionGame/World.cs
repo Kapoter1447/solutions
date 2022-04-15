@@ -55,13 +55,19 @@ namespace CollisionGame
             int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
             int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
 
-            // Ifall plats i array är upptagen, flytta föremål tillfälligt till höger.
-            while (world[xClamp, yClamp] != null)
+            int xBefore = xClamp;
+
+            while (world[xClamp, yClamp] != null) // Ifall plats i array är upptagen, flytta föremål tillfälligt till höger.
             {
+                xBefore = xClamp;
                 xClamp++;
+                xClamp = Math.Clamp(xClamp, 0, world.GetLength(0) - 1); // Clampar igen för att undvika att värdet hamnar utanför array
+                
+                if (xClamp == xBefore) // Ifall x värdet är samma som förut har denna nått en kant och skrivs därför över
+                {
+                    break;
+                }
             }
-            // Clampar igen för att undvika att värdet hamnar utanför array
-            xClamp = Math.Clamp(xClamp, 0, world.GetLength(0) - 1);
 
             world[xClamp, yClamp] = item;
         }
