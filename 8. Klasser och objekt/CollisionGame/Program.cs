@@ -16,6 +16,8 @@ namespace CollisionGame
             Object player = new Object("p", 1, 1);
             player.health = 10;
 
+            Object[] enemies = new Object[10];
+
             Object enemy = new Object("e", 50, 1);
             enemy.health = 5;
 
@@ -61,6 +63,7 @@ namespace CollisionGame
 
             while (true)
             {
+                #region renderReduce
                 if (i%renderSpeed == 0)
                 {
                     renderReduce = true;
@@ -69,12 +72,28 @@ namespace CollisionGame
                 {
                     renderReduce = false;
                 }
+                #endregion
 
                 #region place
                 // FIENDE
+                // SPAWN
+                for (int e = 0; e < 1; e++)
+                {
+                    enemies[e] = new Object("e", 70, 1);
+                }
+                // sen en loop för att placea alla enemies
+
+                
                 calculation.Place(enemy.appearance, enemy.xPosition, enemy.yPosition);
                 visual.Place(enemyFrame1, enemy.xPosition-1, enemy.yPosition-3);
                 visual.Place(enemy.health.ToString(), enemy.xPosition+4, enemy.yPosition-5);
+
+                /*
+                for (int e = 0; e < enemies.Length; e++)
+                {
+                    Console.WriteLine(enemies[e].appearance);
+                }
+                */
 
                 // SPELARE
                 calculation.Place(player.appearance, player.xPosition, player.yPosition);
@@ -93,6 +112,13 @@ namespace CollisionGame
                 #endregion
 
                 #region enemy
+                // SPAWN
+                for (int e = 0; e < 10; e++)
+                {
+                    enemies[e] = new Object("e", 70, 1);
+                }
+                // sen en loop för att placea alla enemies
+
                 // GRAVITY
                 bool eTouchesGround = calculation.CheckCollision(enemy.appearance, ground.appearance, "down");
                 if (!eTouchesGround && renderReduce)
@@ -158,7 +184,6 @@ namespace CollisionGame
                         case ConsoleKey.D:
                             player.Move("right", 2);
                             break;
-
 
                         case ConsoleKey.Spacebar:
                             playerAttack(player);
