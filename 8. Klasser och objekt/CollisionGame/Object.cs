@@ -10,26 +10,25 @@ namespace CollisionGame
         private int xPos;
         private int yPos;
 
-        private string appr;
-        private string[,] apprArray;
+        private string identf;
+
+        public List<string[,]> frames = new List<string[,]>();
 
         public int health = 1;
 
         // Konstruktor
-        public Object(string appearance, int xStart, int yStart)
+        public Object(string index, int xStart, int yStart)
         {
             xPos = xStart;
             yPos = yStart;
-            appr = appearance;
+            identf = index;
         }
 
         public Object(string[,] appearance, int xStart, int yStart)
         {
             xPos = xStart;
             yPos = yStart;
-            apprArray = appearance;
         }
-
 
         public int xPosition
         {
@@ -55,26 +54,18 @@ namespace CollisionGame
             }
         }
 
-        public string appearance
+        public string identifier
         {
             get
             {
-                return appr;
-            }
-        }
-
-        public string[,] appearanceArray
-        {
-            get
-            {
-                return apprArray;
+                return identf;
             }
         }
 
         // Metoder
         public override string ToString()
         {
-            return appearance;
+            return identifier;
         }
 
         public void Move(int distance)

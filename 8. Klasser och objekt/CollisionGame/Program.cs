@@ -8,6 +8,10 @@ namespace CollisionGame
     {
         static void Main(string[] args)
         {
+            battle(5);
+
+            #region gammal kod
+            /*
             #region initialisering och deklarering
             Console.CursorVisible = false;
 
@@ -57,7 +61,6 @@ namespace CollisionGame
                 {"g"},
             };
 
-            bool animationDelay = false;
 
             bool renderReduce = false;
             int renderSpeed = 50;
@@ -65,10 +68,19 @@ namespace CollisionGame
 
             #endregion
 
+
+
+
             battle(3);
 
+            
+
+
+
+            // waste kod atm
             while (true)
             {
+                
                 #region renderReduce
                 if (i%renderSpeed == 0)
                 {
@@ -90,23 +102,21 @@ namespace CollisionGame
                 // sen en loop för att placea alla enemies
 
                 
-                calculation.Place(enemy.appearance, enemy.xPosition, enemy.yPosition);
+                calculation.Place(enemy.identifier, enemy.xPosition, enemy.yPosition);
                 visual.Place(enemyFrame1, enemy.xPosition-1, enemy.yPosition-3);
                 visual.Place(enemy.health.ToString(), enemy.xPosition+4, enemy.yPosition-5);
                 
 
                 for (int e = 0; e < enemies.Count; e++)
                 {
-                    Console.WriteLine(enemies[e].appearance);
-                    calculation.Place(enemies[e].appearance, enemies[e].xPosition, enemies[e].yPosition);
+                    Console.WriteLine(enemies[e].identifier);
+                    calculation.Place(enemies[e].identifier, enemies[e].xPosition, enemies[e].yPosition);
                 }
                 // På något sätt ge en bokstav i calculation 
                 // Sätta ut fiender on command
 
-                spawnEnemy();
-
                 // SPELARE
-                calculation.Place(player.appearance, player.xPosition, player.yPosition);
+                calculation.Place(player.identifier, player.xPosition, player.yPosition);
                 visual.Place(playerIdleFrame, player.xPosition - 1, player.yPosition - 3);
 
                 // MARK
@@ -123,7 +133,7 @@ namespace CollisionGame
 
                 #region enemy
                 // GRAVITY
-                bool eTouchesGround = calculation.CheckCollision(enemy.appearance, ground.appearance, "down");
+                bool eTouchesGround = calculation.CheckCollision(enemy.identifier, ground.identifier, "down");
                 if (!eTouchesGround && renderReduce)
                 {
                     enemy.Move("down", 1);
@@ -134,7 +144,7 @@ namespace CollisionGame
 
                 if (renderReduce)
                 {
-                    if (calculation.CheckCollision(player.appearance, enemy.appearance))
+                    if (calculation.CheckCollision(player.identifier, enemy.identifier))
                     {
                         // Stanna
                     }
@@ -149,7 +159,7 @@ namespace CollisionGame
                 }
 
                 // TAKE DAMAGE
-                if (calculation.CheckCollision(enemy.appearance, player.appearance, "up"))
+                if (calculation.CheckCollision(enemy.identifier, player.identifier, "up"))
                 {
                     enemy.Move("right", 40);
                 }
@@ -158,7 +168,7 @@ namespace CollisionGame
 
                 #region player
                 // Movement
-                bool pTouchesGround = calculation.CheckCollision(player.appearance, ground.appearance, "down");
+                bool pTouchesGround = calculation.CheckCollision(player.identifier, ground.identifier, "down");
 
                 if (Console.KeyAvailable == true)
                 {
@@ -178,11 +188,11 @@ namespace CollisionGame
                         case ConsoleKey.A:
                             player.Move("left", 1);
                             break;
-                            /*
+                            
                         case ConsoleKey.S:
                             player.Move("down", 1);
                             break;
-                            */
+                            
                         case ConsoleKey.D:
                             player.Move("right", 1);
                             break;
@@ -203,14 +213,12 @@ namespace CollisionGame
                 }
 
                 // DAMAGE
-                bool touchesEnemyLeft = calculation.CheckCollision(player.appearance, enemy.appearance, "right");
+                bool touchesEnemyLeft = calculation.CheckCollision(player.identifier, enemy.identifier, "right");
 
                 if (touchesEnemyLeft && renderReduce)
                 {
                     player.health = player.health - 1;
                 }
-
-
                 #endregion
 
                 // PRINT
@@ -219,7 +227,10 @@ namespace CollisionGame
                 calculation.Clear();
 
                 i++; 
+
             }
+            */
+            #endregion
         }
 
         static void playerAttack(Object player)
@@ -234,6 +245,30 @@ namespace CollisionGame
 
         static void battle(int enemieCount)
         {
+            string[,] playerIdleFrame = new string[4, 4]
+            {
+                {"", "O", "", ""},
+                {"/", "|", "\\", ""},
+                {"", "|", "", "", },
+                {"/", "", "\\", ""}
+            };
+
+            string[,] playerAttackFrame = new string[4, 4]
+            {
+                {"", "O", "", "+"},
+                {"/", "|", "/", ""},
+                {"", "|", "", "", },
+                {"/", "", "\\", ""}
+            };
+
+            string[,] enemyIdleFrame = new string[4, 12]
+            {
+                {"", "", "", "_","D", "D", "_", "_", "", "","","",},
+                {"", "", "/", "O","O", " ", " ", " ", " ", "\\","_","_",},
+                {"o", "_", "_", "_","_", "_", "_", "_", "/", "/","","",},
+                {"", "I", "", "I","", "I", "", "I", "", "","","",}
+            };
+
             World calculation = new World(100,10);
             World visual = new World(100, 10);
 
@@ -241,8 +276,10 @@ namespace CollisionGame
 
             Object ground = new Object("g", 1, 1);
 
-            Object player = new Object("p", 1, 1);
-            player.health = 10;
+            Object player = new Object("p", 20, 7);
+            player.health = 100;
+            player.frames.Add(playerIdleFrame);
+            player.frames.Add(playerAttackFrame);
 
             bool renderReduce = false;
             int renderSpeed = 50;
@@ -264,72 +301,140 @@ namespace CollisionGame
                 #endregion
 
                 #region place
+                // SPELARE
+                calculation.Place(player.identifier, player.xPosition, player.yPosition);
+                visual.Place(player.frames[0], player.xPosition - 1, player.yPosition - 3);
+
+
                 // FIENDE
-                if (renderReduce && placedEnemies<enemieCount)
+                // Skapar fiende
+                if (i%1000 == 0 && placedEnemies<enemieCount)
                 {
-                    string enemyName = "e" + placedEnemies.ToString();
+                    string enemyName = "e" + placedEnemies.ToString(); // Har namnet 'e' + ett nummer för att de ska ha olika namn
                     enemies.Add(new Object(enemyName, 80, 1)); // Skapar en ny fiende
+                    enemies[placedEnemies].frames.Add(enemyIdleFrame);
 
                     placedEnemies++;
                 }
-
+                // Placerar fiende
                 for (int a = 0; a < enemies.Count; a++)
                 {
                     int eXPos = enemies[a].xPosition;
                     int eYPos = enemies[a].yPosition;
-                    calculation.Place(enemies[a].appearance, eXPos, eYPos);
+                    calculation.Place(enemies[a].identifier, eXPos, eYPos);
+                    visual.Place(enemies[a].frames[0], enemies[a].xPosition - 1, enemies[a].yPosition - 3);
+                    visual.Place(enemies[a].health.ToString(), enemies[a].xPosition + 4, enemies[a].yPosition - 5);
                 }
 
                 // MARK
                 for (int a = 0; a < 100; a++)
                 {
-                    calculation.Place(ground.appearance, a, 10);
+                    calculation.Place(ground.identifier, a, 10);
                     visual.Place("=", a, 10);
                 }
                 #endregion
 
                 #region enemy
                 // GRAVITY
-                bool eTouchesGround;
                 for (int a = 0; a < enemies.Count; a++)
                 {
-                    // funkar inte för alla enemies har samma appearance. måste använda något annat... kanske fiendes unika namn?
-                    eTouchesGround = calculation.CheckCollision(enemies[a].appearance, ground.appearance, "down");
+                    // funkar inte för alla enemies har samma identifier. måste använda något annat... kanske fiendes unika namn?
+                    bool eTouchesGround = calculation.CheckCollision(enemies[a].identifier, ground.identifier, "down");
                     Console.WriteLine(eTouchesGround);
                     if (!eTouchesGround && renderReduce)
                     {
                         enemies[a].Move("down", 1);
                     }
-                }
 
-                // CHASE
-                for (int a = 0; a < enemies.Count; a++)
-                {
+                    // CHASE
                     int distance = player.xPosition - enemies[a].xPosition; // Ifall negativ är enemy till höger, positiv är till vänster
 
                     if (renderReduce)
                     {
-                        if (calculation.CheckCollision(player.appearance, enemies[a].appearance))
+                        if (calculation.CheckCollision(player.identifier, enemies[a].identifier))
                         {
                             // Stanna
                         }
                         else if (distance > 0)
                         {
-                            enemies[a].Move("left", 1);
+                            enemies[a].Move("right", 1);
                         }
                         else if (distance < 0)
                         {
-                            enemies[a].Move("left", 2);
+                            enemies[a].Move("left", 1);
                         }
                     }
 
+                    // Knockback
+                    if (calculation.CheckCollision(enemies[a].identifier, player.identifier, "up"))
+                    {
+                        enemies[a].Move("right", 40);
+                    }
                 }
-
-
                 #endregion
 
-                calculation.Print();
-                
+                #region player
+                // Movement
+                bool pTouchesGround = calculation.CheckCollision(player.identifier, ground.identifier, "down");
+
+                if (Console.KeyAvailable == true)
+                {
+                    var keyPress = Console.ReadKey().Key;
+
+                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
+
+                    switch (keyPress)
+                    {
+                        case ConsoleKey.W:
+                            if (pTouchesGround)
+                            {
+                                player.Move("up", 5);
+                            }
+                            break;
+
+                        case ConsoleKey.A:
+                            player.Move("left", 1);
+                            break;
+                        /*
+                    case ConsoleKey.S:
+                        player.Move("down", 1);
+                        break;
+                        */
+                        case ConsoleKey.D:
+                            player.Move("right", 1);
+                            break;
+
+                        case ConsoleKey.Spacebar:
+                            playerAttack(player);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                // GRAVITY
+                if (!pTouchesGround && renderReduce)
+                {
+                    player.Move("down", 1);
+                }
+
+                // DAMAGE
+                for (int a = 0; a < enemies.Count; a++)
+                {
+                    bool touchesEnemyLeft = calculation.CheckCollision(player.identifier, enemies[a].identifier, "right");
+
+                    if (touchesEnemyLeft && renderReduce)
+                    {
+                        player.health = player.health - 1;
+                    }
+                }
+                #endregion
+
+             //   calculation.Print();
+                visual.Print();
+                calculation.Clear();
+
                 i++;
             }
             Console.WriteLine("\nIt's over...");

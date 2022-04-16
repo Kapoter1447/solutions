@@ -93,8 +93,6 @@ namespace CollisionGame
             }
         }
 
-
-
         public bool CheckCollision(string object1, string object2)
         {
             bool collision = false;
@@ -137,7 +135,7 @@ namespace CollisionGame
             return collision;
 
         }
-
+        
         public bool CheckCollision(string object1, string object2, string direction)
         {
             // direction "up" would give modifier a(y) = -1 och b(x) = 0.
@@ -239,6 +237,7 @@ namespace CollisionGame
                 }
             }
         }
+        
         public void Clear()
         {
             for (int y = 0; y < world.GetLength(1); y++)
