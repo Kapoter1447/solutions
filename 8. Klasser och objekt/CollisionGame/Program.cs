@@ -239,6 +239,11 @@ namespace CollisionGame
 
             List<Object> enemies = new List<Object>();
 
+            Object ground = new Object("g", 1, 1);
+
+            Object player = new Object("p", 1, 1);
+            player.health = 10;
+
             bool renderReduce = false;
             int renderSpeed = 50;
 
@@ -262,7 +267,8 @@ namespace CollisionGame
                 // FIENDE
                 if (renderReduce && placedEnemies<enemieCount)
                 {
-                    enemies.Add(new Object("e", 90, 1)); // Skapar en ny fiende
+                    string enemyName = "e" + placedEnemies.ToString();
+                    enemies.Add(new Object(enemyName, 80, 1)); // Skapar en ny fiende
 
                     placedEnemies++;
                 }
@@ -274,9 +280,53 @@ namespace CollisionGame
                     calculation.Place(enemies[a].appearance, eXPos, eYPos);
                 }
 
-
+                // MARK
+                for (int a = 0; a < 100; a++)
+                {
+                    calculation.Place(ground.appearance, a, 10);
+                    visual.Place("=", a, 10);
+                }
                 #endregion
 
+                #region enemy
+                // GRAVITY
+                bool eTouchesGround;
+                for (int a = 0; a < enemies.Count; a++)
+                {
+                    // funkar inte för alla enemies har samma appearance. måste använda något annat... kanske fiendes unika namn?
+                    eTouchesGround = calculation.CheckCollision(enemies[a].appearance, ground.appearance, "down");
+                    Console.WriteLine(eTouchesGround);
+                    if (!eTouchesGround && renderReduce)
+                    {
+                        enemies[a].Move("down", 1);
+                    }
+                }
+
+                // CHASE
+                for (int a = 0; a < enemies.Count; a++)
+                {
+                    int distance = player.xPosition - enemies[a].xPosition; // Ifall negativ är enemy till höger, positiv är till vänster
+
+                    if (renderReduce)
+                    {
+                        if (calculation.CheckCollision(player.appearance, enemies[a].appearance))
+                        {
+                            // Stanna
+                        }
+                        else if (distance > 0)
+                        {
+                            enemies[a].Move("left", 1);
+                        }
+                        else if (distance < 0)
+                        {
+                            enemies[a].Move("left", 2);
+                        }
+                    }
+
+                }
+
+
+                #endregion
 
                 calculation.Print();
                 
