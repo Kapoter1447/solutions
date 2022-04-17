@@ -54,7 +54,7 @@ namespace CollisionGame
             }
         }
 
-        public string identifier
+        public string id
         {
             get
             {
@@ -65,7 +65,7 @@ namespace CollisionGame
         // Metoder
         public override string ToString()
         {
-            return identifier;
+            return id;
         }
 
         public void Move(int distance)
