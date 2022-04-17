@@ -242,13 +242,13 @@ namespace CollisionGame
             {
                 {"", "O", "", ""},
                 {"/", "|", "\\", ""},
-                {"", "|", "", "", },
+                {"", "|", "", "\\", },
                 {"/", "", "\\", ""}
             };
 
             string[,] playerAttackFrame = new string[4, 4]
             {
-                {"", "O", "", "+"},
+                {"", "O", "", "/"},
                 {"/", "|", "/", ""},
                 {"", "|", "", "", },
                 {"/", "", "\\", ""}
@@ -305,7 +305,6 @@ namespace CollisionGame
             Object player = new Object("p", 20, 7);
             player.health = 100;
             player.frames.Add(playerIdleFrame);
-            player.frames.Add(playerAttackFrame);
 
             Object sword = new Object("s", 1, 1);
 
@@ -316,7 +315,6 @@ namespace CollisionGame
             int renderSpeed = 50;
 
             int placedEnemies = 0;
-            int deadEnemies = 0;
 
             int i = 0;
             #endregion
@@ -335,18 +333,15 @@ namespace CollisionGame
                 #endregion
 
                 #region place
-                // SPELARE
-                calculation.Place(player.id, player.xPosition, player.yPosition);
-                visual.Place(player.frames[0], player.xPosition - 1, player.yPosition - 3);
-
-                // CAT/FOOD
+                // ÖVRIGT
                 /*
                 visual.Place(catShort, 20, 5);
                 visual.Place(bowl, 35, 1);
                 */
                 visual.Place(catIdleFrame, 0, 4);
+                visual.PlaceText("Undvik skada genom att först attackera och sen hoppa på råttornas näsor när de kommer för nära!", 0, 0, "horizontal");
 
-                // FIENDE --- När dödar en fiende så ändras övriga fienders plats i dictionaryn vilket skapar problem.
+                // FIENDE
                 // Skapar fiende
                 if (i%1000 == 0 && placedEnemies<enemieCount)
                 {
@@ -355,7 +350,7 @@ namespace CollisionGame
 
                     // Lägger til standarvärden för varje enemy
                     enemies[placedEnemies].frames.Add(enemyIdleFrame);
-                    enemies[placedEnemies].health = 2;
+                    enemies[placedEnemies].health = placedEnemies+1;
 
                     placedEnemies++;
                 }
@@ -364,9 +359,13 @@ namespace CollisionGame
                 {
                     int eXPos = enemies[a].xPosition;
                     int eYPos = enemies[a].yPosition;
-                    calculation.Place(enemies[a].id, eXPos, eYPos);
-                    visual.Place(enemies[a].frames[0], enemies[a].xPosition - 1, enemies[a].yPosition - 3);
-                    visual.Place(enemies[a].health.ToString(), enemies[a].xPosition + 4, enemies[a].yPosition - 5);
+
+                    if (enemies[a].health > 0)
+                    {
+                        calculation.Place(enemies[a].id, eXPos, eYPos);
+                        visual.Place(enemies[a].health.ToString(), enemies[a].xPosition + 4, enemies[a].yPosition - 5);
+                    }
+                    visual.Place(enemies[a].frames[0], enemies[a].xPosition, enemies[a].yPosition - 3);
                 }
 
                 // MARK
@@ -376,22 +375,35 @@ namespace CollisionGame
                     visual.Place("=", a, 10);
                 }
 
+                // SPELARE
+                calculation.Place(player.id, player.xPosition, player.yPosition);
+                visual.Place(player.frames[0], player.xPosition - 1, player.yPosition - 3);
+                visual.PlaceText(player.health.ToString(), player.xPosition-1, player.yPosition-5, "horizontal");
+
                 // ATTACKS
                 // Sword - När attack är använd sparas den nuvarande frame:en och en bool som säger att svärdet används sätt till true. Genom att ta skillnaden på antalet frames som gått överlag och de som gått när attacken aktiverades; fås hur många frames som appserat. Då kan jag göra så att svärdet är aktivit i ett visst antal frames. Sen sätts boolen till false.
-                // Placerad efter kollision
                 if (swordUsed)
                 {
                     int framesPassed = i - pastI;
 
-                    if (framesPassed < 200)
+                    if (framesPassed < 100)
                     {
                         calculation.Place(sword.id, player.xPosition + 1, player.yPosition - 1);
                         calculation.Place(sword.id, player.xPosition + 2, player.yPosition - 1);
+                        calculation.Place(sword.id, player.xPosition + 3, player.yPosition - 1);
+
+                        player.frames.RemoveAt(0);
+                        player.frames.Add(playerAttackFrame);
                     }
                     else
                     {
                         swordUsed = false;
                     }
+                }
+                else
+                {
+                    player.frames.RemoveAt(0);
+                    player.frames.Add(playerIdleFrame);
                 }
                 #endregion
 
@@ -419,7 +431,7 @@ namespace CollisionGame
                             }
                             else if (distance > 0)
                             {
-                                enemies[a].Move("right", 1);
+                                enemies[a].Move("left", 1);
                             }
                             else if (distance < 0)
                             {
@@ -434,11 +446,9 @@ namespace CollisionGame
                         }
 
                         // Take damage
-                        if (calculation.CheckCollision(enemies[a].id, sword.id))
+                        if (calculation.CheckCollision(enemies[a].id, sword.id) && renderReduce)
                         {
                             enemies[a].health--;
-                            enemies[a].Move("right", 1);
-                            deadEnemies++;
                         }
                     }
                     else // Ifall död ändra utseende till gravsten
@@ -446,9 +456,6 @@ namespace CollisionGame
                         enemies[a].frames.Remove(enemyIdleFrame);
                         enemies[a].frames.Add(tombStone);
                     }
-
-
-
                 }
                 #endregion
 
@@ -479,10 +486,9 @@ namespace CollisionGame
                             player.Move("right", 1);
                             break;
 
-                        case ConsoleKey.Spacebar:
+                        case ConsoleKey.P:
                             swordUsed = true;
                             pastI = i;
-
                             break;
 
                         default:
@@ -500,7 +506,7 @@ namespace CollisionGame
                 // DAMAGE
                 for (int a = 0; a < enemies.Count; a++)
                 {
-                    bool touchesEnemyLeft = calculation.CheckCollision(player.id, enemies[a].id, "right");
+                    bool touchesEnemyLeft = calculation.CheckCollision(player.id, enemies[a].id, "right") && calculation.CheckCollision(player.id, enemies[a].id, "left");
 
                     if (touchesEnemyLeft && renderReduce)
                     {
