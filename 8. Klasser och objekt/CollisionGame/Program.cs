@@ -8,6 +8,8 @@ namespace CollisionGame
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+
             battle(5);
 
             #region gammal kod
@@ -269,6 +271,31 @@ namespace CollisionGame
                 {"", "I", "", "I","", "I", "", "I", "", "","","",}
             };
 
+            string[,] catIdleFrame = new string[5, 12]
+            {
+                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
+                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
+                {"\\", "_", "/", " ", " ", " ", " ", " ", " ", ">", "*", "<",},
+                {"", "", "\\", "_", "_", "_", "_", "_", "_", "_", "/", "",},
+                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
+            };
+
+            string[,] catShort = new string[4, 12]
+            {
+                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
+                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
+                {"\\", "_", "/", "_", "_", "_", "_", "_", "_", ">", "*", "<",},
+                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
+            };
+
+            string[,] bowl = new string[4, 4]
+            {
+                {"", "", "", ""},
+                {"", "", "", ""},
+                {"-", " ", " ", "-"},
+                {"\\", "_", "_", "/"}
+            };
+
             World calculation = new World(100,10);
             World visual = new World(100, 10);
 
@@ -305,6 +332,10 @@ namespace CollisionGame
                 calculation.Place(player.identifier, player.xPosition, player.yPosition);
                 visual.Place(player.frames[0], player.xPosition - 1, player.yPosition - 3);
 
+                // CAT/FOOD
+                visual.Place(catIdleFrame, 5, 4);
+                visual.Place(catShort, 20, 5);
+                visual.Place(bowl, 35, 1);
 
                 // FIENDE
                 // Skapar fiende
@@ -395,11 +426,7 @@ namespace CollisionGame
                         case ConsoleKey.A:
                             player.Move("left", 1);
                             break;
-                        /*
-                    case ConsoleKey.S:
-                        player.Move("down", 1);
-                        break;
-                        */
+
                         case ConsoleKey.D:
                             player.Move("right", 1);
                             break;
