@@ -9,232 +9,9 @@ namespace CollisionGame
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-
-            battle(10);
-
-            #region gammal kod
-            /*
-            #region initialisering och deklarering
-            Console.CursorVisible = false;
-
-            World calculation = new World(100,10);
-            World visual = new World(100, 10);
-
-            Object player = new Object("p", 1, 1);
-            player.health = 10;
-
-            // Göra lista sen så att man kan spawna hur som helst utan att bry sig om längden
-            //Object[] enemies = new Object[10];
-
-            List<Object> enemies = new List<Object>();
-
-            Object enemy = new Object("e", 50, 1);
-            enemy.health = 5;
-
-            Object ground = new Object("g", 1, 1);
-
-            // Prakiskt om den kan ta en vanlig string och dela upp den i en array så slipper man det här:
-            string[,] playerIdleFrame = new string[4, 4]
-            {
-                {"", "O", "", ""},
-                {"/", "|", "\\", ""},
-                {"", "|", "", "", },
-                {"/", "", "\\", ""}
-            };
-
-            string[,] playerAttackFrame = new string[4, 4]
-            {
-                {"", "O", "", "+"},
-                {"/", "|", "/", ""},
-                {"", "|", "", "", },
-                {"/", "", "\\", ""}
-            };
-
-            string[,] enemyFrame1 = new string[4, 12]
-            {
-                {"", "", "", "_","D", "D", "_", "_", "", "","","",},
-                {"", "", "/", "O","O", " ", " ", " ", " ", "\\","_","_",},
-                {"o", "_", "_", "_","_", "_", "_", "_", "/", "","","",},
-                {"", "I", "", "I","", "I", "", "I", "", "","","",}
-            };
-
-            string[,] groundArray1 = new string[1, 1]
-            {
-                {"g"},
-            };
-
-
-            bool renderReduce = false;
-            int renderSpeed = 50;
-            int i = 0;
-
-            #endregion
-
-
-
-
-            battle(3);
-
             
-
-
-
-            // waste kod atm
-            while (true)
-            {
-                
-                #region renderReduce
-                if (i%renderSpeed == 0)
-                {
-                    renderReduce = true;
-                }
-                else
-                {
-                    renderReduce = false;
-                }
-                #endregion
-
-                #region place
-                // FIENDE
-                // SPAWN
-                for (int e = 0; e < enemies.Count; e++)
-                {
-                    enemies[e] = new Object("e", 100, 1);
-                }
-                // sen en loop för att placea alla enemies
-
-                
-                calculation.Place(enemy.id, enemy.xPosition, enemy.yPosition);
-                visual.Place(enemyFrame1, enemy.xPosition-1, enemy.yPosition-3);
-                visual.Place(enemy.health.ToString(), enemy.xPosition+4, enemy.yPosition-5);
-                
-
-                for (int e = 0; e < enemies.Count; e++)
-                {
-                    Console.WriteLine(enemies[e].id);
-                    calculation.Place(enemies[e].id, enemies[e].xPosition, enemies[e].yPosition);
-                }
-                // På något sätt ge en bokstav i calculation 
-                // Sätta ut fiender on command
-
-                // SPELARE
-                calculation.Place(player.id, player.xPosition, player.yPosition);
-                visual.Place(playerIdleFrame, player.xPosition - 1, player.yPosition - 3);
-
-                // MARK
-                for (int a = 0; a < 100; a++)
-                {
-                    calculation.Place(groundArray1, a, 10);
-                    visual.Place("=", a, 10);
-                }
-
-                // TEXT
-                string hpText = "HP: " + player.health;
-                visual.PlaceText(hpText, 1, 1, "horizontal");
-                #endregion
-
-                #region enemy
-                // GRAVITY
-                bool eTouchesGround = calculation.CheckCollision(enemy.id, ground.id, "down");
-                if (!eTouchesGround && renderReduce)
-                {
-                    enemy.Move("down", 1);
-                }
-
-                // CHASE
-                int distance = player.xPosition - enemy.xPosition; // Ifall negativ är enemy till höger, positiv är till vänster
-
-                if (renderReduce)
-                {
-                    if (calculation.CheckCollision(player.id, enemy.id))
-                    {
-                        // Stanna
-                    }
-                    else if (distance > 0)
-                    {
-                        enemy.Move("left", 1);
-                    }
-                    else if (distance < 0)
-                    {
-                        enemy.Move("left", 2);
-                    }
-                }
-
-                // TAKE DAMAGE
-                if (calculation.CheckCollision(enemy.id, player.id, "up"))
-                {
-                    enemy.Move("right", 40);
-                }
-
-                #endregion
-
-                #region player
-                // Movement
-                bool pTouchesGround = calculation.CheckCollision(player.id, ground.id, "down");
-
-                if (Console.KeyAvailable == true)
-                {
-                    var keyPress = Console.ReadKey().Key;
-
-                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
-
-                    switch (keyPress)
-                    {
-                        case ConsoleKey.W:
-                            if (pTouchesGround)
-                            {
-                                player.Move("up", 5);
-                            }
-                            break;
-
-                        case ConsoleKey.A:
-                            player.Move("left", 1);
-                            break;
-                            
-                        case ConsoleKey.S:
-                            player.Move("down", 1);
-                            break;
-                            
-                        case ConsoleKey.D:
-                            player.Move("right", 1);
-                            break;
-
-                        case ConsoleKey.Spacebar:
-                            playerAttack(player);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-
-                // GRAVITY
-                if (!pTouchesGround && renderReduce)
-                {
-                    player.Move("down", 1);
-                }
-
-                // DAMAGE
-                bool touchesEnemyLeft = calculation.CheckCollision(player.id, enemy.id, "right");
-
-                if (touchesEnemyLeft && renderReduce)
-                {
-                    player.health = player.health - 1;
-                }
-                #endregion
-
-                // PRINT
-                calculation.Print();
-                visual.Print();
-                calculation.Clear();
-
-                i++; 
-
-            }
-            */
-            #endregion
+            battle(10);
         }
-
         static void battle(int enemieCount)
         {
             #region initiering och deklarering
@@ -277,14 +54,6 @@ namespace CollisionGame
                 {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
                 {"\\", "_", "/", "_", "_", "_", "_", "_", "_", ">", "*", "<",},
                 {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
-            };
-
-            string[,] bowl = new string[4, 4]
-            {
-                {"", "", "", ""},
-                {"", "", "", ""},
-                {"-", " ", " ", "-"},
-                {"\\", "_", "_", "/"}
             };
 
             string[,] tombStone = new string[4, 5]
@@ -506,7 +275,7 @@ namespace CollisionGame
                 // DAMAGE
                 for (int a = 0; a < enemies.Count; a++)
                 {
-                    bool touchesEnemyLeft = calculation.CheckCollision(player.id, enemies[a].id, "right") && calculation.CheckCollision(player.id, enemies[a].id, "left");
+                    bool touchesEnemyLeft = calculation.CheckCollision(player.id, enemies[a].id, "right") || calculation.CheckCollision(player.id, enemies[a].id, "left");
 
                     if (touchesEnemyLeft && renderReduce)
                     {
@@ -524,10 +293,5 @@ namespace CollisionGame
             Console.WriteLine("\nIt's over...");
             Console.ReadLine();
         }
-
-
     }
-
-
-
 }
