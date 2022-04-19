@@ -9,7 +9,10 @@ namespace CollisionGame
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
-            
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+          //  Tamagotchi();
+
             battle(10);
         }
         static void battle(int enemieCount)
@@ -64,15 +67,15 @@ namespace CollisionGame
                 {"|", "R", "I", "P", "|"},
             };
 
-            World calculation = new World(100,10);
-            World visual = new World(100, 10);
+            World calculation = new World(100,20);
+            World visual = new World(100, 20);
 
             List<Object> enemies = new List<Object>();
 
             Object ground = new Object("g", 1, 1);
             
             Object player = new Object("p", 20, 7);
-            player.health = 100;
+            player.health = 20;
             player.frames.Add(playerIdleFrame);
 
             Object sword = new Object("s", 1, 1);
@@ -88,7 +91,7 @@ namespace CollisionGame
             int i = 0;
             #endregion
 
-            while (true)
+            while (player.health > 0)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -290,8 +293,158 @@ namespace CollisionGame
 
                 i++;
             }
-            Console.WriteLine("\nIt's over...");
+
+            for (int b = 0; b < visual.y; b++)
+            {
+                for (int a = 0; a < visual.x; a++)
+                {
+                    visual.Place("¤", a, b);
+                    visual.Print();
+                }
+            }
+            Console.SetCursorPosition(visual.x/2, visual.y/2);
+            Console.Write("YOU DIED");
             Console.ReadLine();
+        }
+        static void Tamagotchi()
+        {
+            World visual = new World(100, 25);
+
+            string[,] catIdleFrame = new string[5, 12]
+            {
+                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
+                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
+                {"\\", "_", "/", " ", " ", " ", " ", " ", " ", ">", "*", "<",},
+                {"", "", "\\", "_", "_", "_", "_", "_", "_", "_", "/", "",},
+                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
+            };
+
+            string[,] catTopLeft = new string[3, 6]
+            {
+                {"", "", "", "", "", "",},
+                { "|", "", "", "_", "_", "_",},
+                {"\\", "_", "/", " ", " ", " ", }
+            };
+
+            string[,] catTopRight = new string[3, 6]
+            {
+                {"", "", "A", "_", "A", "",},
+                {"_", "/", " ", "o", "o", "\\",},
+                {" ", " ", " ", ">", "*", "<",}
+            };
+
+            string[,] catBottomLeft = new string[2, 6]
+            {
+                {"", "", "\\", "_", "_", "_"},
+                {"", "", "", "L", "", "L",},
+            };
+
+            string[,] catBottomRight = new string[2, 6]
+            {
+                {"_", "_", "_", "_", "/", "",},
+                {"", "L", "", "L", "", "",},
+            };
+
+            string[,] catFillLeft = new string[1, 6]
+            {
+                {"", "", "|", " ", " ", " "},
+            };
+
+            string[,] catFillRight = new string[1, 6]
+            {
+                {" ", " ", " ", " ", "|", ""},
+            };
+
+            string[,] catFillTop = new string[6, 1]
+            {
+                {""},
+                {"_"},
+                {""},
+                {""},
+                {""},
+                {""},
+            };
+
+            string[,] catFillBottom = new string[1, 1]
+            {
+                {"_"},
+            };
+
+            /*
+            List<string[,]> catLeft = new List<string[,]>();
+            List<string[,]> catMiddle = new List<string[,]>();
+            List<string[,]> catRight = new List<string[,]>();
+            */
+            int catX = 1;
+            int catY = 1;
+
+            int currentX;
+            int currentY;
+
+            int catFillsHoriz = 5;
+            int catFillsVerti = 5;
+
+            while (true)
+            {
+                catFillsHoriz = int.Parse(Console.ReadLine());
+                catFillsVerti = int.Parse(Console.ReadLine());
+
+                #region cat
+                // Top cat
+                currentX = catX;
+                currentY = catY;
+
+                visual.Place(catTopLeft, currentX, currentY);
+
+                currentX = currentX + 6;
+                for (int a = 0; a < catFillsHoriz; a++)
+                {
+                    visual.Place(catFillTop, currentX + a, currentY);
+                }
+
+                currentX = currentX + catFillsHoriz;
+                visual.Place(catTopRight, currentX, catY);
+
+                // Middle cat
+                currentX = catX;
+                currentY = catY + 3;
+
+                for (int a = 0; a < catFillsVerti; a++)
+                {
+                    visual.Place(catFillLeft, currentX, currentY + a);
+                }
+
+                currentX = currentX + 6 + catFillsHoriz;
+                for (int a = 0; a < catFillsVerti; a++)
+                {
+                    visual.Place(catFillRight, currentX, currentY + a);
+                }
+
+                // Bottom cat
+                currentX = catX;
+                currentY = catY + 3 + catFillsVerti;
+
+                visual.Place(catBottomLeft, currentX, currentY);
+
+                currentX = currentX + 6;
+                for (int a = 0; a < catFillsHoriz; a++)
+                {
+                    visual.Place(catFillBottom, currentX + a, currentY);
+                }
+
+                currentX = currentX + catFillsHoriz;
+                visual.Place(catBottomRight, currentX, currentY);
+                #endregion
+
+                //visual.PlaceText("______", 0, 49, "horizontal");
+                //visual.PlaceText("|||", 96, 46, "vertical");
+
+                visual.Print();
+
+
+
+
+            }
         }
     }
 }

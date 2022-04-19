@@ -6,6 +6,10 @@ namespace CollisionGame
 {
     class World
     {
+        private int xSize;
+        private int ySize;
+
+
         //Medlemsvariabler
         string[,] world;
 
@@ -13,6 +17,9 @@ namespace CollisionGame
         public World(int xLength, int yLength)
         {
             world =  new string[xLength, yLength];
+
+            xSize = xLength;
+            ySize = yLength;
         }
 
         //Metoder
@@ -20,6 +27,22 @@ namespace CollisionGame
         {
             return base.ToString();
         }
+
+        public int x
+        {
+            get
+            {
+                return xSize;
+            }
+        }
+        public int y
+        {
+            get
+            {
+                return ySize;
+            }
+        }
+
 
         public void PlaceText(string item, int x, int y, string direction)
         {
@@ -47,6 +70,19 @@ namespace CollisionGame
             else
             {
                 Console.WriteLine("Fel 'direction' i text: " + item);
+            }
+        }
+
+        public void Place(string[] itemArray, int x, int y)
+        {
+            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                yClamp = Math.Clamp(yClamp + 1, 0, world.GetLength(1) - 1);
+
+                world[xClamp, yClamp] = itemArray[i];
             }
         }
 
