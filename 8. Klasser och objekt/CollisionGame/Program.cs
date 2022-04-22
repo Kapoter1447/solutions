@@ -11,7 +11,7 @@ namespace CollisionGame
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
-          //  Tamagotchi();
+            Tamagotchi();
 
             battle(10);
         }
@@ -67,8 +67,8 @@ namespace CollisionGame
                 {"|", "R", "I", "P", "|"},
             };
 
-            World calculation = new World(100,20);
-            World visual = new World(100, 20);
+            World calculation = new World(100,10);
+            World visual = new World(100, 10);
 
             List<Object> enemies = new List<Object>();
 
@@ -308,7 +308,12 @@ namespace CollisionGame
         }
         static void Tamagotchi()
         {
-            World visual = new World(100, 25);
+            string[,] syringe = new string[3, 15]
+            {
+                {"", "", "", "", "", "", "", "", "", "", "(", ")", "", "", "",},
+                {"-", "-", "[", "=", "=", "=", "=", "=", "=", "=", "=", "]", "-", "-", "|",},
+                {"", "", "", "", "", "", "", "", "", "", "(", ")", "", "", "",},
+            };
 
             string[,] catIdleFrame = new string[5, 12]
             {
@@ -370,11 +375,10 @@ namespace CollisionGame
                 {"_"},
             };
 
-            /*
-            List<string[,]> catLeft = new List<string[,]>();
-            List<string[,]> catMiddle = new List<string[,]>();
-            List<string[,]> catRight = new List<string[,]>();
-            */
+            World visual = new World(100, 25);
+
+            World calculation = new World(100,25);
+
             int catX = 1;
             int catY = 1;
 
@@ -384,12 +388,73 @@ namespace CollisionGame
             int catFillsHoriz = 5;
             int catFillsVerti = 5;
 
+            bool renderReduce = false;
+            int renderSpeed = 10;
+
+            bool feeding = false;
+            int syringeX = 80;
+
+            int i = 0;
+            int pastI = 0;
             while (true)
             {
-                catFillsHoriz = int.Parse(Console.ReadLine());
-                catFillsVerti = int.Parse(Console.ReadLine());
+                #region renderReduce
+                if (i % renderSpeed == 0)
+                {
+                    renderReduce = true;
+                }
+                else
+                {
+                    renderReduce = false;
+                }
+                #endregion
+
+
+                if (Console.KeyAvailable == true)
+                {
+                    var keyPress = Console.ReadKey().Key;
+
+                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
+
+                    switch (keyPress)
+                    {
+                        case ConsoleKey.F:
+                            feeding = true;
+                            pastI = i;
+                            break;
+
+
+                        default:
+                            break;
+                    }
+                }
+
+                // Feeding
+                int framesPassed = i - pastI;
+                if (feeding)
+                {
+                    if (renderReduce)
+                    {
+                        syringeX--;
+                    }
+
+                    if (framesPassed < 150)
+                    {
+                        visual.Place(syringe, syringeX, 5);
+
+                    }
+                    else
+                    {
+                        syringeX = 80;
+                        feeding = false;
+                    }
+                }
 
                 #region cat
+                /*
+                catFillsHoriz = int.Parse(Console.ReadLine());
+                catFillsVerti = int.Parse(Console.ReadLine());
+                */
                 // Top cat
                 currentX = catX;
                 currentY = catY;
@@ -436,14 +501,9 @@ namespace CollisionGame
                 visual.Place(catBottomRight, currentX, currentY);
                 #endregion
 
-                //visual.PlaceText("______", 0, 49, "horizontal");
-                //visual.PlaceText("|||", 96, 46, "vertical");
 
                 visual.Print();
-
-
-
-
+                i++;
             }
         }
     }

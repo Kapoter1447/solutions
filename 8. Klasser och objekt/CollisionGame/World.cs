@@ -241,7 +241,7 @@ namespace CollisionGame
             string render = "";
 
             Console.SetCursorPosition(0, 0);
-            // För att optimisera lägg till allt i chararray och sen skriv ut. 
+            // För att optimisera lägg till allt i ch       ararray och sen skriv ut. 
             for (int y = 0; y < world.GetLength(1); y++)
             {
                 for (int x = 0; x < world.GetLength(0); x++)
