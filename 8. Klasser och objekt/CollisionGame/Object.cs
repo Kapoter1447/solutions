@@ -17,11 +17,11 @@ namespace CollisionGame
         public int health = 1;
 
         // Konstruktor
-        public Object(string index, int xStart, int yStart)
+        public Object(string id, int xStart, int yStart)
         {
             xPos = xStart;
             yPos = yStart;
-            identf = index;
+            identf = id;
         }
 
         public Object(string[,] appearance, int xStart, int yStart)
