@@ -11,7 +11,7 @@ namespace CollisionGame
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
-            // To do: Sponsors to get money, giga rat attack, sleepiness, hunger/muscles,  steriods, rat gets bigger
+            // To do: Sponsors to get money, giga rat attack, sleepiness, hunger/muscles, happiness,  steriods, (rat gets bigger),
 
             Tamagotchi();
 
@@ -69,8 +69,8 @@ namespace CollisionGame
                 {"|", "R", "I", "P", "|"},
             };
 
-            World calculation = new World(100,10);
-            World visual = new World(100, 10);
+            Canvas calculation = new Canvas(100,10);
+            Canvas visual = new Canvas(100, 10);
 
             List<Object> enemies = new List<Object>();
 
@@ -304,12 +304,14 @@ namespace CollisionGame
                     visual.Print();
                 }
             }
+
             Console.SetCursorPosition(visual.x/2, visual.y/2);
             Console.Write("YOU DIED");
             Console.ReadLine();
         }
         static void Tamagotchi()
         {
+            #region init + dekl
             string[,] syringeFrame = new string[3, 15]
             {
                 {"", "", "", "", "", "", "", "", "", "", "(", ")", "", "", "",},
@@ -377,16 +379,13 @@ namespace CollisionGame
                 {"_"},
             };
 
-            World visual = new World(100, 25);
-            World calculation = new World(100,25);
+            Canvas visual = new Canvas(100, 25);
+            Canvas calculation = new Canvas(100,25);
 
             int syringeStart = 80;
+            Object syringe = new Object("s", syringeStart, calculation.y - 2);
 
-            Object syringe = new Object("s", syringeStart,  5);
             Object cat = new Object("c", 1, 1);
-
-            int currentX;
-            int currentY;
 
             int catFillsHoriz = 5;
             int catFillsVerti = 5;
@@ -402,6 +401,8 @@ namespace CollisionGame
 
             int i = 0;
             int pastI = 0;
+
+            #endregion
 
             while (true)
             {
@@ -440,15 +441,21 @@ namespace CollisionGame
                 #region place
                 // Syringe
                 calculation.Place(syringe.id, syringe.xPosition, syringe.yPosition);
-            
+
+                // Cat
+                cat.yPosition = calculation.y - 6;
+
                 #region cat
+                int currentX;
+                int currentY;
+
                 catFillsHoriz = fat*20;
                 catFillsVerti = 0;
 
                 // Calculation
                 calculation.Place(cat.id, cat.xPosition, cat.yPosition +4);
 
-                // Top cat
+                // Top part
                 currentX = cat.xPosition;
                 currentY = cat.yPosition;
 
@@ -463,7 +470,7 @@ namespace CollisionGame
                 currentX = currentX + catFillsHoriz;
                 visual.Place(catTopRight, currentX, currentY);
 
-                // Middle cat
+                // Middle part
                 currentX = cat.xPosition;
                 currentY = cat.yPosition + 3;
 
@@ -478,7 +485,7 @@ namespace CollisionGame
                     visual.Place(catFillRight, currentX, currentY + a);
                 }
 
-                // Bottom cat
+                // Bottom part
                 currentX = cat.xPosition;
                 currentY = cat.yPosition + 3 + catFillsVerti;
 
@@ -494,8 +501,19 @@ namespace CollisionGame
                 visual.Place(catBottomRight, currentX, currentY);
                 #endregion
 
+                // Ground
+                for (int a = 0; a < calculation.x; a++)
+                {
+                    visual.Place("=", a, calculation.y - 1);
+                }
+
+
+                #endregion
+
+                #region other
                 // Syringe
                 int framesPassed = i - pastI;
+                int syringeHeight = syringeFrame.GetLength(0) - 1;
                 if (feeding)
                 {
                     if (renderReduce)
@@ -505,7 +523,7 @@ namespace CollisionGame
 
                     if (!calculation.CheckCollision(syringe.id, cat.id))
                     {
-                        visual.Place(syringeFrame, syringe.xPosition, syringe.yPosition);
+                        visual.Place(syringeFrame, syringe.xPosition, syringe.yPosition - syringeHeight);
                     }
                     else
                     {
@@ -516,12 +534,21 @@ namespace CollisionGame
                 }
                 #endregion
 
-             //   calculation.Print();
-                visual.Print();
 
+                calculation.Print();
+                visual.Print();
                 calculation.Clear();
                 i++;
             }
+        }
+
+        static string[,] bakeCat()
+        {
+            Canvas cat = new Canvas(100, 25);
+
+
+
+            return null;
         }
     }
 }

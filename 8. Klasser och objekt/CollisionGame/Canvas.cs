@@ -4,17 +4,16 @@ using System.Text;
 
 namespace CollisionGame
 {
-    class World
+    class Canvas
     {
         private int xSize;
         private int ySize;
-
 
         //Medlemsvariabler
         string[,] world;
 
         //Konstruktor
-        public World(int xLength, int yLength)
+        public Canvas(int xLength, int yLength)
         {
             world =  new string[xLength, yLength];
 
@@ -46,7 +45,7 @@ namespace CollisionGame
 
         public void PlaceText(string item, int x, int y, string direction)
         {
-            // World length -1 för att annars hamnar den utanför
+            // Canvas length -1 för att annars hamnar den utanför
             int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
             int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
             if (direction == "horizontal")
