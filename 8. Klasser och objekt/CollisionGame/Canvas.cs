@@ -34,6 +34,7 @@ namespace CollisionGame
                 return xSize;
             }
         }
+
         public int y
         {
             get
@@ -41,6 +42,7 @@ namespace CollisionGame
                 return ySize;
             }
         }
+
         public string [,] canvArray
         {
             get
@@ -48,7 +50,6 @@ namespace CollisionGame
                 return canvas;
             }
         }
-
 
         public void PlaceText(string item, int x, int y, string direction)
         {
@@ -134,6 +135,29 @@ namespace CollisionGame
                 }
             }
         }
+
+        
+        public void PlaceRotated(string[,] itemArray, int x, int y)
+        {
+            // Placerar ut varje x och y koordinat i 'itemarray' till världskoordinatsystemet.
+
+            for (int a = 0; a < itemArray.GetLength(1); a++)
+            {
+                for (int b = 0; b < itemArray.GetLength(0); b++)
+                {
+                    // Clampar värdet så att programmet inte crashar när utanför canvas array.
+                    int xClamp = Math.Clamp(x + b, 0, canvas.GetLength(0) - 1);
+                    int yClamp = Math.Clamp(y + a, 0, canvas.GetLength(1) - 1);
+
+                    // Ifall tecken är tomt så ska det inte bli massa mellanrum där som täcker annat
+                    if (itemArray[b, a] != "")
+                    {
+                        canvas[xClamp, yClamp] = itemArray[b, a];
+                    }
+                }
+            }
+        }
+        
 
         public bool CheckCollision(string object1, string object2)
         {
@@ -291,5 +315,39 @@ namespace CollisionGame
             }
         }
 
+        //TA BORT???
+        public void SwitchXY()
+        {
+            string[,] temp = new string[ySize,ySize];
+
+            for (int a = 0; a < canvas.GetLength(1); a++)
+            {
+                for (int b = 0; b < canvas.GetLength(0); b++)
+                {
+                    if (canvas[b, a] != null)
+                    {
+                        temp[a, b] = canvas[b, a];
+                    }
+                }
+            }
+
+            for (int y = 0; y < canvas.GetLength(1); y++)
+            {
+                for (int x = 0; x < canvas.GetLength(0); x++)
+                {
+                    int xClamp = Math.Clamp(x, 0, canvas.GetLength(0) - 1);
+                    int yClamp = Math.Clamp(y, 0, canvas.GetLength(1) - 1);
+
+                    int xClamp1 = Math.Clamp(x, 0, temp.GetLength(0) - 1);
+                    int yClamp1 = Math.Clamp(y, 0, temp.GetLength(1) - 1);
+
+                    if (temp[xClamp1, yClamp1] != null)
+                    {
+                        canvas[xClamp, yClamp] = temp[x, y];
+                    }
+                }
+            }
+        }
+        
     }
 }
