@@ -6,16 +6,16 @@ namespace CollisionGame
 {
     class Canvas
     {
+        //Medlemsvariabler
         private int xSize;
         private int ySize;
 
-        //Medlemsvariabler
-        string[,] world;
+        private string[,] canvas;
 
         //Konstruktor
         public Canvas(int xLength, int yLength)
         {
-            world =  new string[xLength, yLength];
+            canvas =  new string[xLength, yLength];
 
             xSize = xLength;
             ySize = yLength;
@@ -41,29 +41,36 @@ namespace CollisionGame
                 return ySize;
             }
         }
+        public string [,] canvArray
+        {
+            get
+            {
+                return canvas;
+            }
+        }
 
 
         public void PlaceText(string item, int x, int y, string direction)
         {
             // Canvas length -1 för att annars hamnar den utanför
-            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
-            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+            int xClamp = Math.Clamp(x, 0, canvas.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, canvas.GetLength(1) - 1);
             if (direction == "horizontal")
             {
                 for (int i = 0; i < item.Length; i++)
                 {
-                    xClamp = Math.Clamp(xClamp + 1, 0, world.GetLength(0) - 1);
+                    xClamp = Math.Clamp(xClamp + 1, 0, canvas.GetLength(0) - 1);
 
-                    world[xClamp, yClamp] = item[i].ToString();
+                    canvas[xClamp, yClamp] = item[i].ToString();
                 }
             }
             else if (direction == "vertical")
             {
                 for (int i = 0; i < item.Length; i++)
                 {
-                    yClamp = Math.Clamp(yClamp + 1, 0, world.GetLength(1) - 1);
+                    yClamp = Math.Clamp(yClamp + 1, 0, canvas.GetLength(1) - 1);
 
-                    world[xClamp, yClamp] = item[i].ToString();
+                    canvas[xClamp, yClamp] = item[i].ToString();
                 }
             }
             else
@@ -74,29 +81,29 @@ namespace CollisionGame
 
         public void Place(string[] itemArray, int x, int y)
         {
-            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
-            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+            int xClamp = Math.Clamp(x, 0, canvas.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, canvas.GetLength(1) - 1);
 
             for (int i = 0; i < itemArray.Length; i++)
             {
-                yClamp = Math.Clamp(yClamp + 1, 0, world.GetLength(1) - 1);
+                yClamp = Math.Clamp(yClamp + 1, 0, canvas.GetLength(1) - 1);
 
-                world[xClamp, yClamp] = itemArray[i];
+                canvas[xClamp, yClamp] = itemArray[i];
             }
         }
 
         public void Place(string item, int x, int y)
         {
-            int xClamp = Math.Clamp(x, 0, world.GetLength(0) - 1);
-            int yClamp = Math.Clamp(y, 0, world.GetLength(1) - 1);
+            int xClamp = Math.Clamp(x, 0, canvas.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, canvas.GetLength(1) - 1);
 
             int xBefore = xClamp;
 
-            while (world[xClamp, yClamp] != null) // Ifall plats i array är upptagen, flytta föremål tillfälligt till höger.
+            while (canvas[xClamp, yClamp] != null) // Ifall plats i array är upptagen, flytta föremål tillfälligt till höger.
             {
                 xBefore = xClamp;
                 xClamp++;
-                xClamp = Math.Clamp(xClamp, 0, world.GetLength(0) - 1); // Clampar igen för att undvika att värdet hamnar utanför array
+                xClamp = Math.Clamp(xClamp, 0, canvas.GetLength(0) - 1); // Clampar igen för att undvika att värdet hamnar utanför array
                 
                 if (xClamp == xBefore) // Ifall x värdet är samma som förut har denna nått en kant och skrivs därför över
                 {
@@ -104,7 +111,7 @@ namespace CollisionGame
                 }
             }
 
-            world[xClamp, yClamp] = item;
+            canvas[xClamp, yClamp] = item;
         }
         
         public void Place(string[,] itemArray, int x, int y)
@@ -115,14 +122,14 @@ namespace CollisionGame
             {
                 for (int b = 0; b < itemArray.GetLength(0); b++)
                 {
-                    // Clampar värdet så att programmet inte crashar när utanför world array.
-                    int xClamp = Math.Clamp(x+a, 0, world.GetLength(0) - 1);
-                    int yClamp = Math.Clamp(y+b, 0, world.GetLength(1) - 1);
+                    // Clampar värdet så att programmet inte crashar när utanför canvas array.
+                    int xClamp = Math.Clamp(x+a, 0, canvas.GetLength(0) - 1);
+                    int yClamp = Math.Clamp(y+b, 0, canvas.GetLength(1) - 1);
 
                     // Ifall tecken är tomt så ska det inte bli massa mellanrum där som täcker annat
                     if (itemArray[b, a] != "")
                     {
-                        world[xClamp, yClamp] = itemArray[b, a];
+                        canvas[xClamp, yClamp] = itemArray[b, a];
                     }
                 }
             }
@@ -132,15 +139,15 @@ namespace CollisionGame
         {
             bool collision = false;
 
-            // Söker igenom 'world' array
-            for (int y = 0; y < world.GetLength(1); y++)
+            // Söker igenom 'canvas' array
+            for (int y = 0; y < canvas.GetLength(1); y++)
             {
-                for (int x = 0; x < world.GetLength(0); x++)
+                for (int x = 0; x < canvas.GetLength(0); x++)
                 {
                     // Ifall hittar 'object1'. Utgår från ett lokalt koordinatsystem 3X3 runt...
                     // ...kollisionsobjekt som utgår från x och y koordinat av objekt.
                     // Tar först både x och y värde -1 vilket gör att övre vämntra hörnet kommer kollas.
-                    if (world[x,y] == object1)
+                    if (canvas[x,y] == object1)
                     {
                         int xSearch = -1;
                         int ySearch = -1;
@@ -152,10 +159,10 @@ namespace CollisionGame
                             for (int b = 0; b < 3; b++)
                             {
                                 // Clampar sökkordinaterna så att de inte hamnar utanför världskoordinaterna
-                                int xClamp = Math.Clamp(x + xSearch, 0, world.GetLength(0) - 1);
-                                int yClamp = Math.Clamp(y + ySearch, 0, world.GetLength(1) - 1);
+                                int xClamp = Math.Clamp(x + xSearch, 0, canvas.GetLength(0) - 1);
+                                int yClamp = Math.Clamp(y + ySearch, 0, canvas.GetLength(1) - 1);
 
-                                if (world[xClamp, yClamp] == object2)
+                                if (canvas[xClamp, yClamp] == object2)
                                 {
                                     collision = true;
                                 }
@@ -209,21 +216,21 @@ namespace CollisionGame
                     break;
             }
 
-            // Söker igenom 'world' array
-            for (int y = 0; y < world.GetLength(1); y++)
+            // Söker igenom 'canvas' array
+            for (int y = 0; y < canvas.GetLength(1); y++)
             {
-                for (int x = 0; x < world.GetLength(0); x++)
+                for (int x = 0; x < canvas.GetLength(0); x++)
                 {
                     // Ifall hittar 'object1'. Utgår från ett lokalt koordinatsystem 3X3 runt...
                     // ...kollisionsobjekt som utgår från x och y koordinat av objekt.
                     // Tar först både x och y värde -1 vilket gör att övre vämntra hörnet kommer kollas.
-                    if (world[x, y] == object1)
+                    if (canvas[x, y] == object1)
                     {
                         // Clampar sökkordinaterna så att de inte hamnar utanför världskoordinaterna
-                        int xClamp = Math.Clamp(x + xSearch, 0, world.GetLength(0) - 1);
-                        int yClamp = Math.Clamp(y + ySearch, 0, world.GetLength(1) - 1);
+                        int xClamp = Math.Clamp(x + xSearch, 0, canvas.GetLength(0) - 1);
+                        int yClamp = Math.Clamp(y + ySearch, 0, canvas.GetLength(1) - 1);
 
-                        if (world[xClamp, yClamp] == object2)
+                        if (canvas[xClamp, yClamp] == object2)
                         {
                             collision = true;
                         }
@@ -241,19 +248,19 @@ namespace CollisionGame
 
             Console.SetCursorPosition(0, 0);
             // För att optimisera lägg till allt i ch       ararray och sen skriv ut. 
-            for (int y = 0; y < world.GetLength(1); y++)
+            for (int y = 0; y < canvas.GetLength(1); y++)
             {
-                for (int x = 0; x < world.GetLength(0); x++)
+                for (int x = 0; x < canvas.GetLength(0); x++)
                 {
                     // Ifall tom skriv ut mellanrum annars skriv ut vad som finns på den platsen
-                    if (world[x,y] == null)
+                    if (canvas[x,y] == null)
                     {
                         render = render + " ";
                        // Console.Write(" ");
                     }
                     else
                     {
-                        render = render + world[x, y];
+                        render = render + canvas[x, y];
                         //Console.Write(aworld[x,y]);
                     }
                 }
@@ -264,22 +271,22 @@ namespace CollisionGame
             render = "";
 
             // Clears array
-            for (int y = 0; y < world.GetLength(1); y++)
+            for (int y = 0; y < canvas.GetLength(1); y++)
             {
-                for (int x = 0; x < world.GetLength(0); x++)
+                for (int x = 0; x < canvas.GetLength(0); x++)
                 {
-                    world[x, y] = null;
+                    canvas[x, y] = null;
                 }
             }
         }
         
         public void Clear()
         {
-            for (int y = 0; y < world.GetLength(1); y++)
+            for (int y = 0; y < canvas.GetLength(1); y++)
             {
-                for (int x = 0; x < world.GetLength(0); x++)
+                for (int x = 0; x < canvas.GetLength(0); x++)
                 {
-                    world[x, y] = null;
+                    canvas[x, y] = null;
                 }
             }
         }

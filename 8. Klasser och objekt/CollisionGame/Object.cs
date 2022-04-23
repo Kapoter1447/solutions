@@ -123,7 +123,7 @@ namespace CollisionGame
             }
         }
 
-        // skicka position till world där vi har en "draw"/"place" funktion som ritar ut 
+        // skicka position till canvas där vi har en "draw"/"place" funktion som ritar ut 
 
     }
 }

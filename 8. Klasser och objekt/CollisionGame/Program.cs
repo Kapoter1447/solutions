@@ -328,6 +328,128 @@ namespace CollisionGame
                 {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
             };
 
+            string[,] catShort = new string[4, 12]
+            {
+                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
+                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
+                {"\\", "_", "/", "_", "_", "_", "_", "_", "_", ">", "*", "<",},
+                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
+            };
+
+            Canvas visual = new Canvas(100, 25);
+            Canvas calculation = new Canvas(100,25);
+
+            int syringeStart = 80;
+            Object syringe = new Object("s", syringeStart, calculation.y - 2);
+
+            Object cat = new Object("c", 1, 1);
+
+            //int catFillsHoriz = 5;
+            //int catFillsVerti = 5;
+
+            string[,] bakedCat = catShort;
+
+            bool renderReduce = false;
+            int renderSpeed = 10;
+
+            bool feeding = false;
+
+            int fatness = 0;
+            int energy = 0;
+            int mood = 0;
+
+            int i = 0;
+            int pastI = 0;
+
+            #endregion
+
+            while (true)
+            {
+                #region renderReduce
+                if (i % renderSpeed == 0)
+                {
+                    renderReduce = true;
+                }
+                else
+                {
+                    renderReduce = false;
+                }
+                #endregion
+
+                #region input
+                if (Console.KeyAvailable == true)
+                {
+                    var keyPress = Console.ReadKey().Key;
+
+                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
+
+                    switch (keyPress)
+                    {
+                        case ConsoleKey.F:
+                            feeding = true;
+                            pastI = i;
+                            break;
+
+
+                        default:
+                            break;
+                    }
+                }
+                #endregion
+
+                #region place
+                // Syringe
+                calculation.Place(syringe.id, syringe.xPosition, syringe.yPosition);
+
+                // Cat
+                // MÅSTA BYTA PALTS PÅ X OCH Y I BAKECAT
+                bakedCat = bakeCat(calculation.y, fatness, cat.xPosition, cat.yPosition);
+                visual.Place(bakedCat, cat.xPosition, cat.yPosition);
+                calculation.Place(cat.id, cat.xPosition, cat.yPosition + 4);
+
+
+                // Ground
+                for (int a = 0; a < calculation.x; a++)
+                {
+                    visual.Place("=", a, calculation.y - 1);
+                }
+
+                #endregion
+
+                #region other
+                // Syringe
+                int framesPassed = i - pastI;
+                int syringeHeight = syringeFrame.GetLength(0) - 1;
+                if (feeding)
+                {
+                    if (renderReduce)
+                    {
+                        syringe.Move("left", 1);
+                    }
+
+                    if (!calculation.CheckCollision(syringe.id, cat.id))
+                    {
+                        visual.Place(syringeFrame, syringe.xPosition, syringe.yPosition - syringeHeight);
+                    }
+                    else
+                    {
+                        syringe.xPosition = syringeStart;
+                        fatness++;
+                        feeding = false;
+                    }
+                }
+                #endregion
+
+                calculation.Print();
+                visual.Print();
+                calculation.Clear();
+                i++;
+            }
+        }
+
+        static string[,] bakeCat(int ySize, int fatness, int startX, int startY)
+        {
+            #region cat frames
             string[,] catTopLeft = new string[3, 6]
             {
                 {"", "", "", "", "", "",},
@@ -378,177 +500,66 @@ namespace CollisionGame
             {
                 {"_"},
             };
-
-            Canvas visual = new Canvas(100, 25);
-            Canvas calculation = new Canvas(100,25);
-
-            int syringeStart = 80;
-            Object syringe = new Object("s", syringeStart, calculation.y - 2);
-
-            Object cat = new Object("c", 1, 1);
-
-            int catFillsHoriz = 5;
-            int catFillsVerti = 5;
-
-            bool renderReduce = false;
-            int renderSpeed = 10;
-
-            bool feeding = false;
-
-            int fat = 0;
-            int energy = 0;
-            int mood = 0;
-
-            int i = 0;
-            int pastI = 0;
-
             #endregion
 
-            while (true)
-            {
-                #region renderReduce
-                if (i % renderSpeed == 0)
-                {
-                    renderReduce = true;
-                }
-                else
-                {
-                    renderReduce = false;
-                }
-                #endregion
-
-                #region input
-                if (Console.KeyAvailable == true)
-                {
-                    var keyPress = Console.ReadKey().Key;
-
-                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
-
-                    switch (keyPress)
-                    {
-                        case ConsoleKey.F:
-                            feeding = true;
-                            pastI = i;
-                            break;
-
-
-                        default:
-                            break;
-                    }
-                }
-                #endregion
-
-                #region place
-                // Syringe
-                calculation.Place(syringe.id, syringe.xPosition, syringe.yPosition);
-
-                // Cat
-                cat.yPosition = calculation.y - 6;
-
-                #region cat
-                int currentX;
-                int currentY;
-
-                catFillsHoriz = fat*20;
-                catFillsVerti = 0;
-
-                // Calculation
-                calculation.Place(cat.id, cat.xPosition, cat.yPosition +4);
-
-                // Top part
-                currentX = cat.xPosition;
-                currentY = cat.yPosition;
-
-                visual.Place(catTopLeft, currentX, currentY);
-
-                currentX = currentX + 6;
-                for (int a = 0; a < catFillsHoriz; a++)
-                {
-                    visual.Place(catFillTop, currentX + a, currentY);
-                }
-
-                currentX = currentX + catFillsHoriz;
-                visual.Place(catTopRight, currentX, currentY);
-
-                // Middle part
-                currentX = cat.xPosition;
-                currentY = cat.yPosition + 3;
-
-                for (int a = 0; a < catFillsVerti; a++)
-                {
-                    visual.Place(catFillLeft, currentX, currentY + a);
-                }
-
-                currentX = currentX + 6 + catFillsHoriz;
-                for (int a = 0; a < catFillsVerti; a++)
-                {
-                    visual.Place(catFillRight, currentX, currentY + a);
-                }
-
-                // Bottom part
-                currentX = cat.xPosition;
-                currentY = cat.yPosition + 3 + catFillsVerti;
-
-                visual.Place(catBottomLeft, currentX, currentY);
-
-                currentX = currentX + 6;
-                for (int a = 0; a < catFillsHoriz; a++)
-                {
-                    visual.Place(catFillBottom, currentX + a, currentY);
-                }
-
-                currentX = currentX + catFillsHoriz;
-                visual.Place(catBottomRight, currentX, currentY);
-                #endregion
-
-                // Ground
-                for (int a = 0; a < calculation.x; a++)
-                {
-                    visual.Place("=", a, calculation.y - 1);
-                }
-
-
-                #endregion
-
-                #region other
-                // Syringe
-                int framesPassed = i - pastI;
-                int syringeHeight = syringeFrame.GetLength(0) - 1;
-                if (feeding)
-                {
-                    if (renderReduce)
-                    {
-                        syringe.Move("left", 1);
-                    }
-
-                    if (!calculation.CheckCollision(syringe.id, cat.id))
-                    {
-                        visual.Place(syringeFrame, syringe.xPosition, syringe.yPosition - syringeHeight);
-                    }
-                    else
-                    {
-                        syringe.xPosition = syringeStart;
-                        fat++;
-                        feeding = false;
-                    }
-                }
-                #endregion
-
-
-                calculation.Print();
-                visual.Print();
-                calculation.Clear();
-                i++;
-            }
-        }
-
-        static string[,] bakeCat()
-        {
             Canvas cat = new Canvas(100, 25);
 
+            int catYPos = ySize - 6;
+
+            int currentX;
+            int currentY;
+
+            int catFillsHoriz = fatness * 20;
+            int catFillsVerti = 0;
+
+            // Top part
+            currentX = startX;
+            currentY = startY;
+
+            cat.Place(catTopLeft, currentX, currentY);
+
+            currentX = currentX + 6;
+            for (int a = 0; a < catFillsHoriz; a++)
+            {
+                cat.Place(catFillTop, currentX + a, currentY);
+            }
+
+            currentX = currentX + catFillsHoriz;
+            cat.Place(catTopRight, currentX, currentY);
+
+            // Middle part
+            currentX = startX;
+            currentY = startY + 3;
+
+            for (int a = 0; a < catFillsVerti; a++)
+            {
+                cat.Place(catFillLeft, currentX, currentY + a);
+            }
+
+            currentX = currentX + 6 + catFillsHoriz;
+            for (int a = 0; a < catFillsVerti; a++)
+            {
+                cat.Place(catFillRight, currentX, currentY + a);
+            }
+
+            // Bottom part
+            currentX = startX;
+            currentY = startY + 3 + catFillsVerti;
+
+            cat.Place(catBottomLeft, currentX, currentY);
+
+            currentX = currentX + 6;
+            for (int a = 0; a < catFillsHoriz; a++)
+            {
+                cat.Place(catFillBottom, currentX + a, currentY);
+            }
+
+            currentX = currentX + catFillsHoriz;
+            cat.Place(catBottomRight, currentX, currentY);
 
 
-            return null;
+
+            return cat.canvArray;
         }
     }
 }
