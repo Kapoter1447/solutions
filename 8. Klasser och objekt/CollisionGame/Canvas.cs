@@ -136,24 +136,19 @@ namespace CollisionGame
             }
         }
 
-        
         public void PlaceRotated(string[,] itemArray, int x, int y)
         {
-            // Placerar ut varje x och y koordinat i 'itemarray' till världskoordinatsystemet.
+            int arr0Len = itemArray.GetLength(0) - 1;
+            int arr1Len = itemArray.GetLength(1) - 1;
 
-            for (int a = 0; a < itemArray.GetLength(1); a++)
+            for (int a = 0; a < arr1Len; a++)
             {
-                for (int b = 0; b < itemArray.GetLength(0); b++)
+                for (int b = 0; b < arr0Len; b++)
                 {
-                    // Clampar värdet så att programmet inte crashar när utanför canvas array.
                     int xClamp = Math.Clamp(x + b, 0, canvas.GetLength(0) - 1);
                     int yClamp = Math.Clamp(y + a, 0, canvas.GetLength(1) - 1);
 
-                    // Ifall tecken är tomt så ska det inte bli massa mellanrum där som täcker annat
-                    if (itemArray[b, a] != "")
-                    {
-                        canvas[xClamp, yClamp] = itemArray[b, a];
-                    }
+                    canvas[xClamp, yClamp] = itemArray[b,a];
                 }
             }
         }

@@ -328,13 +328,6 @@ namespace CollisionGame
                 {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
             };
 
-            string[,] catShort = new string[4, 12]
-            {
-                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
-                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
-                {"\\", "_", "/", "_", "_", "_", "_", "_", "_", ">", "*", "<",},
-                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
-            };
 
             Canvas visual = new Canvas(100, 25);
             Canvas calculation = new Canvas(100,25);
@@ -347,7 +340,6 @@ namespace CollisionGame
             //int catFillsHoriz = 5;
             //int catFillsVerti = 5;
 
-            string[,] bakedCat = catShort;
 
             bool renderReduce = false;
             int renderSpeed = 10;
@@ -357,6 +349,9 @@ namespace CollisionGame
             int fatness = -1;
             int energy = 0;
             int mood = 0;
+
+            string[,] bakedCat = bakeCat(fatness, 1,1);
+
 
             int i = 0;
             int pastI = 0;
@@ -402,9 +397,8 @@ namespace CollisionGame
                 calculation.Place(syringe.id, syringe.xPosition, syringe.yPosition);
 
                 // Cat
-                visual.Place(bakedCat, cat.xPosition, cat.yPosition);
+                visual.PlaceRotated(bakedCat, cat.xPosition, cat.yPosition);
                 calculation.Place(cat.id, cat.xPosition, calculation.y - 2);
-
 
                 // Ground
                 for (int a = 0; a < calculation.x; a++)
@@ -434,21 +428,30 @@ namespace CollisionGame
                         syringe.xPosition = syringeStart;
                         fatness++;
                         feeding = false;
-                        bakedCat = bakeCat(calculation.y, fatness, cat.xPosition, cat.yPosition);
+                        bakedCat = bakeCat(fatness, cat.xPosition, cat.yPosition);
                     }
                 }
                 #endregion
 
-                calculation.Print();
+              //  calculation.Print();
                 visual.Print();
                 calculation.Clear();
                 i++;
             }
         }
 
-        static string[,] bakeCat(int ySize, int fatness, int startX, int startY)
+        static string[,] bakeCat(int fatness, int startX, int startY)
         {
             #region cat frames
+
+            string[,] catShort = new string[4, 12]
+            {
+                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
+                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
+                {"\\", "_", "/", "_", "_", "_", "_", "_", "_", ">", "*", "<",},
+                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
+            };
+
             string[,] catTopLeft = new string[3, 6]
             {
                 {"", "", "", "", "", "",},
@@ -503,62 +506,76 @@ namespace CollisionGame
 
             Canvas cat = new Canvas(100, 25);
 
-            int catYPos = ySize - 6;
-
             int currentX;
             int currentY;
 
             int catFillsHoriz = fatness * 20;
             int catFillsVerti = 0;
 
-            // Top part
-            currentX = startX;
-            currentY = startY;
-
-            cat.PlaceRotated(catTopLeft, currentX, currentY);
-
-            currentX = currentX + 6;
-            for (int a = 0; a < catFillsHoriz; a++)
+            if (fatness >= 0)
             {
-                cat.PlaceRotated(catFillTop, currentX + a, currentY);
+                // Top part
+                currentX = startX;
+                currentY = startY;
+
+                cat.Place(catTopLeft, currentX, currentY);
+
+                currentX = currentX + 6;
+                for (int a = 0; a < catFillsHoriz; a++)
+                {
+                    cat.Place(catFillTop, currentX + a, currentY);
+                }
+
+                currentX = currentX + catFillsHoriz;
+                cat.Place(catTopRight, currentX, currentY);
+
+                // Middle part
+                currentX = startX;
+                currentY = startY + 3;
+
+                for (int a = 0; a < catFillsVerti; a++)
+                {
+                    cat.Place(catFillLeft, currentX, currentY + a);
+                }
+
+                currentX = currentX + 6 + catFillsHoriz;
+                for (int a = 0; a < catFillsVerti; a++)
+                {
+                    cat.Place(catFillRight, currentX, currentY + a);
+                }
+
+                // Bottom part
+                currentX = startX;
+                currentY = startY + 3 + catFillsVerti;
+
+                cat.Place(catBottomLeft, currentX, currentY);
+
+                currentX = currentX + 6;
+                for (int a = 0; a < catFillsHoriz; a++)
+                {
+                    cat.Place(catFillBottom, currentX + a, currentY);
+                }
+
+                currentX = currentX + catFillsHoriz;
+                cat.Place(catBottomRight, currentX, currentY);
+
+                //cat.SwitchXY();
+
+
+                //  cat.Print();
+                // Console.ReadLine();
+
+                return cat.canvArray;
+            }
+            else
+            {
+                return catShort;
             }
 
-            currentX = currentX + catFillsHoriz;
-            cat.PlaceRotated(catTopRight, currentX, currentY);
 
-            // Middle part
-            currentX = startX;
-            currentY = startY + 3;
 
-            for (int a = 0; a < catFillsVerti; a++)
-            {
-                cat.PlaceRotated(catFillLeft, currentX, currentY + a);
-            }
 
-            currentX = currentX + 6 + catFillsHoriz;
-            for (int a = 0; a < catFillsVerti; a++)
-            {
-                cat.PlaceRotated(catFillRight, currentX, currentY + a);
-            }
-
-            // Bottom part
-            currentX = startX;
-            currentY = startY + 3 + catFillsVerti;
-
-            cat.PlaceRotated(catBottomLeft, currentX, currentY);
-
-            currentX = currentX + 6;
-            for (int a = 0; a < catFillsHoriz; a++)
-            {
-                cat.PlaceRotated(catFillBottom, currentX + a, currentY);
-            }
-
-            currentX = currentX + catFillsHoriz;
-            cat.PlaceRotated(catBottomRight, currentX, currentY);
-
-            //cat.SwitchXY();
-
-            return cat.canvArray;
         }
+
     }
 }
