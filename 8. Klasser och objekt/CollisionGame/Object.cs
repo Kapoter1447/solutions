@@ -141,6 +141,20 @@ namespace CollisionGame
                 return repleteness;
             }
         }
+        public int Energy
+        {
+            get
+            {
+                return energy;
+            }
+        }
+        public int Mood
+        {
+            get
+            {
+                return mood;
+            }
+        }
 
         public int XPos
         {

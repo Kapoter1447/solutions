@@ -818,22 +818,8 @@ namespace CollisionGame
 
                         syringe.XPos = syringeStart;
                         workouting = false;
-                        
-                        
-                        // Update stats
-                        RSID("Repleteness", "VA", ";", ui);
-                        LSID("Repleteness", "VA" + cat.Repleteness + ";", ui);
 
-                        RSID("Energy", "VA", ";", ui);
-                        LSID("Energy", "VA" + cat.Repleteness + ";", ui);
-
-                        RSID("Mood", "VA", ";", ui);
-                        LSID("Mood", "VA" + cat.Repleteness + ";", ui);
-
-                        RSID("Muscles", "VA", ";", ui);
-                        LSID("Muscles", "VA" + cat.Repleteness + ";", ui);
-                        
-
+                        UpdateStats(cat, ui);
 
                         bakedCat = bakeCat(cat.Muscles, cat.XPos, cat.YPos);
                     }
@@ -993,7 +979,21 @@ namespace CollisionGame
 
         }
 
+        static void UpdateStats(Object cat, Dictionary<string,string> ui)
+        {
+            // Update stats
+            RSID("Repleteness", "VA", ";", ui);
+            LSID("Repleteness", "VA" + cat.Repleteness + ";", ui);
 
+            RSID("Energy", "VA", ";", ui);
+            LSID("Energy", "VA" + cat.Energy + ";", ui);
+
+            RSID("Mood", "VA", ";", ui);
+            LSID("Mood", "VA" + cat.Mood + ";", ui);
+
+            RSID("Muscles", "VA", ";", ui);
+            LSID("Muscles", "VA" + cat.Muscles + ";", ui);
+        }
 
         static string SSID(string sökNyckel, string startOrd, string stopOrd, Dictionary<string, string> dic)
         {
