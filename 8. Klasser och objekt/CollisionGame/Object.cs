@@ -10,11 +10,16 @@ namespace CollisionGame
         private int xPos;
         private int yPos;
 
+        private int energy = 3;
+        private int mood = 3;
+        private int muscles = -1;
+        private int repleteness = 3;
+
         private string identf;
 
         public List<string[,]> frames = new List<string[,]>();
 
-        public int health = 1;
+        public int value = 1;
 
         // Konstruktor
         public Object(string id, int xStart, int yStart)
@@ -30,37 +35,6 @@ namespace CollisionGame
             yPos = yStart;
         }
 
-        public int xPosition
-        {
-            get
-            {
-                return xPos;
-            }
-            set
-            {
-                xPos = value;
-            }
-        }
-
-        public int yPosition
-        {
-            get
-            {
-                return yPos;
-            }
-            set
-            {
-                yPos = value;
-            }
-        }
-
-        public string id
-        {
-            get
-            {
-                return identf;
-            }
-        }
 
         // Metoder
         public override string ToString()
@@ -120,6 +94,83 @@ namespace CollisionGame
 
                 default:
                     break;
+            }
+        }
+
+        public void Feed()
+        {
+            energy--;
+            mood--;
+            repleteness++;
+        }
+
+        public void WorkOut()
+        {
+            energy--;
+            mood--;
+            repleteness--;
+            muscles++;
+        }
+
+        public void Sleep()
+        {
+            repleteness--;
+            mood--;
+            energy++;
+        }
+
+        public void Play()
+        {
+            energy--;
+            repleteness--;
+            mood++;
+        }
+
+        public int Muscles
+        {
+            get
+            {
+                return muscles;
+            }
+        }
+
+        public int Repleteness
+        {
+            get
+            {
+                return repleteness;
+            }
+        }
+
+        public int XPos
+        {
+            get
+            {
+                return xPos;
+            }
+            set
+            {
+                xPos = value;
+            }
+        }
+
+        public int YPos
+        {
+            get
+            {
+                return yPos;
+            }
+            set
+            {
+                yPos = value;
+            }
+        }
+
+        public string id
+        {
+            get
+            {
+                return identf;
             }
         }
 

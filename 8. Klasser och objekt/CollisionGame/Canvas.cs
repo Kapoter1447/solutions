@@ -196,7 +196,51 @@ namespace CollisionGame
             return collision;
 
         }
-        
+
+        public string CheckCollision(string object1)
+        {
+            string collision = "";
+
+            // Söker igenom 'canvas' array
+            for (int y = 0; y < canvas.GetLength(1); y++)
+            {
+                for (int x = 0; x < canvas.GetLength(0); x++)
+                {
+                    // Ifall hittar 'object1'. Utgår från ett lokalt koordinatsystem 3X3 runt...
+                    // ...kollisionsobjekt som utgår från x och y koordinat av objekt.
+                    // Tar först både x och y värde -1 vilket gör att övre vämntra hörnet kommer kollas.
+                    if (canvas[x, y] == object1)
+                    {
+                        int xSearch = -1;
+                        int ySearch = -1;
+
+                        for (int a = 0; a < 3; a++)
+                        {
+                            xSearch = -1;
+                            // Console.WriteLine(xSearch + "," + ySearch);
+                            for (int b = 0; b < 3; b++)
+                            {
+                                // Clampar sökkordinaterna så att de inte hamnar utanför världskoordinaterna
+                                int xClamp = Math.Clamp(x + xSearch, 0, canvas.GetLength(0) - 1);
+                                int yClamp = Math.Clamp(y + ySearch, 0, canvas.GetLength(1) - 1);
+
+                                if (canvas[xClamp, yClamp] != null)
+                                {
+                                    collision = canvas[xClamp, yClamp];
+                                }
+                                xSearch++;
+                            }
+                            ySearch++;
+                        }
+                    }
+                }
+            }
+
+            return collision;
+
+        }
+
+
         public bool CheckCollision(string object1, string object2, string direction)
         {
             // direction "up" would give modifier a(y) = -1 och b(x) = 0.
