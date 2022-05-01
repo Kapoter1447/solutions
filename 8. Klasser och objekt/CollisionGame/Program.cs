@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace CollisionGame
@@ -8,23 +9,74 @@ namespace CollisionGame
     {
         static Actor cat = new Actor("c", 1, 0);
 
+        static Stopwatch stopwatch = new Stopwatch();
+
         static void Main(string[] args)
         {
             int money = 10;
+
+            Canvas visual = new Canvas(100, 25);
+
+            string[,] catDead = new string[4, 12]
+            {
+                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
+                {"", "", "", "_", "_", "_", "_", "/", " ", "x", "x", "\\",},
+                {"", "_", "/", " ", " ", " ", " ", " ", " ", ">", "*", "<",},
+                {"/", "", "\\", "b", "-", "b", "-", "b", "-", "b", "/", "",},
+            };
+
+            string[,] podium = new string[6, 12]
+            {
+                {"", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "",},
+                {"/", "", "", "", "", "", "", "", " ", "", "", "\\",},
+                {"|", "", "", " ", " ", " ", " ", " ", " ", "", "", "|",},
+                {"|", "", "", "", "", "#", "1", "", "", "", "", "|",},
+                {"|", "", "", "", "", "", "", "", "", "", "", "|",},
+                {"|", "", "", "", "", "", "", "", "", "", "", "|",},
+            };
+
+            bool alive = true; ;
+
+            stopwatch.Start();
 
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
             // To do: Sponsors to get money, giga rat attack, sleepiness, hunger/muscles, happiness,  steriods, (rat gets bigger),
             // Hur mycket pengar förlorades, sluta när fiender är döda, fiender ska inte kunanna gå in i varandra, mouse traps
+            // Endings
 
-
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-               // Tamagotchi(money);
+                alive = Tamagotchi(money);
 
-                battle(10, money);
+                if (!alive)
+                {
+                    break;
+                }
+
+                battle(i+1*2, money);
             }
+
+            // Endings
+            if (alive)
+            {
+                int podiumOffset = -5;
+                visual.PlaceRotated(bakeCat(cat.Muscles, 0, 0), 50 + podiumOffset, -10);
+                visual.Place(podium, 50 + podiumOffset, 13);
+                visual.Place(podium, 39 + podiumOffset, 15);
+                visual.Place(podium, 61 + podiumOffset, 15);
+                visual.Print();
+                Console.ReadLine();
+
+            }
+            else
+            {
+                visual.Place(catDead, 0, 0);
+                visual.Print();
+                Console.ReadLine();
+            }
+
 
         }
 
@@ -111,6 +163,8 @@ namespace CollisionGame
             bool renderReduce = false;
             int renderSpeed = 50;
 
+            string clock;
+
             int placedEnemies = 0;
 
             int i = 0;
@@ -184,6 +238,11 @@ namespace CollisionGame
                 calculation.Place(player.id, player.XPos, player.YPos);
                 visual.Place(player.frames[0], player.XPos - 1, player.YPos - 3);
                 visual.PlaceText(player.value.ToString(), player.XPos-1, player.YPos-5, "horizontal");
+
+                // TIME
+                TimeSpan time = stopwatch.Elapsed;
+                clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
+                visual.PlaceText("Clock: " + clock, 1, 2, "horizontal");
 
                 // ATTACKS
                 // Sword - När attack är använd sparas den nuvarande frame:en och en bool som säger att svärdet används sätt till true. Genom att ta skillnaden på antalet frames som gått överlag och de som gått när attacken aktiverades; fås hur många frames som appserat. Då kan jag göra så att svärdet är aktivit i ett visst antal frames. Sen sätts boolen till false.
@@ -342,11 +401,11 @@ namespace CollisionGame
             }
 
             Console.SetCursorPosition(visual.x/2, visual.y/2);
-            Console.Write("YOU DIED");
+            Console.Write("YOUR STICKMAN DIED AND YOU LOST ALL YOUR MONEY");
             Console.ReadLine();
         }
 
-        static void Tamagotchi(int money)
+        static bool Tamagotchi(int money)
         {
             #region init + dekl
             string[,] syringeFrame = new string[3, 15]
@@ -362,19 +421,11 @@ namespace CollisionGame
             int syringeStart = 80;
             Actor syringe = new Actor("s", syringeStart, calculation.y - 2);
 
-
-            bool isAlive = true;
-            bool noAfford = false;
-            bool workouting = false;
-
             bool renderReduce = false;
             int renderSpeed = 10;
 
             int UIXpos = 70;
             int UIYpos;
-            int scrollText = -50;
-
-
             Dictionary<string, string> ui = new Dictionary<string, string>
             {
                 {"Repleteness", "PR4; VA5; ACFeed;" }, // VA as i value, PR as in price, AC as in action
@@ -383,16 +434,21 @@ namespace CollisionGame
                 {"Muscles", "PR2; VA10; ACWorkout;" },
             };
 
-            int moneyLeft = money;
             int feedPrice = 4;
             int playPrice = 1;
             int workoutPrice = 2;
             int sleepPrice = 0;
 
-            int daysLeft = 3;
+            bool isAlive = true;
+            bool noAfford = false;
+            bool workouting = false;
+
+            Stopwatch sWTamagotchi = new Stopwatch();
+            sWTamagotchi.Start();
+            bool timeUp = false;
+            string clock;
 
             string[,] bakedCat = bakeCat(cat.Muscles, cat.XPos, cat.YPos);
-
             UpdateStats(cat, ui, bakedCat);
 
             int i = 0;
@@ -400,7 +456,7 @@ namespace CollisionGame
 
             #endregion
 
-            while (isAlive)
+            while (isAlive && !timeUp)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -422,11 +478,11 @@ namespace CollisionGame
                     switch (keyPress)
                     {
                         case ConsoleKey.Q:
-                            if (moneyLeft >= feedPrice)
+                            if (money >= feedPrice)
                             {
                                 cat.Feed();
 
-                                moneyLeft = moneyLeft - feedPrice;
+                                money = money - feedPrice;
                                 bakedCat = UpdateStats(cat, ui, bakedCat);
                             }
                             else
@@ -437,11 +493,11 @@ namespace CollisionGame
                             break;
 
                         case ConsoleKey.W:
-                            if (moneyLeft >= sleepPrice)
+                            if (money >= sleepPrice)
                             {
                                 cat.Sleep();
 
-                                moneyLeft = moneyLeft - sleepPrice;
+                                money = money - sleepPrice;
                                 bakedCat = UpdateStats(cat, ui, bakedCat);
                             }
                             else
@@ -452,11 +508,11 @@ namespace CollisionGame
                             break;
 
                         case ConsoleKey.E:
-                            if (moneyLeft >= playPrice)
+                            if (money >= playPrice)
                             {
                                 cat.Play();
 
-                                moneyLeft = moneyLeft - playPrice;
+                                money = money - playPrice;
                                 bakedCat = UpdateStats(cat, ui, bakedCat);
                             }
                             else
@@ -467,10 +523,10 @@ namespace CollisionGame
                             break;
 
                         case ConsoleKey.R:
-                            if (moneyLeft >= workoutPrice)
+                            if (money >= workoutPrice)
                             {
                                 workouting = true;
-                                moneyLeft = moneyLeft - workoutPrice;
+                                money = money - workoutPrice;
                             }
                             else
                             {
@@ -506,7 +562,7 @@ namespace CollisionGame
                 // UI
                 string value;
                 UIYpos = 2;
-                visual.PlaceText("Wallet:" + moneyLeft + "$", UIXpos, UIYpos, "horizontal");
+                visual.PlaceText("Wallet:" + money + "$", UIXpos, UIYpos, "horizontal");
                 UIYpos++;
 
                 visual.PlaceText("___________", UIXpos, UIYpos, "horizontal");
@@ -561,9 +617,14 @@ namespace CollisionGame
                     UIYpos++;
                 }
 
-                visual.PlaceText("GOAL: Give cat muscles to win muscle contest || Make all values stay between 1-10 or die", 1, 100, "horizontal");
+                // Time
+                TimeSpan time = stopwatch.Elapsed;
+                clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
+                visual.PlaceText("Clock: " + clock, 1, 100, "horizontal");
 
-                visual.PlaceText("Days left to muscle contest: " + daysLeft, 1, 1, "horizontal");
+                // Instructions
+              //  visual.PlaceText("GOAL: Give cat muscles to win muscle contest || Make all values stay between 1-10 or die", 1, 100, "horizontal");
+
 
 
                 /*
@@ -608,6 +669,7 @@ namespace CollisionGame
                     }
                 }
 
+                // No money warning
                 if (noAfford)
                 {
                     int framesPassed = i - pastI;
@@ -623,8 +685,14 @@ namespace CollisionGame
 
 
                 }
-                #endregion
 
+                // Check if time is up
+                if (sWTamagotchi.ElapsedMilliseconds > 10000)
+                {
+                    timeUp = true;
+                }
+
+                // Check if dead
                 if (renderReduce)
                 {
                     if (cat.Mood <= 0 || cat.Repleteness <= 0 || cat.Energy <= 0 || cat.Muscles <= 0)
@@ -632,7 +700,9 @@ namespace CollisionGame
                         isAlive = false;
                     }
                 }
+                #endregion
 
+                // PRINT
                 //calculation.Print();
                 visual.Print();
                 calculation.Clear();
@@ -641,7 +711,6 @@ namespace CollisionGame
 
             if (!isAlive)
             {
-                /*
                 for (int b = 0; b < visual.y; b++)
                 {
                     for (int a = 0; a < visual.x; a++)
@@ -650,14 +719,15 @@ namespace CollisionGame
                         visual.Print();
                     }
                 }
-                */
 
                 Console.SetCursorPosition(visual.x / 2, visual.y / 2);
                 Console.Write("YOU DIED");
                 Console.ReadLine();
             }
 
- 
+            Console.Clear();
+
+            return isAlive;
         }
 
         static string[,] bakeCat(int fatness, int startX, int startY)
