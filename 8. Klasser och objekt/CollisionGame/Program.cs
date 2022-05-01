@@ -9,11 +9,20 @@ namespace CollisionGame
     {
         static Actor cat = new Actor("c", 1, 0);
 
+        static Dictionary<string, string> ui = new Dictionary<string, string>
+        {
+            {"Repleteness", "PR4; VA5; ACFeed;" }, // VA as i health, PR as in price, AC as in action
+            {"Energy", "PR0; VA1; ACSleep;" },
+            {"Mood", "PR1; VA7; ACPlay;" },
+            {"Muscles", "PR2; VA10; ACWorkout;" },
+        };
+
         static Stopwatch stopwatch = new Stopwatch();
+
+        static int money = 10;
 
         static void Main(string[] args)
         {
-            int money = 10;
 
             Canvas visual = new Canvas(100, 25);
 
@@ -24,7 +33,6 @@ namespace CollisionGame
                 {"", "_", "/", " ", " ", " ", " ", " ", " ", ">", "*", "<",},
                 {"/", "", "\\", "b", "-", "b", "-", "b", "-", "b", "/", "",},
             };
-
             string[,] podium = new string[6, 12]
             {
                 {"", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "",},
@@ -38,6 +46,7 @@ namespace CollisionGame
             bool alive = true; ;
 
             stopwatch.Start();
+            TimeSpan time = new TimeSpan();
 
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
@@ -46,16 +55,26 @@ namespace CollisionGame
             // Hur mycket pengar förlorades, sluta när fiender är döda, fiender ska inte kunanna gå in i varandra, mouse traps
             // Endings
 
-            for (int i = 0; i < 2; i++)
+
+            while (true)
             {
-                alive = Tamagotchi(money);
+                alive = Tamagotchi();
 
                 if (!alive)
                 {
                     break;
                 }
+                else if (time.Minutes >= 3)
+                {
+                    break;
+                }
 
-                battle(i+1*2, money);
+                battle(money + 1);
+
+                if (time.Minutes >= 3)
+                {
+                    break;
+                }
             }
 
             // Endings
@@ -80,7 +99,7 @@ namespace CollisionGame
 
         }
 
-        static void battle(int enemieCount, int money) 
+        static void battle(int enemieCount) 
         {
             #region initiering och deklarering
             string[,] playerIdleFrame = new string[4, 4]
@@ -128,7 +147,7 @@ namespace CollisionGame
             {
                 {"", "", "", "", ""},
                 {"", "_", "_", "_", ""},
-                {"/", " ", " ", " ", "\\"},
+                {"/", " ", "$", " ", "\\"},
                 {"|", "R", "I", "P", "|"},
             };
 
@@ -149,13 +168,13 @@ namespace CollisionGame
             Actor ground = new Actor("g", 1, 1);
             
             Actor player = new Actor("p", 20, 7);
-            player.value = 20;
+            player.health = 20;
             player.frames.Add(playerIdleFrame);
 
             Actor sword = new Actor("s", 1, 1);
 
-            Actor wallet = new Actor("m", 15, calculation.y-4);
-            wallet.value = money;
+            Actor wallet = new Actor("m", 15, calculation.y-2);
+            wallet.health = money;
             wallet.frames.Add(moneyBag);
 
             bool swordUsed = false;
@@ -166,12 +185,13 @@ namespace CollisionGame
             string clock;
 
             int placedEnemies = 0;
+            bool enemiesAlive = true;
 
             int i = 0;
             int pastI = 0;
             #endregion
 
-            while (player.value > 0)
+            while (player.health > 0 && enemiesAlive)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -186,7 +206,7 @@ namespace CollisionGame
 
                 #region place
                 // ÖVRIGT
-                visual.PlaceRotated(bakedCat, 0, 4);
+                visual.PlaceRotated(bakedCat, 0, -18);
                 visual.PlaceText("Undvik skada genom att först attackera och sen hoppa på råttornas näsor när de kommer för nära!", 0, 0, "horizontal");
 
                 // FIENDE
@@ -198,7 +218,7 @@ namespace CollisionGame
 
                     // Lägger til standarvärden för varje enemy
                     enemies[placedEnemies].frames.Add(enemyIdleFrame);
-                    enemies[placedEnemies].value = placedEnemies+1;
+                    enemies[placedEnemies].health = placedEnemies+1;
 
                     placedEnemies++;
                 }
@@ -208,10 +228,10 @@ namespace CollisionGame
                     int eXPos = enemies[a].XPos;
                     int eYPos = enemies[a].YPos;
 
-                    if (enemies[a].value > 0)
+                    if (enemies[a].health > 0)
                     {
                         calculation.Place(enemies[a].id, eXPos, eYPos);
-                        visual.Place(enemies[a].value.ToString(), enemies[a].XPos + 4, enemies[a].YPos - 5);
+                        visual.Place(enemies[a].health.ToString(), enemies[a].XPos + 4, enemies[a].YPos - 5);
                     }
                     visual.Place(enemies[a].frames[0], enemies[a].XPos, enemies[a].YPos - 3);
                 }
@@ -231,13 +251,14 @@ namespace CollisionGame
 
                 // Take cash
                 calculation.Place(wallet.id, wallet.XPos, wallet.YPos);
-                visual.Place(wallet.frames[0], wallet.XPos, wallet.YPos);
-                visual.Place(wallet.frames[0], wallet.XPos-3, wallet.YPos);
+                visual.Place(wallet.frames[0], wallet.XPos, wallet.YPos-2);
+                visual.Place(wallet.frames[0], wallet.XPos-3, wallet.YPos-2);
+                visual.PlaceText(money.ToString() + "$", wallet.XPos, wallet.YPos-4, "horizontal");
 
                 // SPELARE
                 calculation.Place(player.id, player.XPos, player.YPos);
                 visual.Place(player.frames[0], player.XPos - 1, player.YPos - 3);
-                visual.PlaceText(player.value.ToString(), player.XPos-1, player.YPos-5, "horizontal");
+                visual.PlaceText(player.health.ToString(), player.XPos-1, player.YPos-5, "horizontal");
 
                 // TIME
                 TimeSpan time = stopwatch.Elapsed;
@@ -272,13 +293,13 @@ namespace CollisionGame
                 #endregion
 
                 #region enemy
+                int enemiesDead = 0;
                 for (int a = 0; a < enemies.Count; a++)
                 {
-                    if (enemies[a].value > 0) // Gör bara handlingar ifall lever
+                    if (enemies[a].health > 0) // Gör bara handlingar ifall lever
                     {
                         // GRAVITY
                         bool eTouchesGround = calculation.CheckCollision(enemies[a].id, ground.id, "down");
-                        Console.WriteLine(eTouchesGround);
                         if (!eTouchesGround && renderReduce)
                         {
                             enemies[a].Move("down", 1);
@@ -303,27 +324,42 @@ namespace CollisionGame
                             }
                         }
 
-                        // Knockback
+                        // KNOCKBACK
                         if (calculation.CheckCollision(enemies[a].id, player.id, "up"))
                         {
                             enemies[a].Move("right", 40);
                         }
 
-                        // Take damage
+                        // TAKE DAMAGE
+                        // By sword
                         if (calculation.CheckCollision(enemies[a].id, sword.id) && renderReduce)
                         {
-                            enemies[a].value--;
+                            enemies[a].health--;
+                            if (enemies[a].health <= 0) // If dies: get money
+                            {
+                                money++;
+                            }
                         }
-
+                        // By insta kill
                         if (calculation.CheckCollision(enemies[a].id, "i"))
                         {
-                            enemies[a].value = 0;
+                            enemies[a].health = 0;
+                            money++;
+                        }
+                        
+                        // MONEYBAG INTERACTION
+                        if (calculation.CheckCollision(enemies[a].id, wallet.id))
+                        {
+                            money--;
+                            enemies[a].health = 0;
+                            enemies[a].Move("left", 100);
                         }
                     }
                     else // Ifall död ändra utseende till gravsten
                     {
                         enemies[a].frames.Remove(enemyIdleFrame);
                         enemies[a].frames.Add(tombStone);
+                        enemiesDead++;
                     }
                 }
                 #endregion
@@ -379,15 +415,19 @@ namespace CollisionGame
 
                     if (touchesEnemyLeft && renderReduce)
                     {
-                        player.value = player.value - 1;
+                        player.health = player.health - 1;
                     }
                 }
                 #endregion
 
-                //calculation.Print();
+                if (enemiesDead == enemieCount)
+                {
+                    enemiesAlive = false;
+                }
+
+               // calculation.Print();
                 visual.Print();
                 calculation.Clear();
-
                 i++;
             }
             
@@ -400,12 +440,25 @@ namespace CollisionGame
                 }
             }
 
-            Console.SetCursorPosition(visual.x/2, visual.y/2);
-            Console.Write("YOUR STICKMAN DIED AND YOU LOST ALL YOUR MONEY");
-            Console.ReadLine();
+            if (player.health <= 0)
+            {
+                cat.Muscles = 1;
+
+                visual.PlaceText("YOUR STICKMAN DIED AND YOU LOST ALL MUSCLES", visual.x / 2, visual.y / 2, "horizontal");
+                visual.PlaceText("Click enter to proceed...", visual.x / 2, visual.y / 2 + 1, "horizontal");
+                visual.Print();
+                Console.ReadLine();
+            }
+            else
+            {
+                visual.PlaceText(enemieCount + " rats eliminated. Click enter to proceed...", visual.x / 2, visual.y / 2, "horizontal");
+                visual.Print();
+                Console.ReadLine();
+            }
+
         }
 
-        static bool Tamagotchi(int money)
+        static bool Tamagotchi()
         {
             #region init + dekl
             string[,] syringeFrame = new string[3, 15]
@@ -426,13 +479,6 @@ namespace CollisionGame
 
             int UIXpos = 70;
             int UIYpos;
-            Dictionary<string, string> ui = new Dictionary<string, string>
-            {
-                {"Repleteness", "PR4; VA5; ACFeed;" }, // VA as i value, PR as in price, AC as in action
-                {"Energy", "PR0; VA1; ACSleep;" },
-                {"Mood", "PR1; VA7; ACPlay;" },
-                {"Muscles", "PR2; VA10; ACWorkout;" },
-            };
 
             int feedPrice = 4;
             int playPrice = 1;
@@ -447,6 +493,7 @@ namespace CollisionGame
             sWTamagotchi.Start();
             bool timeUp = false;
             string clock;
+            int roundLength = 15;
 
             string[,] bakedCat = bakeCat(cat.Muscles, cat.XPos, cat.YPos);
             UpdateStats(cat, ui, bakedCat);
@@ -619,26 +666,15 @@ namespace CollisionGame
 
                 // Time
                 TimeSpan time = stopwatch.Elapsed;
+                TimeSpan tamagotchiTime = sWTamagotchi.Elapsed;
+                string timeUntilAttack = (roundLength - tamagotchiTime.Seconds).ToString();
                 clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
-                visual.PlaceText("Clock: " + clock, 1, 100, "horizontal");
+
+                visual.PlaceText("Clock: " + clock + "pm. Muscle contest 3:0pm", 1, 2, "horizontal");
+                visual.PlaceText("Rat attack in: " + timeUntilAttack, 1, 3, "horizontal");
 
                 // Instructions
-              //  visual.PlaceText("GOAL: Give cat muscles to win muscle contest || Make all values stay between 1-10 or die", 1, 100, "horizontal");
-
-
-
-                /*
-                visual.PlaceText("Make all values stay between 1-10 or die", scrollText, 100, "horizontal");
-                if (i%renderSpeed*120 == 0)
-                {
-                    scrollText++;
-                }
-                if (scrollText > 100)
-                {
-                    scrollText = -50;
-                }
-                */
-
+                visual.PlaceText("GOAL: Give cat muscles to win muscle contest || Make all values stay between 1-10 or die", 1, 100, "horizontal");
 
                 #endregion
 
@@ -687,7 +723,7 @@ namespace CollisionGame
                 }
 
                 // Check if time is up
-                if (sWTamagotchi.ElapsedMilliseconds > 10000)
+                if (tamagotchiTime.Seconds > roundLength)
                 {
                     timeUp = true;
                 }
@@ -805,7 +841,7 @@ namespace CollisionGame
 
             Canvas cat = new Canvas(100, 50);
 
-            fatness--;
+            fatness = fatness - 2;
 
             int currentX;
             int currentY;

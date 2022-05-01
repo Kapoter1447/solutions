@@ -14,12 +14,11 @@ namespace CollisionGame
         private int mood = 3;
         private int muscles = 1;
         private int repleteness = 3;
+        public int health = 1;
 
         private string identf;
 
         public List<string[,]> frames = new List<string[,]>();
-
-        public int value = 1;
 
         // Konstruktor
         public Actor(string id, int xStart, int yStart)
@@ -107,8 +106,6 @@ namespace CollisionGame
         public void WorkOut()
         {
             energy--;
-            mood--;
-            repleteness--;
             muscles++;
         }
 
@@ -117,14 +114,13 @@ namespace CollisionGame
             repleteness--;
             mood--;
             energy = energy + 3;
-            muscles--;
         }
 
         public void Play()
         {
             energy--;
             repleteness--;
-            mood = energy + 3;
+            mood = mood + 3;
         }
 
         public int Muscles
@@ -132,6 +128,10 @@ namespace CollisionGame
             get
             {
                 return muscles;
+            }
+            set
+            {
+                muscles = Math.Clamp(value, 0, 10);
             }
         }
 
