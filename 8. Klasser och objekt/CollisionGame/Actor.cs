@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CollisionGame
 {
-    class Object
+    class Actor
     {
         // Medlemsvariabler
         private int xPos;
@@ -12,7 +12,7 @@ namespace CollisionGame
 
         private int energy = 3;
         private int mood = 3;
-        private int muscles = -1;
+        private int muscles = 1;
         private int repleteness = 3;
 
         private string identf;
@@ -22,14 +22,14 @@ namespace CollisionGame
         public int value = 1;
 
         // Konstruktor
-        public Object(string id, int xStart, int yStart)
+        public Actor(string id, int xStart, int yStart)
         {
             xPos = xStart;
             yPos = yStart;
             identf = id;
         }
 
-        public Object(string[,] appearance, int xStart, int yStart)
+        public Actor(string[,] appearance, int xStart, int yStart)
         {
             xPos = xStart;
             yPos = yStart;
@@ -101,7 +101,7 @@ namespace CollisionGame
         {
             energy--;
             mood--;
-            repleteness++;
+            repleteness = repleteness + 3;
         }
 
         public void WorkOut()
@@ -116,14 +116,15 @@ namespace CollisionGame
         {
             repleteness--;
             mood--;
-            energy++;
+            energy = energy + 3;
+            muscles--;
         }
 
         public void Play()
         {
             energy--;
             repleteness--;
-            mood++;
+            mood = energy + 3;
         }
 
         public int Muscles
@@ -141,6 +142,7 @@ namespace CollisionGame
                 return repleteness;
             }
         }
+
         public int Energy
         {
             get
@@ -148,6 +150,7 @@ namespace CollisionGame
                 return energy;
             }
         }
+
         public int Mood
         {
             get

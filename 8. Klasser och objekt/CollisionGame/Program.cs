@@ -6,6 +6,8 @@ namespace CollisionGame
 {
     class Program
     {
+        static Actor cat = new Actor("c", 1, 0);
+
         static void Main(string[] args)
         {
             int money = 10;
@@ -14,12 +16,19 @@ namespace CollisionGame
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
             // To do: Sponsors to get money, giga rat attack, sleepiness, hunger/muscles, happiness,  steriods, (rat gets bigger),
+            // Hur mycket pengar förlorades, sluta när fiender är döda, fiender ska inte kunanna gå in i varandra, mouse traps
 
-            Tamagotchi();
 
-            battle(10, 10);
+            for (int i = 0; i < 3; i++)
+            {
+               // Tamagotchi(money);
+
+                battle(10, money);
+            }
+
         }
-        static void battle(int enemieCount, int money) // Hur mycket pengar förlorades, sluta när fiender är döda, fiender ska inte kunanna gå in i varandra, mouse traps
+
+        static void battle(int enemieCount, int money) 
         {
             #region initiering och deklarering
             string[,] playerIdleFrame = new string[4, 4]
@@ -78,20 +87,22 @@ namespace CollisionGame
                 {"(", " ", "$", " ", ")"},
             };
 
+            string[,] bakedCat = bakeCat(1, 0, 4);
+
             Canvas calculation = new Canvas(100,10);
             Canvas visual = new Canvas(100, 10);
 
-            List<Object> enemies = new List<Object>();
+            List<Actor> enemies = new List<Actor>();
 
-            Object ground = new Object("g", 1, 1);
+            Actor ground = new Actor("g", 1, 1);
             
-            Object player = new Object("p", 20, 7);
+            Actor player = new Actor("p", 20, 7);
             player.value = 20;
             player.frames.Add(playerIdleFrame);
 
-            Object sword = new Object("s", 1, 1);
+            Actor sword = new Actor("s", 1, 1);
 
-            Object wallet = new Object("m", 15, calculation.y-4);
+            Actor wallet = new Actor("m", 15, calculation.y-4);
             wallet.value = money;
             wallet.frames.Add(moneyBag);
 
@@ -121,7 +132,7 @@ namespace CollisionGame
 
                 #region place
                 // ÖVRIGT
-                visual.Place(catIdleFrame, 0, 4);
+                visual.PlaceRotated(bakedCat, 0, 4);
                 visual.PlaceText("Undvik skada genom att först attackera och sen hoppa på råttornas näsor när de kommer för nära!", 0, 0, "horizontal");
 
                 // FIENDE
@@ -129,7 +140,7 @@ namespace CollisionGame
                 if (i%1000 == 0 && placedEnemies<enemieCount)
                 {
                     string enemyName = "e" + placedEnemies.ToString(); // Har namnet 'e' + ett nummer för att de ska ha olika namn
-                    enemies.Add(new Object(enemyName, 80, 1)); // Skapar en ny fiende
+                    enemies.Add(new Actor(enemyName, 80, 1)); // Skapar en ny fiende
 
                     // Lägger til standarvärden för varje enemy
                     enemies[placedEnemies].frames.Add(enemyIdleFrame);
@@ -168,8 +179,6 @@ namespace CollisionGame
                 calculation.Place(wallet.id, wallet.XPos, wallet.YPos);
                 visual.Place(wallet.frames[0], wallet.XPos, wallet.YPos);
                 visual.Place(wallet.frames[0], wallet.XPos-3, wallet.YPos);
-
-
 
                 // SPELARE
                 calculation.Place(player.id, player.XPos, player.YPos);
@@ -322,7 +331,7 @@ namespace CollisionGame
 
                 i++;
             }
-
+            
             for (int b = 0; b < visual.y; b++)
             {
                 for (int a = 0; a < visual.x; a++)
@@ -337,280 +346,7 @@ namespace CollisionGame
             Console.ReadLine();
         }
 
-        #region gammal kod
-        /*
-        static void Tamagotchi()
-        {
-            #region init + dekl
-            string[,] syringeFrame = new string[3, 15]
-            {
-                {"", "", "", "", "", "", "", "", "", "", "(", ")", "", "", "",},
-                {"-", "-", "[", "=", "=", "=", "=", "=", "=", "=", "=", "]", "-", "-", "|",},
-                {"", "", "", "", "", "", "", "", "", "", "(", ")", "", "", "",},
-            };
-
-            string[,] catIdleFrame = new string[5, 12]
-            {
-                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
-                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
-                {"\\", "_", "/", " ", " ", " ", " ", " ", " ", ">", "*", "<",},
-                {"", "", "\\", "_", "_", "_", "_", "_", "_", "_", "/", "",},
-                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
-            };
-
-
-            Canvas visual = new Canvas(100, 25);
-            Canvas calculation = new Canvas(100,25);
-
-            int syringeStart = 80;
-            Object syringe = new Object("s", syringeStart, calculation.y - 2);
-
-            Object cat = new Object("c", 1, 1);
-
-            //int catFillsHoriz = 5;
-            //int catFillsVerti = 5;
-
-
-            bool renderReduce = false;
-            int renderSpeed = 10;
-
-            bool workouting = false;
-
-            int muscles = -1;
-            int energy = 0;
-            int mood = 0;
-
-            string[,] bakedCat = bakeCat(muscles, 1,1);
-
-
-            int i = 0;
-            int pastI = 0;
-
-            #endregion
-
-            while (true)
-            {
-                #region renderReduce
-                if (i % renderSpeed == 0)
-                {
-                    renderReduce = true;
-                }
-                else
-                {
-                    renderReduce = false;
-                }
-                #endregion
-
-                #region input
-                if (Console.KeyAvailable == true)
-                {
-                    var keyPress = Console.ReadKey().Key;
-
-                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
-
-                    switch (keyPress)
-                    {
-                        case ConsoleKey.F:
-                            workouting = true;
-                            pastI = i;
-                            break;
-
-
-                        default:
-                            break;
-                    }
-                }
-                #endregion
-
-                #region place
-                // Syringe
-                calculation.Place(syringe.id, syringe.XPos, syringe.YPos);
-
-                // Cat
-                visual.PlaceRotated(bakedCat, cat.XPos, cat.YPos);
-                calculation.Place(cat.id, cat.XPos, calculation.y - 2);
-
-                // Ground
-                for (int a = 0; a < calculation.x; a++)
-                {
-                    visual.Place("=", a, calculation.y - 1);
-                }
-
-                #endregion
-
-                #region other
-                // Syringe
-                int framesPassed = i - pastI;
-                int syringeHeight = syringeFrame.GetLength(0) - 1;
-                if (workouting)
-                {
-                    if (renderReduce)
-                    {
-                        syringe.Move("left", 1);
-                    }
-
-                    if (!calculation.CheckCollision(syringe.id, cat.id))
-                    {
-                        visual.Place(syringeFrame, syringe.XPos, syringe.YPos - syringeHeight);
-                    }
-                    else
-                    {
-                        syringe.XPos = syringeStart;
-                        muscles++;
-                        workouting = false;
-                        bakedCat = bakeCat(muscles, cat.XPos, cat.YPos);
-                    }
-                }
-                #endregion
-
-              //  calculation.Print();
-                visual.Print();
-                calculation.Clear();
-                i++;
-            }
-        }
-        */
-        /*
-        static string[,] bakeCat(int muscles, int startX, int startY)
-        {
-            #region cat frames
-
-            string[,] catShort = new string[4, 12]
-            {
-                {"", "", "", "", "", "", "", "", "A", "_", "A", "",},
-                {"|", "", "", "_", "_", "_", "_", "/", " ", "o", "o", "\\",},
-                {"\\", "_", "/", "_", "_", "_", "_", "_", "_", ">", "*", "<",},
-                {"", "", "", "L", "", "L", "", "L", "", "L", "", "",},
-            };
-
-            string[,] catTopLeft = new string[3, 6]
-            {
-                {"", "", "", "", "", "",},
-                { "|", "", "", "_", "_", "_",},
-                {"\\", "_", "/", " ", " ", " ", }
-            };
-
-            string[,] catTopRight = new string[3, 6]
-            {
-                {"", "", "A", "_", "A", "",},
-                {"_", "/", " ", "o", "o", "\\",},
-                {" ", " ", " ", ">", "*", "<",}
-            };
-
-            string[,] catBottomLeft = new string[2, 6]
-            {
-                {"", "", "\\", "_", "_", "_"},
-                {"", "", "", "L", "", "L",},
-            };
-
-            string[,] catBottomRight = new string[2, 6]
-            {
-                {"_", "_", "_", "_", "/", "",},
-                {"", "L", "", "L", "", "",},
-            };
-
-            string[,] catFillLeft = new string[1, 6]
-            {
-                {"", "", "|", " ", " ", " "},
-            };
-
-            string[,] catFillRight = new string[1, 6]
-            {
-                {" ", " ", " ", " ", "|", ""},
-            };
-
-            string[,] catFillTop = new string[6, 1]
-            {
-                {""},
-                {"_"},
-                {""},
-                {""},
-                {""},
-                {""},
-            };
-
-            string[,] catFillBottom = new string[1, 1]
-            {
-                {"_"},
-            };
-            #endregion
-
-            Canvas cat = new Canvas(100, 25);
-
-            int currentX;
-            int currentY;
-
-            int catFillsHoriz = muscles * 20;
-            int catFillsVerti = 0;
-
-            if (muscles >= 0)
-            {
-                // Top part
-                currentX = startX;
-                currentY = startY;
-
-                cat.Place(catTopLeft, currentX, currentY);
-
-                currentX = currentX + 6;
-                for (int a = 0; a < catFillsHoriz; a++)
-                {
-                    cat.Place(catFillTop, currentX + a, currentY);
-                }
-
-                currentX = currentX + catFillsHoriz;
-                cat.Place(catTopRight, currentX, currentY);
-
-                // Middle part
-                currentX = startX;
-                currentY = startY + 3;
-
-                for (int a = 0; a < catFillsVerti; a++)
-                {
-                    cat.Place(catFillLeft, currentX, currentY + a);
-                }
-
-                currentX = currentX + 6 + catFillsHoriz;
-                for (int a = 0; a < catFillsVerti; a++)
-                {
-                    cat.Place(catFillRight, currentX, currentY + a);
-                }
-
-                // Bottom part
-                currentX = startX;
-                currentY = startY + 3 + catFillsVerti;
-
-                cat.Place(catBottomLeft, currentX, currentY);
-
-                currentX = currentX + 6;
-                for (int a = 0; a < catFillsHoriz; a++)
-                {
-                    cat.Place(catFillBottom, currentX + a, currentY);
-                }
-
-                currentX = currentX + catFillsHoriz;
-                cat.Place(catBottomRight, currentX, currentY);
-
-                //cat.SwitchXY();
-
-
-                //  cat.Print();
-                // Console.ReadLine();
-
-                return cat.canvArray;
-            }
-            else
-            {
-                return catShort;
-            }
-
-
-
-
-        }
-        */
-        #endregion
-
-        static void Tamagotchi()
+        static void Tamagotchi(int money)
         {
             #region init + dekl
             string[,] syringeFrame = new string[3, 15]
@@ -624,9 +360,12 @@ namespace CollisionGame
             Canvas calculation = new Canvas(100, 25);
 
             int syringeStart = 80;
-            Object syringe = new Object("s", syringeStart, calculation.y - 2);
+            Actor syringe = new Actor("s", syringeStart, calculation.y - 2);
 
-            Object cat = new Object("c", 1, 0);
+
+            bool isAlive = true;
+            bool noAfford = false;
+            bool workouting = false;
 
             bool renderReduce = false;
             int renderSpeed = 10;
@@ -644,21 +383,24 @@ namespace CollisionGame
                 {"Muscles", "PR2; VA10; ACWorkout;" },
             };
 
-            bool workouting = false;
-
-            int money = 0;
+            int moneyLeft = money;
+            int feedPrice = 4;
+            int playPrice = 1;
+            int workoutPrice = 2;
+            int sleepPrice = 0;
 
             int daysLeft = 3;
 
             string[,] bakedCat = bakeCat(cat.Muscles, cat.XPos, cat.YPos);
 
+            UpdateStats(cat, ui, bakedCat);
 
             int i = 0;
             int pastI = 0;
 
             #endregion
 
-            while (true)
+            while (isAlive)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -676,23 +418,65 @@ namespace CollisionGame
                 {
                     var keyPress = Console.ReadKey().Key;
 
-                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
 
                     switch (keyPress)
                     {
                         case ConsoleKey.Q:
-                            workouting = true;
-                            pastI = i;
+                            if (moneyLeft >= feedPrice)
+                            {
+                                cat.Feed();
+
+                                moneyLeft = moneyLeft - feedPrice;
+                                bakedCat = UpdateStats(cat, ui, bakedCat);
+                            }
+                            else
+                            {
+                                noAfford = true;
+                                pastI = i;
+                            }
                             break;
 
                         case ConsoleKey.W:
+                            if (moneyLeft >= sleepPrice)
+                            {
+                                cat.Sleep();
 
+                                moneyLeft = moneyLeft - sleepPrice;
+                                bakedCat = UpdateStats(cat, ui, bakedCat);
+                            }
+                            else
+                            {
+                                noAfford = true;
+                                pastI = i;
+                            }
                             break;
 
                         case ConsoleKey.E:
+                            if (moneyLeft >= playPrice)
+                            {
+                                cat.Play();
+
+                                moneyLeft = moneyLeft - playPrice;
+                                bakedCat = UpdateStats(cat, ui, bakedCat);
+                            }
+                            else
+                            {
+                                noAfford = true;
+                                pastI = i;
+                            }
                             break;
 
                         case ConsoleKey.R:
+                            if (moneyLeft >= workoutPrice)
+                            {
+                                workouting = true;
+                                moneyLeft = moneyLeft - workoutPrice;
+                            }
+                            else
+                            {
+                                noAfford = true;
+                                pastI = i;
+                            }
                             break;
 
                         case ConsoleKey.I:
@@ -722,7 +506,7 @@ namespace CollisionGame
                 // UI
                 string value;
                 UIYpos = 2;
-                visual.PlaceText("Wallet:" + money + "$", UIXpos, UIYpos, "horizontal");
+                visual.PlaceText("Wallet:" + moneyLeft + "$", UIXpos, UIYpos, "horizontal");
                 UIYpos++;
 
                 visual.PlaceText("___________", UIXpos, UIYpos, "horizontal");
@@ -799,10 +583,10 @@ namespace CollisionGame
 
                 #region other
                 // Workout (steriods)
-                int framesPassed = i - pastI;
-                int syringeHeight = syringeFrame.GetLength(0);
                 if (workouting)
                 {
+                    int syringeHeight = syringeFrame.GetLength(0);
+
                     if (renderReduce)
                     {
                         syringe.Move("left", 1);
@@ -819,27 +603,66 @@ namespace CollisionGame
                         syringe.XPos = syringeStart;
                         workouting = false;
 
-                        UpdateStats(cat, ui);
 
-                        bakedCat = bakeCat(cat.Muscles, cat.XPos, cat.YPos);
+                        bakedCat = UpdateStats(cat, ui, bakedCat);
                     }
                 }
 
+                if (noAfford)
+                {
+                    int framesPassed = i - pastI;
+
+                    if (framesPassed < 200)
+                    {
+                        visual.PlaceText("MAN YOU ARE BROKE AND CANNOT AFFORD", 10, 10, "horizontal");
+                    }
+                    else
+                    {
+                        noAfford = false;
+                    }
 
 
+                }
                 #endregion
+
+                if (renderReduce)
+                {
+                    if (cat.Mood <= 0 || cat.Repleteness <= 0 || cat.Energy <= 0 || cat.Muscles <= 0)
+                    {
+                        isAlive = false;
+                    }
+                }
 
                 //calculation.Print();
                 visual.Print();
                 calculation.Clear();
                 i++;
             }
+
+            if (!isAlive)
+            {
+                /*
+                for (int b = 0; b < visual.y; b++)
+                {
+                    for (int a = 0; a < visual.x; a++)
+                    {
+                        visual.Place("¤", a, b);
+                        visual.Print();
+                    }
+                }
+                */
+
+                Console.SetCursorPosition(visual.x / 2, visual.y / 2);
+                Console.Write("YOU DIED");
+                Console.ReadLine();
+            }
+
+ 
         }
 
         static string[,] bakeCat(int fatness, int startX, int startY)
         {
             #region cat frames
-
 
             string[,] catIdleFrame = new string[5, 12]
             {
@@ -912,6 +735,8 @@ namespace CollisionGame
 
             Canvas cat = new Canvas(100, 50);
 
+            fatness--;
+
             int currentX;
             int currentY;
             int offset = 18;
@@ -979,7 +804,7 @@ namespace CollisionGame
 
         }
 
-        static void UpdateStats(Object cat, Dictionary<string,string> ui)
+        static string[,] UpdateStats(Actor cat, Dictionary<string,string> ui, string[,] bakedcat)
         {
             // Update stats
             RSID("Repleteness", "VA", ";", ui);
@@ -993,6 +818,9 @@ namespace CollisionGame
 
             RSID("Muscles", "VA", ";", ui);
             LSID("Muscles", "VA" + cat.Muscles + ";", ui);
+
+            return bakeCat(cat.Muscles, cat.XPos, cat.YPos);
+            
         }
 
         static string SSID(string sökNyckel, string startOrd, string stopOrd, Dictionary<string, string> dic)
@@ -1093,6 +921,7 @@ namespace CollisionGame
             dic.Add(nyckel, värde);
 
         }
+
 
     }
 }

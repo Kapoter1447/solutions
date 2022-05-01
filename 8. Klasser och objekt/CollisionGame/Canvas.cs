@@ -148,7 +148,10 @@ namespace CollisionGame
                     int xClamp = Math.Clamp(x + b, 0, canvas.GetLength(0) - 1);
                     int yClamp = Math.Clamp(y + a, 0, canvas.GetLength(1) - 1);
 
-                    canvas[xClamp, yClamp] = itemArray[b,a];
+                    if (itemArray[b, a] != "")
+                    {
+                        canvas[xClamp, yClamp] = itemArray[b, a];
+                    }
                 }
             }
         }
@@ -245,7 +248,7 @@ namespace CollisionGame
         {
             // direction "up" would give modifier a(y) = -1 och b(x) = 0.
             // (-1,-1)(0,-1)(1,-1)
-            // (-1,0) Object (1,0)   Object is placetd at (0,0)
+            // (-1,0) Actor (1,0)   Actor is placetd at (0,0)
             // (-1,1) (0,1) (1,1)
 
             bool collision = false;
