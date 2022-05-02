@@ -60,6 +60,7 @@ namespace CollisionGame
             {
                 alive = Tamagotchi();
 
+                time = stopwatch.Elapsed;
                 if (!alive)
                 {
                     break;
@@ -71,6 +72,7 @@ namespace CollisionGame
 
                 battle(money + 1);
 
+                time = stopwatch.Elapsed;
                 if (time.Minutes >= 3)
                 {
                     break;
@@ -82,6 +84,7 @@ namespace CollisionGame
             {
                 int podiumOffset = -5;
                 visual.PlaceRotated(bakeCat(cat.Muscles, 0, 0), 50 + podiumOffset, -10);
+                visual.PlaceText("Score/Muscle Mass: " + cat.Muscles, 50, 10, "horizontal");
                 visual.Place(podium, 50 + podiumOffset, 13);
                 visual.Place(podium, 39 + podiumOffset, 15);
                 visual.Place(podium, 61 + podiumOffset, 15);
@@ -791,7 +794,8 @@ namespace CollisionGame
             {
                 {"", "", "", "", "", "",},
                 { "|", "", "", "_", "_", "_",},
-                {"\\", "_", "/", " ", " ", " ", }
+                {"\\", "_", "/", "" +
+                "", " ", " ", }
             };
 
             string[,] catTopRight = new string[3, 6]
