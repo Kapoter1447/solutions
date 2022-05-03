@@ -128,7 +128,7 @@ namespace CollisionGame
                     int yClamp = Math.Clamp(y+b, 0, canvas.GetLength(1) - 1);
 
                     // Ifall tecken är tomt så ska det inte bli massa mellanrum där som täcker annat
-                    if (itemArray[b, a] != "")
+                    if (itemArray[b, a] != "" && itemArray[b, a] != null)
                     {
                         canvas[xClamp, yClamp] = itemArray[b, a];
                     }
@@ -148,7 +148,7 @@ namespace CollisionGame
                     int xClamp = Math.Clamp(x + b, 0, canvas.GetLength(0) - 1);
                     int yClamp = Math.Clamp(y + a, 0, canvas.GetLength(1) - 1);
 
-                    if (itemArray[b, a] != "")
+                    if (itemArray[b, a] != "" && itemArray[b, a] != null)
                     {
                         canvas[xClamp, yClamp] = itemArray[b, a];
                     }

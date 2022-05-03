@@ -161,7 +161,8 @@ namespace CollisionGame
                 {"(", " ", "$", " ", ")"},
             };
 
-            string[,] bakedCat = bakeCat(1, 0, 4);
+            //string[,] bakedCat = bakeCat(1, 0, 4);
+            string[,] bakedCat = bakeCat(cat.Muscles, 0, 0);
 
             Canvas calculation = new Canvas(100,10);
             Canvas visual = new Canvas(100, 10);
@@ -172,7 +173,8 @@ namespace CollisionGame
             
             Actor player = new Actor("p", 20, 7);
             player.health = 20;
-            player.frames.Add(playerIdleFrame);
+            //player.frames.Add(playerIdleFrame);
+            player.frames.Add(bakedCat);
 
             Actor sword = new Actor("s", 1, 1);
 
@@ -259,8 +261,16 @@ namespace CollisionGame
                 visual.PlaceText(money.ToString() + "$", wallet.XPos, wallet.YPos-4, "horizontal");
 
                 // SPELARE
-                calculation.Place(player.id, player.XPos, player.YPos);
-                visual.Place(player.frames[0], player.XPos - 1, player.YPos - 3);
+                int pYOffset = -22;
+                int pXOffset = -1;
+
+                int catWidth = ((cat.Muscles - 2) * 2) + 9;
+
+                for (int a = 2; a < catWidth; a++)
+                {
+                    calculation.Place(player.id, player.XPos + a, player.YPos);
+                }
+                visual.PlaceRotated(player.frames[0], player.XPos + pXOffset, player.YPos + pYOffset);
                 visual.PlaceText(player.health.ToString(), player.XPos-1, player.YPos-5, "horizontal");
 
                 // TIME
@@ -280,8 +290,8 @@ namespace CollisionGame
                         calculation.Place(sword.id, player.XPos + 2, player.YPos - 1);
                         calculation.Place(sword.id, player.XPos + 3, player.YPos - 1);
 
-                        player.frames.RemoveAt(0);
-                        player.frames.Add(playerAttackFrame);
+                        //player.frames.RemoveAt(0);
+                       // player.frames.Add(playerAttackFrame);
                     }
                     else
                     {
@@ -290,8 +300,8 @@ namespace CollisionGame
                 }
                 else
                 {
-                    player.frames.RemoveAt(0);
-                    player.frames.Add(playerIdleFrame);
+                  //  player.frames.RemoveAt(0);
+                  //  player.frames.Add(playerIdleFrame);
                 }
                 #endregion
 
@@ -428,7 +438,7 @@ namespace CollisionGame
                     enemiesAlive = false;
                 }
 
-               // calculation.Print();
+                calculation.Print();
                 visual.Print();
                 calculation.Clear();
                 i++;
@@ -910,8 +920,6 @@ namespace CollisionGame
             }
 
             return cat.canvArray;
-
-
         }
 
         static string[,] UpdateStats(Actor cat, Dictionary<string,string> ui, string[,] bakedcat)
