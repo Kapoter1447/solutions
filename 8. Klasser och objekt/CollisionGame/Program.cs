@@ -505,9 +505,19 @@ namespace CollisionGame
 
             Stopwatch sWTamagotchi = new Stopwatch();
             sWTamagotchi.Start();
-            bool timeUp = false;
+            bool sponsorTime = false;
+            string sponsorName = "";
             string clock;
-            int roundLength = 15;
+            int timeBeforeSponsor = 15;
+
+            Dictionary<string, string> sponsors = new Dictionary<string, string>
+            {
+                {"Fasebook", "MO3;"},
+                {"Besla: Cars and bots", "MO10;"},
+                {"Doening Airplanes", "MO5;"},
+                {"ICA crypto currency", "MO1;"},
+                {"AMOGUS VR", "MO7;"},
+            };
 
             string[,] bakedCat = bakeCat(cat.Muscles, cat.XPos, cat.YPos);
             UpdateStats(cat, ui, bakedCat);
@@ -517,7 +527,7 @@ namespace CollisionGame
 
             #endregion
 
-            while (isAlive && !timeUp)
+            while (isAlive && !sponsorTime)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -681,14 +691,31 @@ namespace CollisionGame
                 // Time
                 TimeSpan time = stopwatch.Elapsed;
                 TimeSpan tamagotchiTime = sWTamagotchi.Elapsed;
-                string timeUntilAttack = (roundLength - tamagotchiTime.Seconds).ToString();
+                string timeUntilSponsor = (timeBeforeSponsor - tamagotchiTime.Seconds).ToString();
                 clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
 
                 visual.PlaceText("Clock: " + clock + "pm. Muscle contest 3:0pm", 1, 2, "horizontal");
-                visual.PlaceText("Rat attack in: " + timeUntilAttack, 1, 3, "horizontal");
+                visual.PlaceText("Sponsor in: " + timeUntilSponsor, 1, 3, "horizontal");
 
                 // Instructions
                 visual.PlaceText("GOAL: Give cat muscles to win muscle contest || Make all values stay between 1-10 or die", 1, 100, "horizontal");
+
+                // Sponsor
+                if (tamagotchiTime.Seconds > timeBeforeSponsor)
+                {
+                    string[] shuffleArray = new string[sponsors.Count];
+
+                    int a = 0;
+                    foreach (KeyValuePair<string,string> sponsor in sponsors)
+                    {
+                        shuffleArray[a] = sponsor.Key;
+                        a++;
+                    }
+
+                    string [] shuffledArray = Shuffle(shuffleArray);
+
+                    visual.PlaceText("SPONSOR HAS ARRIVED: " + shuffledArray[0], 1 , 0, "horizontal");
+                }
 
                 #endregion
 
@@ -737,10 +764,11 @@ namespace CollisionGame
                 }
 
                 // Check if time is up
-                if (tamagotchiTime.Seconds > roundLength)
+                if (tamagotchiTime.Seconds > timeBeforeSponsor)
                 {
-                    //timeUp = true;
+                    //sponsorTime = true;
                 }
+
 
                 // Check if dead
                 if (renderReduce)
@@ -1041,6 +1069,30 @@ namespace CollisionGame
 
         }
 
+        static string[] Shuffle(string[] inputs)
+        {
+            List<string> list = new List<string>();
+            Random rnd = new Random();
+
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                list.Add(rnd.Next(0, 100) + "¤" + inputs[i]);
+            }
+
+            list.Sort();
+            string[] outputs = new string[inputs.Length];
+            int a = 0;
+
+            foreach (string item in list)
+            {
+                string[] split = item.Split('¤');
+
+                outputs[a] = split[1];
+                a++;
+            }
+
+            return outputs;
+        }
 
     }
 }
