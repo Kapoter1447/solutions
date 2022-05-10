@@ -5,6 +5,8 @@ using System.Threading;
 
 namespace CollisionGame
 {
+
+    // Döda råttor för att få sponsorer. Ju bättre sponsor desto mer råttor måste dödas
     class Program
     {
         static Actor cat = new Actor("c", 1, 0);
@@ -20,7 +22,6 @@ namespace CollisionGame
         static Stopwatch stopwatch = new Stopwatch();
 
         static int money = 10;
-
         static void Main(string[] args)
         {
 
@@ -211,7 +212,7 @@ namespace CollisionGame
 
                 #region place
                 // ÖVRIGT
-                visual.PlaceRotated(bakedCat, 0, -18);
+                //visual.PlaceRotated(bakedCat, 0, -18);
                 visual.PlaceText("Undvik skada genom att först attackera och sen hoppa på råttornas näsor när de kommer för nära!", 0, 0, "horizontal");
 
                 // FIENDE
@@ -286,10 +287,10 @@ namespace CollisionGame
 
                     if (framesPassed < 100)
                     {
-                        calculation.Place(sword.id, player.XPos + 1, player.YPos - 1);
-                        calculation.Place(sword.id, player.XPos + 2, player.YPos - 1);
-                        calculation.Place(sword.id, player.XPos + 3, player.YPos - 1);
-
+                        for (int a = 0; a < 3; a++)
+                        {
+                            calculation.Place(sword.id, player.XPos + catWidth + a, player.YPos - 1);
+                        }
                         //player.frames.RemoveAt(0);
                        // player.frames.Add(playerAttackFrame);
                     }
@@ -738,7 +739,7 @@ namespace CollisionGame
                 // Check if time is up
                 if (tamagotchiTime.Seconds > roundLength)
                 {
-                    timeUp = true;
+                    //timeUp = true;
                 }
 
                 // Check if dead
