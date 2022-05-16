@@ -6,7 +6,7 @@ namespace CollisionGame
 {
     class Actor
     {
-        // Medlemsvariabler
+        // Member variables
         private int xPos;
         private int yPos;
 

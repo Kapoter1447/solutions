@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CollisionGame
 {
-    class Control
+    class Control // NOT USED!!!!
     {
         private ConsoleKey controlKey;
 

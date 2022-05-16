@@ -80,6 +80,20 @@ namespace CollisionGame
             }
         }
 
+        public void PlaceText(string item, int x, int y)
+        {
+            // Canvas length -1 för att annars hamnar den utanför
+            int xClamp = Math.Clamp(x, 0, canvas.GetLength(0) - 1);
+            int yClamp = Math.Clamp(y, 0, canvas.GetLength(1) - 1);
+
+            for (int i = 0; i < item.Length; i++)
+            {
+                xClamp = Math.Clamp(xClamp + 1, 0, canvas.GetLength(0) - 1);
+
+                canvas[xClamp, yClamp] = item[i].ToString();
+            }
+        }
+
         public void Place(string[] itemArray, int x, int y)
         {
             int xClamp = Math.Clamp(x, 0, canvas.GetLength(0) - 1);
