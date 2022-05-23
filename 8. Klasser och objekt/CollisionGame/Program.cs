@@ -447,7 +447,7 @@ namespace CollisionGame
                     enemiesAlive = false;
                 }
 
-               // calculation.Print();
+                calculation.Print();
                 visual.Print();
                 calculation.Clear();
                 i++;
