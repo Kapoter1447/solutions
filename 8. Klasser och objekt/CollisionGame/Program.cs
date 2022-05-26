@@ -12,10 +12,19 @@ namespace CollisionGame
 
         static Dictionary<string, string> stats = new Dictionary<string, string>
         {
-            {"Repleteness", "PR4; VA5; ACFeed;" }, // VA as i health, PR as in price, AC as in action
-            {"Energy", "PR0; VA1; ACSleep;" },
-            {"Mood", "PR1; VA7; ACPlay;" },
-            {"Muscles", "PR2; VA10; ACWorkout;" },
+            {"Repleteness", "PR4; VA5; ACFeed; COQ;" }, // VA as i health, PR as in price, AC as in action
+            {"Energy", "PR0; VA1; ACSleep; COW;" },
+            {"Mood", "PR1; VA7; ACPlay; COE;" },
+            {"Muscles", "PR2; VA10; ACWorkout; COR;" },
+        };
+
+        static Dictionary<string, string> sponsors = new Dictionary<string, string>
+        {
+                {"Fasebook", "MO3;"},
+                {"Besla: Cars and bots", "MO10;"},
+                {"Doening Airplanes", "MO5;"},
+                {"ICA crypto currency", "MO1;"},
+                {"AMOGUS VR", "MO7;"},
         };
 
         static Stopwatch stopwatch = new Stopwatch();
@@ -46,6 +55,33 @@ namespace CollisionGame
                 {"|", "", "", "", "", "", "", "", "", "", "", "|",},
                 {"|", "", "", "", "", "", "", "", "", "", "", "|",},
             };
+            string[,] signL = new string[6, 1]
+            {
+                {""},
+                {"/"},
+                {"|"},
+                {"|"},
+                {"|"},
+                {"\\"},
+            };
+            string[,] signM = new string[6, 1]
+            {
+                {"_"},
+                {""},
+                {""},
+                {""},
+                {""},
+                {"_"},
+            };
+            string[,] signR = new string[6, 1]
+            {
+                {""},
+                {"\\"},
+                {"|"},
+                {"|"},
+                {"|"},
+                {"/"},
+            };
 
             bool alive = true; ;
 
@@ -57,9 +93,48 @@ namespace CollisionGame
 
             // To do: Sponsors to get money, giga rat attack, sleepiness, hunger/muscles, happiness,  steriods, (rat gets bigger),
             // Hur mycket pengar förlorades, sluta när fiender är döda, fiender ska inte kunanna gå in i varandra, mouse traps
-            // Döda råttor för att få sponsorer. Ju bättre sponsor desto mer råttor måste dödas
+            // Döda råttor för att få sponsorer. Ju bättre sponsorFrame desto mer råttor måste dödas
             // Endings
 
+            #region Intro
+            
+            int signX = visual.x;
+            int signOffset = 15;
+
+            for (int i = 0; i < 80; i++)
+            {
+                visual.Place(signL, signOffset+signX, visual.y / 2);
+                signOffset++;
+
+                // Text
+                visual.PlaceText("CAT MUSCLE CONTEST", signOffset+signX, visual.y/2+1);
+                visual.PlaceText("AT 3:0PM", signOffset + signX, visual.y / 2 + 2);
+                visual.PlaceText("'Gains Gain Gains'", signOffset + signX, visual.y / 2 + 3);
+                visual.PlaceText("Sponsors available!", signOffset + signX, visual.y / 2 + 4);
+
+                visual.PlaceText("Click 'i' för instructions in game!", 40 + signX, visual.y-2);
+                visual.PlaceText("Click Enter To Proceed...", 40 + signX, visual.y-1);
+
+                visual.PlaceText("A game by Kasper Larsson", 0, 0, "vertical");
+                // Text end
+
+                for (int a = 0; a < 20; a++)
+                {
+                    visual.Place(signM, signOffset + signX, visual.y / 2);
+                    signOffset++;
+                }
+                visual.Place(signR, signOffset + signX, visual.y / 2);
+
+                visual.Print();
+                Thread.Sleep(20);
+
+                signOffset = 0;
+                signX--;
+            }
+
+            Console.ReadLine();
+            
+            #endregion
 
             while (true)
             {
@@ -75,7 +150,9 @@ namespace CollisionGame
                     break;
                 }
 
-                Battle(money + 1);
+                int sponsorPayment = int.Parse(SSID(currentSponsor, "MO", ";", sponsors));
+
+                Battle(sponsorPayment);
 
                 time = stopwatch.Elapsed;
                 if (time.Minutes >= 3)
@@ -115,18 +192,20 @@ namespace CollisionGame
         static void Battle(int enemieCount) 
         {
             #region initiering och deklarering
-            string[,] playerIdleFrame = new string[4, 4]
+            string[,] sponsorFrame = new string[4, 4]
             {
                 {"", "O", "", ""},
                 {"/", "|", "\\", ""},
-                {"", "|", "", "\\", },
+                {"", "|", "", "", },
                 {"/", "", "\\", ""}
             };
 
-            string[,] playerAttackFrame = new string[4, 4]
+            string[,] sponsorFrame2 = new string[6, 4]
             {
-                {"", "O", "", "/"},
-                {"/", "|", "/", ""},
+                {"", "$", "", ""},
+                {"", "", "", ""},
+                {"", "O", "", ""},
+                {"\\", "|", "/", ""},
                 {"", "|", "", "", },
                 {"/", "", "\\", ""}
             };
@@ -171,11 +250,10 @@ namespace CollisionGame
                 {"(", " ", "$", " ", ")"},
             };
 
-            //string[,] bakedCat = BakeCat(1, 0, 4);
             string[,] bakedCat = BakeCat(cat.Muscles, 0, 0);
 
-            Canvas calculation = new Canvas(100,10);
-            Canvas visual = new Canvas(100, 10);
+            Canvas calculation = new Canvas(100, 25);
+            Canvas visual = new Canvas(100, 25);
 
             List<Actor> enemies = new List<Actor>();
 
@@ -183,12 +261,11 @@ namespace CollisionGame
             
             Actor player = new Actor("p", 20, 7);
             player.health = 20;
-            //player.frames.Add(playerIdleFrame);
             player.frames.Add(bakedCat);
 
             Actor sword = new Actor("s", 1, 1);
 
-            Actor wallet = new Actor("m", 15, calculation.y-2);
+            Actor wallet = new Actor("m", 15, calculation.y-3);
             wallet.health = money;
             wallet.frames.Add(moneyBag);
 
@@ -201,6 +278,8 @@ namespace CollisionGame
 
             int placedEnemies = 0;
             bool enemiesAlive = true;
+            bool enemyKilled = false;
+            int enemyFrameCounter = 0;
 
             int i = 0;
             int pastI = 0;
@@ -228,7 +307,7 @@ namespace CollisionGame
                 if (i%1000 == 0 && placedEnemies<enemieCount)
                 {
                     string enemyName = "e" + placedEnemies.ToString(); // Every name should be uniqe. A number is added after the name
-                    enemies.Add(new Actor(enemyName, 80, 1));
+                    enemies.Add(new Actor(enemyName, 80, calculation.y - 10));
 
                     // Adds standard values for every enemy
                     enemies[placedEnemies].frames.Add(enemyIdleFrame);
@@ -253,23 +332,28 @@ namespace CollisionGame
                 // GROUND AND MAP
                 for (int a = 0; a < 100; a++)
                 {
-                    calculation.Place(ground.id, a, 10);
-                    visual.Place("=", a, 10);
+                    calculation.Place(ground.id, a, calculation.y-2);
+                    visual.Place("=", a, calculation.y-2);
+                }
+                for (int a = 0; a < 20; a++)
+                {
+                    calculation.Place(ground.id, 80+a, calculation.y - 5);
+                    visual.Place("=", 80+a, calculation.y - 5);
                 }
 
                 // Instakillblock
                 for (int a = 0; a < 4; a++)
                 {
-                    calculation.Place("i", calculation.x-4, a+6); 
+                    calculation.Place("i", calculation.x-4, calculation.y-2-a); 
                 }
 
                 // Take cash
                 calculation.Place(wallet.id, wallet.XPos, wallet.YPos);
                 visual.Place(wallet.frames[0], wallet.XPos, wallet.YPos-2);
                 visual.Place(wallet.frames[0], wallet.XPos-3, wallet.YPos-2);
-                visual.PlaceText(money.ToString() + "$", wallet.XPos, wallet.YPos-4);
+                visual.PlaceText(money.ToString() + "$", wallet.XPos-1, wallet.YPos-4);
 
-                // SPELARE
+                // PLAYER
                 int pYOffset = -22;
                 int pXOffset = -1;
 
@@ -281,6 +365,35 @@ namespace CollisionGame
                 }
                 visual.PlaceRotated(player.frames[0], player.XPos + pXOffset, player.YPos + pYOffset);
                 visual.PlaceText(player.health.ToString(), player.XPos-1, player.YPos-5);
+
+                // SPONSOR
+                int sponsorY = 5;
+                int sponsorX = visual.x/2;
+
+                if (enemyKilled)
+                {
+                    visual.Place(sponsorFrame2, sponsorX, sponsorY - 2);
+                    visual.Place(sponsorFrame2, sponsorX + 4, sponsorY - 2);
+                    visual.Place(sponsorFrame2, sponsorX + 8, sponsorY - 2);
+
+                    int happySponsorsFrames = 200;
+                    if (enemyFrameCounter < happySponsorsFrames)
+                    {
+                        enemyFrameCounter++;
+                    }
+                    else
+                    {
+                        enemyFrameCounter = 0;
+                        enemyKilled = false;
+                    }
+                }
+                else
+                {
+                    visual.Place(sponsorFrame, sponsorX, sponsorY);
+                    visual.Place(sponsorFrame, sponsorX + 4, sponsorY);
+                    visual.Place(sponsorFrame, sponsorX + 8, sponsorY);
+                }
+                visual.PlaceText(currentSponsor, sponsorX - 1, sponsorY + 4);
 
                 // TIME
                 TimeSpan time = stopwatch.Elapsed;
@@ -300,7 +413,7 @@ namespace CollisionGame
                             calculation.Place(sword.id, player.XPos + catWidth + a, player.YPos - 1);
                         }
                         //player.frames.RemoveAt(0);
-                       // player.frames.Add(playerAttackFrame);
+                       // player.frames.Add(sponsorFrame2);
                     }
                     else
                     {
@@ -310,7 +423,7 @@ namespace CollisionGame
                 else
                 {
                   //  player.frames.RemoveAt(0);
-                  //  player.frames.Add(playerIdleFrame);
+                  //  player.frames.Add(sponsorFrame);
                 }
                 #endregion
 
@@ -360,6 +473,7 @@ namespace CollisionGame
                             if (enemies[a].health <= 0) // If dies: get money
                             {
                                 money++;
+                                enemyKilled = true;
                             }
                         }
                         // By insta kill
@@ -511,6 +625,8 @@ namespace CollisionGame
             bool noAfford = false;
             bool workouting = false;
 
+            bool tutorialActive = false;
+
             Stopwatch stpWTmgi = new Stopwatch();
             stpWTmgi.Start();
 
@@ -519,16 +635,7 @@ namespace CollisionGame
             bool sponsorArrived = false;
 
             string clock;
-            int timeBeforeSponsor = 15;
-
-            Dictionary<string, string> sponsors = new Dictionary<string, string>
-            {
-                {"Fasebook", "MO3;"},
-                {"Besla: Cars and bots", "MO10;"},
-                {"Doening Airplanes", "MO5;"},
-                {"ICA crypto currency", "MO1;"},
-                {"AMOGUS VR", "MO7;"},
-            };
+            int timeBeforeSponsor = 3;
 
             string[] shuffledArray = new string[sponsors.Count];
             // Sponsor end
@@ -620,6 +727,14 @@ namespace CollisionGame
                             break;
 
                         case ConsoleKey.I:
+                            if (tutorialActive)
+                            {
+                                tutorialActive = false;
+                            }
+                            else
+                            {
+                                tutorialActive = true;
+                            }
                             break;
                             
                         case ConsoleKey.Spacebar:
@@ -641,6 +756,11 @@ namespace CollisionGame
                 // SYRINGE
                 calculation.Place(syringe.id, syringe.XPos, syringe.YPos);
 
+                if (tutorialActive && syringe.XPos < syringeStart)
+                {
+                    visual.PlaceText("Anabolic Steriods", syringe.XPos, syringe.YPos - 4);
+                }
+
                 // CAT
                 int catXOffset = cat.Muscles * 2 + 8;
                 int catYOffset = -2;
@@ -656,11 +776,29 @@ namespace CollisionGame
                 // UI
                 string statValue;
                 UIYpos = 2; // Start UI Y statValue
+                
+                if (tutorialActive)
+                {
+                    visual.PlaceText("Money to perform", UIXpos - 20, UIYpos-1);
+                    visual.PlaceText("actions with -->", UIXpos - 20, UIYpos);
+                }
+
                 visual.PlaceText("Wallet:" + money + "$", UIXpos, UIYpos);
                 UIYpos++;
 
                 visual.PlaceText("___________", UIXpos, UIYpos);
                 UIYpos = UIYpos + 3;
+
+                if (tutorialActive)
+                {
+                    visual.PlaceText("Name of need --> ", UIXpos - 20, UIYpos);
+                    visual.PlaceText("The State of your cat's need -->", UIXpos - 36, UIYpos + 1);
+                    visual.PlaceText("The cost to raise need --> ", UIXpos - 30, UIYpos + 2);
+
+                    visual.PlaceText("To keep cat alive:", UIXpos - 30, UIYpos + 4);
+                    visual.PlaceText("Keep the values over 0", UIXpos - 30, UIYpos + 5);
+                    visual.PlaceText("but not more than 10", UIXpos - 30, UIYpos + 6);
+                }
 
                 foreach (KeyValuePair<string, string> element in stats)
                 {
@@ -707,6 +845,12 @@ namespace CollisionGame
 
                     visual.PlaceText(statValue + " " + price + "$", UIXpos, UIYpos);
 
+                    if (tutorialActive)
+                    {
+                        string control = SSID(element.Key, "CO", ";", stats);
+                        visual.PlaceText("<-- Click " + control, UIXpos + 10, UIYpos);
+                    }
+
                     UIYpos++;
                     UIYpos++;
                 }
@@ -717,12 +861,26 @@ namespace CollisionGame
                 string timeUntilSponsor = (timeBeforeSponsor - timePassedTmgi.Seconds).ToString();
                 clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
 
-                visual.PlaceText("Clock: " + clock + "pm. Muscle contest 3:0pm", 1, 2);
-                visual.PlaceText("Sponsor in: " + timeUntilSponsor, 1, 3);
+                visual.PlaceText("Clock: " + clock + "pm.", 1, 2);
+                if (tutorialActive)
+                {
+                    visual.PlaceText("<-- Muscle contest 3:0pm", 16, 2);
+                }
 
                 // Instructions
-                visual.PlaceText("GOAL: Give cat muscles to win muscle contest" +
-                    " || Make all values stay between 1-10 or die", 1, 100);
+                visual.PlaceText("Click 'i' for instructions", 1, 4);
+
+                int instrX = 1;
+                int instrY = 6;
+
+                if (tutorialActive)
+                {
+                    visual.PlaceText("To Do List:", instrX, instrY);
+                    visual.PlaceText("1. Keep Cat Alive", instrX, instrY + 1);
+                    visual.PlaceText("2. Get Muscles", instrX, instrY + 2);
+                    visual.PlaceText("3. Get Money By Impressing Sponsors", instrX, instrY + 3);
+                    visual.PlaceText("4. Win Muscle Contest", instrX, instrY + 4);
+                }
 
                 // Sponsor
                 if (timePassedTmgi.Seconds > timeBeforeSponsor)
@@ -737,6 +895,7 @@ namespace CollisionGame
                     }
 
                     shuffledArray = Shuffle(sponsorArray);
+                    currentSponsor = shuffledArray[0];
                     
                     sponsorArrived = true;
 
@@ -745,8 +904,11 @@ namespace CollisionGame
 
                 if (sponsorArrived)
                 {
-                    visual.PlaceText("SPONSOR HAS ARRIVED: " + shuffledArray[0], 1, 3);
-                    visual.PlaceText("Click 'Space' to impress sponsor", 1, 4);
+                    visual.PlaceText("SPONSOR HAS ARRIVED: " + currentSponsor + " || Click 'Space' to impress sponsor", 1, visual.y-1);
+                }
+                else if (tutorialActive)
+                {
+                    visual.PlaceText("Sponsors show up here every 15 seconds", 1 , visual.y-1);
                 }
 
                 #endregion
@@ -794,13 +956,6 @@ namespace CollisionGame
 
 
                 }
-
-                // Check if time is up
-                if (timePassedTmgi.Seconds > timeBeforeSponsor)
-                {
-                    //sponsorTime = true;
-                }
-
 
                 // Check if dead
                 if (renderReduce)
