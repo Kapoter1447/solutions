@@ -96,6 +96,8 @@ namespace CollisionGame
             // Döda råttor för att få sponsorer. Ju bättre sponsorFrame desto mer råttor måste dödas
             // Endings
 
+          //  Battle(5);
+
             #region Intro
             
             int signX = visual.x;
@@ -269,10 +271,12 @@ namespace CollisionGame
             wallet.health = money;
             wallet.frames.Add(moneyBag);
 
-            bool swordUsed = false;
+            bool attacking = false;
+
+            bool tutorialActive = true;
 
             bool renderReduce = false;
-            int renderSpeed = 50;
+            int renderSpeed = 30;
 
             string clock;
 
@@ -299,8 +303,12 @@ namespace CollisionGame
                 #endregion
 
                 #region place
-                // OTHER
-                visual.PlaceText("Undvik skada genom att först attackera och sen hoppa på råttornas näsor när de kommer för nära!", 0, 0);
+                // Tutorial
+                if (tutorialActive)
+                {
+                    visual.PlaceText("W, A and D - Movement", 1 ,9);
+                    visual.PlaceText("Spacebar - Attack", 1, 10);
+                }
 
                 // ENEMY
                 // Create enemies
@@ -327,6 +335,16 @@ namespace CollisionGame
                         visual.Place(enemies[a].health.ToString(), enemies[a].XPos + 4, enemies[a].YPos - 5);
                     }
                     visual.Place(enemies[a].frames[0], enemies[a].XPos, enemies[a].YPos - 3);
+
+                    if (tutorialActive && enemies[a].health > 0)
+                    {
+                        visual.PlaceText("Rat", enemies[a].XPos + 3, enemies[a].YPos - 1);
+                        visual.PlaceText("Rat Health -->", enemies[a].XPos - 12, enemies[a].YPos - 5);
+                    }
+                    else if (tutorialActive)
+                    {
+                        visual.PlaceText("Dead Rat", enemies[a].XPos, enemies[a].YPos - 1);
+                    }
                 }
 
                 // GROUND AND MAP
@@ -335,10 +353,10 @@ namespace CollisionGame
                     calculation.Place(ground.id, a, calculation.y-2);
                     visual.Place("=", a, calculation.y-2);
                 }
-                for (int a = 0; a < 20; a++)
+                for (int a = 0; a < 30; a++)
                 {
-                    calculation.Place(ground.id, 80+a, calculation.y - 5);
-                    visual.Place("=", 80+a, calculation.y - 5);
+                    calculation.Place(ground.id, 70+a, calculation.y - 5);
+                    visual.Place("=", 70+a, calculation.y - 5);
                 }
 
                 // Instakillblock
@@ -352,6 +370,11 @@ namespace CollisionGame
                 visual.Place(wallet.frames[0], wallet.XPos, wallet.YPos-2);
                 visual.Place(wallet.frames[0], wallet.XPos-3, wallet.YPos-2);
                 visual.PlaceText(money.ToString() + "$", wallet.XPos-1, wallet.YPos-4);
+                
+                if (tutorialActive)
+                {
+                    visual.PlaceText("Your wallet. Protect it from rats", wallet.XPos - 7, wallet.YPos+2);
+                }
 
                 // PLAYER
                 int pYOffset = -22;
@@ -365,6 +388,11 @@ namespace CollisionGame
                 }
                 visual.PlaceRotated(player.frames[0], player.XPos + pXOffset, player.YPos + pYOffset);
                 visual.PlaceText(player.health.ToString(), player.XPos-1, player.YPos-5);
+
+                if (tutorialActive)
+                {
+                    visual.PlaceText("Health-->", player.XPos - 11, player.YPos - 5);
+                }
 
                 // SPONSOR
                 int sponsorY = 5;
@@ -400,24 +428,36 @@ namespace CollisionGame
                 clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
                 visual.PlaceText("Clock: " + clock, 1, 2);
 
-                // ATTACKS
-                // Sword - När attack är använd sparas den nuvarande frame:en och en bool som säger att svärdet används sätt till true. Genom att ta skillnaden på antalet frames som gått överlag och de som gått när attacken aktiverades; fås hur många frames som appserat. Då kan jag göra så att svärdet är aktivit i ett visst antal frames. Sen sätts boolen till false.
-                if (swordUsed)
+                // Attack - När attack är använd sparas den nuvarande frame:en och en bool som säger att svärdet används sätt till true. Genom att ta skillnaden på antalet frames som gått överlag och de som gått när attacken aktiverades; fås hur många frames som appserat. Då kan jag göra så att svärdet är aktivit i ett visst antal frames. Sen sätts boolen till false.
+                if (attacking)
                 {
                     int framesPassed = i - pastI;
 
                     if (framesPassed < 100)
                     {
-                        for (int a = 0; a < 3; a++)
+                        int attackMultiplier = int.Parse(SSID("Mood", "VA", ";", stats));
+
+                        for (int a = 0; a < attackMultiplier; a++)
                         {
                             calculation.Place(sword.id, player.XPos + catWidth + a, player.YPos - 1);
                         }
-                        //player.frames.RemoveAt(0);
-                       // player.frames.Add(sponsorFrame2);
+
+                        // Creates foot 
+                        string[,] foot = new string[1,attackMultiplier];
+
+                        for (int a = 0; a < attackMultiplier-2; a++)
+                        {
+                            foot[0, a] = "-";
+                        }
+                        int footClamp = Math.Clamp(attackMultiplier-2, 0, attackMultiplier); 
+                        
+                        foot[0, footClamp] = "I";
+                        visual.Place(foot, player.XPos + catWidth + 1, player.YPos - 1);
+
                     }
                     else
                     {
-                        swordUsed = false;
+                        attacking = false;
                     }
                 }
                 else
@@ -462,7 +502,18 @@ namespace CollisionGame
                         // KNOCKBACK
                         if (calculation.CheckCollision(enemies[a].id, player.id, "up"))
                         {
-                            enemies[a].Move("right", 40);
+                            enemies[a].namelessBool1 = true;
+                        }
+
+                        if (enemies[a].namelessInt1 >= 20)
+                        {
+                            enemies[a].namelessBool1 = false;
+                            enemies[a].namelessInt1 = 0;
+                        }
+                        else if (enemies[a].namelessBool1)
+                        {
+                            enemies[a].Move("right", 1);
+                            enemies[a].namelessInt1++;
                         }
 
                         // TAKE DAMAGE
@@ -507,28 +558,38 @@ namespace CollisionGame
                 if (Console.KeyAvailable == true)
                 {
                     var keyPress = Console.ReadKey().Key;
+                    int energyMultiplier = int.Parse(SSID("Energy", "VA", ";", stats));
 
-                    // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
-
-                    switch (keyPress)
+                    switch (keyPress) // Ifall flera knappar kan vara intryckta samtidigt borde jag bara använda if satser för att kunna göra flera röresler samtidigt
                     {
                         case ConsoleKey.W:
                             if (pTouchesGround)
                             {
-                                player.Move("up", 5);
+                                player.Move("up", energyMultiplier);
                             }
                             break;
 
                         case ConsoleKey.A:
-                            player.Move("left", 1);
+                            player.Move("left", energyMultiplier);
                             break;
 
                         case ConsoleKey.D:
-                            player.Move("right", 1);
+                            player.Move("right", energyMultiplier);
                             break;
 
-                        case ConsoleKey.P:
-                            swordUsed = true;
+                        case ConsoleKey.I:
+                            if (tutorialActive)
+                            {
+                                tutorialActive = false;
+                            }
+                            else
+                            {
+                                tutorialActive = true;
+                            }
+                            break;
+
+                        case ConsoleKey.Spacebar:
+                            attacking = true;
                             pastI = i;
                             break;
 
@@ -537,11 +598,17 @@ namespace CollisionGame
                     }
                 }
 
-
                 // GRAVITY
-                if (!pTouchesGround && renderReduce)
+                if (!pTouchesGround && player.YPos < 22)
                 {
-                    player.Move("down", 1);
+                    int gravityMultiplier = int.Parse(SSID("Repleteness", "VA", ";", stats));
+                    gravityMultiplier = 10 - gravityMultiplier;
+
+                    if (i % gravityMultiplier * 200 == 0)
+                    {
+                        player.Move("down", 1);
+                    }
+
                 }
 
                 // DAMAGE

@@ -16,6 +16,10 @@ namespace CollisionGame
         private int repleteness = 3;
         public int health = 1;
 
+        public int namelessInt1 = 0;
+
+        public bool namelessBool1 = false;
+
         private string identf;
 
         public List<string[,]> frames = new List<string[,]>();
