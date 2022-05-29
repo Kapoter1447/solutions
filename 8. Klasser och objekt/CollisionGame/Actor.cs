@@ -136,7 +136,7 @@ namespace CollisionGame
             }
             set
             {
-                muscles = Math.Clamp(value, 0, 10);
+                muscles = Math.Clamp(value, 0, 100);
             }
         }
 

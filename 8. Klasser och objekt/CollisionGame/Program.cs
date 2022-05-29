@@ -17,7 +17,6 @@ namespace CollisionGame
             {"Mood", "PR1; VA7; ACPlay; COE;" },
             {"Muscles", "PR2; VA10; ACWorkout; COR;" },
         };
-
         static Dictionary<string, string> sponsors = new Dictionary<string, string>
         {
                 {"Fasebook", "MO3;"},
@@ -28,15 +27,16 @@ namespace CollisionGame
         };
 
         static Stopwatch stopwatch = new Stopwatch();
+        static TimeSpan time = new TimeSpan();
+        static int minutesGame = 3;
 
         static int money = 10;
 
         static string currentSponsor = ""; 
 
-
         static void Main(string[] args)
         {
-
+            #region init och dekl
             Canvas visual = new Canvas(100, 25);
 
             string[,] catDead = new string[4, 12]
@@ -51,7 +51,7 @@ namespace CollisionGame
                 {"", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "",},
                 {"/", "", "", "", "", "", "", "", " ", "", "", "\\",},
                 {"|", "", "", " ", " ", " ", " ", " ", " ", "", "", "|",},
-                {"|", "", "", "", "", "#", "1", "", "", "", "", "|",},
+                {"|", "", "", "", "", "", "", "", "", "", "", "|",},
                 {"|", "", "", "", "", "", "", "", "", "", "", "|",},
                 {"|", "", "", "", "", "", "", "", "", "", "", "|",},
             };
@@ -85,13 +85,15 @@ namespace CollisionGame
 
             bool alive = true;
 
-            TimeSpan time = new TimeSpan();
-
             Console.CursorVisible = false;
+            Console.SetWindowSize(100, 27);
+            Console.SetBufferSize(100,27);
             Console.BackgroundColor = ConsoleColor.DarkBlue;
+            #endregion
 
-            #region Intro
             
+            #region Intro
+
             int signX = visual.x;
             int signOffset = 15;
 
@@ -127,8 +129,9 @@ namespace CollisionGame
             Console.ReadLine();
             #endregion
 
+            
+            // Game
             stopwatch.Start();
-
             while (true)
             {
                 // Tamagotchi phase
@@ -140,7 +143,7 @@ namespace CollisionGame
                 {
                     break;
                 }
-                else if (time.Minutes >= 3)
+                else if (time.Minutes >= minutesGame)
                 {
                     break;
                 }
@@ -156,24 +159,115 @@ namespace CollisionGame
                 {
                     break;
                 }
-                else if (time.Minutes >= 3)
+                else if (time.Minutes >= minutesGame)
                 {
                     break;
                 }
             }
-
+            
             // Endings
             if (alive)
             {
                 int podiumOffset = -5;
-                visual.PlaceRotated(BakeCat(cat.Muscles, 0, 0), 50 + podiumOffset, -10);
-                visual.PlaceText("Score/Muscle Mass: " + cat.Muscles, 50, 10);
-                visual.Place(podium, 50 + podiumOffset, 13);
-                visual.Place(podium, 39 + podiumOffset, 15);
-                visual.Place(podium, 61 + podiumOffset, 15);
-                visual.Print();
-                Console.ReadLine();
 
+                if (cat.Muscles > 10)
+                {
+                    Canvas ascended = new Canvas(100,25);
+
+                    // Ascended
+                    for (int i = 0; i < visual.y; i++)
+                    {
+                        for (int a = 0; a < visual.x; a++)
+                        {
+                            if (a % 9 == 0)
+                            {
+                                ascended.PlaceText("ASCENDED", a, i);
+
+                                
+                                visual.PlaceRotated(ascended.canvArray, 0, 0);
+                                visual.PlaceRotated(BakeCat(cat.Muscles, 0, 0), visual.x/2, -5);
+                                visual.Print();
+                            }
+                        }
+                    }
+                    Console.ReadLine();
+                }
+                else if (cat.Muscles == 10)
+                {
+                    // 1
+                    visual.PlaceText("Score/Muscle Mass: " + cat.Muscles, 1, 1);
+                    visual.PlaceText("First Place - GIGACHAD", 1, 2);
+
+                    visual.PlaceRotated(BakeCat(cat.Muscles, 0, 0), 40, -10);
+                    visual.Place(podium, 50 + podiumOffset, 13);
+                    visual.PlaceText("#1", 54 + podiumOffset, 16);
+
+                    visual.Place(podium, 30 + podiumOffset, 15);
+                    visual.PlaceText("#2", 34 + podiumOffset, 18);
+
+                    visual.Place(podium, 70 + podiumOffset, 17);
+                    visual.PlaceText("#3", 74 + podiumOffset, 20);
+
+                    visual.Print();
+                    Console.ReadLine();
+                }
+                else if (cat.Muscles > 6)
+                {
+                    // 2
+                    visual.PlaceText("Score/Muscle Mass: " + cat.Muscles, 1, 1);
+                    visual.PlaceText("Second Place - Shredded Gymbro", 1, 2);
+
+                    visual.PlaceRotated(BakeCat(cat.Muscles, 0, 0), 15, -8);
+                    visual.Place(podium, 50 + podiumOffset, 13);
+                    visual.PlaceText("#1", 54 + podiumOffset, 16);
+
+                    visual.Place(podium, 30 + podiumOffset, 15);
+                    visual.PlaceText("#2", 34 + podiumOffset, 18);
+
+                    visual.Place(podium, 70 + podiumOffset, 17);
+                    visual.PlaceText("#3", 74 + podiumOffset, 20);
+
+                    visual.Print();
+                    Console.ReadLine();
+                }
+                else if (cat.Muscles > 4)
+                {
+                    // 3
+                    visual.PlaceText("Score/Muscle Mass: " + cat.Muscles, 1, 1);
+                    visual.PlaceText("Third Place - Sauced to the whiskers", 1, 2);
+
+                    visual.PlaceRotated(BakeCat(cat.Muscles, 0, 0), 64, -6);
+                    visual.Place(podium, 50 + podiumOffset, 13);
+                    visual.PlaceText("#1", 54 + podiumOffset, 16);
+
+                    visual.Place(podium, 30 + podiumOffset, 15);
+                    visual.PlaceText("#2", 34 + podiumOffset, 18);
+
+                    visual.Place(podium, 70 + podiumOffset, 17);
+                    visual.PlaceText("#3", 74 + podiumOffset, 20);
+
+                    visual.Print();
+                    Console.ReadLine();
+                }
+                else
+                {
+                    // You suck
+                    visual.PlaceText("Score/Muscle Mass: " + cat.Muscles, 1, 1);
+                    visual.PlaceText("Last Place - Noob", 1, 2);
+
+                    visual.PlaceRotated(BakeCat(cat.Muscles, 0, 0), 80, 0);
+                    visual.Place(podium, 50 + podiumOffset, 13);
+                    visual.PlaceText("#1", 54 + podiumOffset, 16);
+
+                    visual.Place(podium, 30 + podiumOffset, 15);
+                    visual.PlaceText("#2", 34 + podiumOffset, 18);
+
+                    visual.Place(podium, 70 + podiumOffset, 17);
+                    visual.PlaceText("#3", 74 + podiumOffset, 20);
+
+                    visual.Print();
+                    Console.ReadLine();
+                }
             }
             else
             {
@@ -314,7 +408,7 @@ namespace CollisionGame
             stopwatch.Start();
             #endregion
 
-            while (player.health > 0 && enemiesAlive)
+            while (player.health > 0 && enemiesAlive && time.Minutes < minutesGame)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -449,7 +543,7 @@ namespace CollisionGame
                 visual.PlaceText(currentSponsor, sponsorX - 1, sponsorY + 4);
 
                 // TIME
-                TimeSpan time = stopwatch.Elapsed;
+                time = stopwatch.Elapsed;
                 clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
                 visual.PlaceText("Clock: " + clock, 1, 2);
 
@@ -682,9 +776,13 @@ namespace CollisionGame
             }
             else
             {
-                visual.PlaceText("Sponsor was impressed. Click enter to proceed...", visual.x / 2, visual.y / 2);
+                stopwatch.Stop();
+
+                visual.PlaceText("Sponsor was impressed. Click enter to proceed...", 1, 1);
                 visual.Print();
                 Console.ReadLine();
+
+                stopwatch.Start();
 
                 return true;
             }
@@ -732,7 +830,7 @@ namespace CollisionGame
             bool sponsorArrived = false;
 
             string clock;
-            int timeBeforeSponsor = 3;
+            int timeBeforeSponsor = 5;
 
             string[] shuffledArray = new string[sponsors.Count];
             // Sponsor end
@@ -745,7 +843,7 @@ namespace CollisionGame
 
             #endregion
 
-            while (isAlive && !sponsorTime)
+            while (isAlive && !sponsorTime && time.Minutes < minutesGame)
             {
                 #region renderReduce
                 if (i % renderSpeed == 0)
@@ -953,7 +1051,7 @@ namespace CollisionGame
                 }
 
                 // Time
-                TimeSpan time = stopwatch.Elapsed;
+                time = stopwatch.Elapsed;
                 TimeSpan timePassedTmgi = stpWTmgi.Elapsed;
                 string timeUntilSponsor = (timeBeforeSponsor - timePassedTmgi.Seconds).ToString();
                 clock = String.Format("{0}:{1}", time.Minutes, time.Seconds);
@@ -1005,7 +1103,7 @@ namespace CollisionGame
                 }
                 else if (tutorialActive)
                 {
-                    visual.PlaceText("Sponsors show up here every 15 seconds", 1 , visual.y-1);
+                    visual.PlaceText("Sponsors show up here every 5 seconds", 1 , visual.y-1);
                 }
 
                 #endregion
