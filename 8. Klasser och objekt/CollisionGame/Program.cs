@@ -83,20 +83,12 @@ namespace CollisionGame
                 {"/"},
             };
 
-            bool alive = true; ;
+            bool alive = true;
 
-            stopwatch.Start();
             TimeSpan time = new TimeSpan();
 
             Console.CursorVisible = false;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-
-            // To do: Sponsors to get money, giga rat attack, sleepiness, hunger/muscles, happiness,  steriods, (rat gets bigger),
-            // Hur mycket pengar förlorades, sluta när fiender är döda, fiender ska inte kunanna gå in i varandra, mouse traps
-            // Döda råttor för att få sponsorer. Ju bättre sponsorFrame desto mer råttor måste dödas
-            // Endings
-
-          //  Battle(5);
 
             #region Intro
             
@@ -108,17 +100,15 @@ namespace CollisionGame
                 visual.Place(signL, signOffset+signX, visual.y / 2);
                 signOffset++;
 
-                // Text
                 visual.PlaceText("CAT MUSCLE CONTEST", signOffset+signX, visual.y/2+1);
                 visual.PlaceText("AT 3:0PM", signOffset + signX, visual.y / 2 + 2);
                 visual.PlaceText("'Gains Gain Gains'", signOffset + signX, visual.y / 2 + 3);
                 visual.PlaceText("Sponsors available!", signOffset + signX, visual.y / 2 + 4);
 
-                visual.PlaceText("Click 'i' för instructions in game!", 40 + signX, visual.y-2);
+                //visual.PlaceText("Click 'i' för instructions in game!", 40 + signX, visual.y-2);
                 visual.PlaceText("Click Enter To Proceed...", 40 + signX, visual.y-1);
 
                 visual.PlaceText("A game by Kasper Larsson", 0, 0, "vertical");
-                // Text end
 
                 for (int a = 0; a < 20; a++)
                 {
@@ -135,13 +125,16 @@ namespace CollisionGame
             }
 
             Console.ReadLine();
-            
             #endregion
+
+            stopwatch.Start();
 
             while (true)
             {
+                // Tamagotchi phase
                 alive = Tamagotchi();
 
+                // Break if time is up or cat is dead
                 time = stopwatch.Elapsed;
                 if (!alive)
                 {
@@ -154,10 +147,16 @@ namespace CollisionGame
 
                 int sponsorPayment = int.Parse(SSID(currentSponsor, "MO", ";", sponsors));
 
-                Battle(sponsorPayment);
+                // Battle phase
+                alive = Battle(sponsorPayment);
 
+                // Break if time is up or cat is dead
                 time = stopwatch.Elapsed;
-                if (time.Minutes >= 3)
+                if (!alive)
+                {
+                    break;
+                }
+                else if (time.Minutes >= 3)
                 {
                     break;
                 }
@@ -179,8 +178,9 @@ namespace CollisionGame
             else
             {
                 visual.Place(catDead, 0, 0);
+                visual.PlaceText("You are a bad pet owner and your cat died... Program will now close", 30, visual.y/2);
                 visual.Print();
-                Console.ReadLine();
+                Thread.Sleep(4000);
             }
 
 
@@ -191,7 +191,7 @@ namespace CollisionGame
 
         }
 
-        static void Battle(int enemieCount) 
+        static bool Battle(int enemieCount) 
         {
             #region initiering och deklarering
             string[,] sponsorFrame = new string[4, 4]
@@ -287,6 +287,31 @@ namespace CollisionGame
 
             int i = 0;
             int pastI = 0;
+            #endregion
+
+            #region tutorial
+            stopwatch.Stop();
+            int textX = 20;
+            int textY = 10;
+
+            visual.PlaceText("Kill rats to impress sponsor", textX, textY);
+            visual.PlaceText("Rats eat your money if they get to your wallet", textX, textY+1);
+
+            visual.PlaceText("Cat stats have impact on game:", textX, textY+3);
+            visual.PlaceText("* Muscles - Makes cat bigger (Muscly cat makes cat large)", textX, textY+4);
+            visual.PlaceText("* Mood - Increases attack range (Happy cat gives better fighting perfomance)", textX, textY+5);
+            visual.PlaceText("* Repleteness - Decreases jump height (Fat cat can't jump)", textX, textY+6);
+            visual.PlaceText("* Energy - Increases movement speed (Alert cat moves faster)", textX, textY+7);
+
+            visual.PlaceText("IF YOU DIE, YOU DIE", textX, textY + 9);
+
+            visual.PlaceText("Click 'Enter' To Proceed", textX, textY+11);
+
+
+            visual.Print();
+
+            Console.ReadLine();
+            stopwatch.Start();
             #endregion
 
             while (player.health > 0 && enemiesAlive)
@@ -633,30 +658,35 @@ namespace CollisionGame
                 calculation.Clear();
                 i++;
             }
-            
-            for (int b = 0; b < visual.y; b++)
-            {
-                for (int a = 0; a < visual.x; a++)
-                {
-                    visual.Place("¤", a, b);
-                    visual.Print();
-                }
-            }
 
             if (player.health <= 0)
             {
-                cat.Muscles = 1;
+                stopwatch.Stop();
 
-                visual.PlaceText("YOUR STICKMAN DIED AND YOU LOST ALL MUSCLES", visual.x / 2, visual.y / 2);
+                for (int b = 0; b < visual.y; b++) // "Screen cleaner"
+                {
+                    for (int a = 0; a < visual.x; a++)
+                    {
+                        visual.Place("¤", a, b);
+                        visual.Print();
+                    }
+                }
+
+                visual.PlaceText("YOU DIED", visual.x / 2, visual.y / 2);
                 visual.PlaceText("Click enter to proceed...", visual.x / 2, visual.y / 2 + 1);
                 visual.Print();
                 Console.ReadLine();
+
+                return false;
+
             }
             else
             {
-                visual.PlaceText(enemieCount + " rats eliminated. Click enter to proceed...", visual.x / 2, visual.y / 2);
+                visual.PlaceText("Sponsor was impressed. Click enter to proceed...", visual.x / 2, visual.y / 2);
                 visual.Print();
                 Console.ReadLine();
+
+                return true;
             }
 
         }

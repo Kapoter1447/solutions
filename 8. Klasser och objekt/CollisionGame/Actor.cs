@@ -104,7 +104,8 @@ namespace CollisionGame
         {
             energy--;
             mood--;
-            repleteness = repleteness + 3;
+
+            repleteness = Math.Clamp(repleteness + 3, 0, 10);
         }
 
         public void WorkOut()
@@ -117,14 +118,14 @@ namespace CollisionGame
         {
             repleteness--;
             mood--;
-            energy = energy + 3;
+            energy = Math.Clamp(energy + 3, 0, 10);
         }
 
         public void Play()
         {
             energy--;
             repleteness--;
-            mood = mood + 3;
+            mood = Math.Clamp(mood + 3, 0, 10);
         }
 
         public int Muscles
