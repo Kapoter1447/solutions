@@ -86,8 +86,8 @@ namespace CollisionGame
             bool alive = true;
 
             Console.CursorVisible = false;
-            Console.SetWindowSize(102, 27);
-            Console.SetBufferSize(102,27);
+            Console.SetWindowSize(100, 27);
+            Console.SetBufferSize(100,27);
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             #endregion
 
@@ -103,7 +103,7 @@ namespace CollisionGame
                 signOffset++;
 
                 visual.PlaceText("CAT MUSCLE CONTEST", signOffset+signX, visual.y/2+1);
-                visual.PlaceText("AT" + minutesGame + ":0PM", signOffset + signX, visual.y / 2 + 2);
+                visual.PlaceText("AT 3:0PM", signOffset + signX, visual.y / 2 + 2);
                 visual.PlaceText("'Gains Gain Gains'", signOffset + signX, visual.y / 2 + 3);
                 visual.PlaceText("Sponsors available!", signOffset + signX, visual.y / 2 + 4);
 
@@ -280,6 +280,11 @@ namespace CollisionGame
 
         }
 
+        static void Tutorial()
+        {
+
+        }
+
         static bool Battle(int enemieCount) 
         {
             #region initiering och deklarering
@@ -422,11 +427,7 @@ namespace CollisionGame
                 {
                     visual.PlaceText("W, A and D - Movement", 1 ,9);
                     visual.PlaceText("Spacebar - Attack", 1, 10);
-                    visual.PlaceText("Jump on rats to push them", 1, 11);
-
                 }
-                visual.PlaceText("Click 'i' to toggle instructions", 1, 8);
-
 
                 // ENEMY
                 // Create enemies
